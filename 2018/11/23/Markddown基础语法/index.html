@@ -7,14 +7,17 @@
   
   <title>Markddown基础语法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="Markdown基础语法价绍标题Markdown支持两种标题的语法，类Setext和类Atx形式。         类Setext形式是用“=”等号和 “-”减号来表示(一个及以上），例如：这是一级标题========这是二级标题————–        类Atx形式是在行首插入1-6个“#”，对应一到六级标题，例如：# 这是一级标题## 这是二级标题###### 这是六级标题        注意">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Markddown基础语法">
 <meta property="og:url" content="http://yoursite.com/2018/11/23/Markddown基础语法/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Markdown基础语法价绍标题Markdown支持两种标题的语法，类Setext和类Atx形式。         类Setext形式是用“=”等号和 “-”减号来表示(一个及以上），例如：这是一级标题========这是二级标题————–        类Atx形式是在行首插入1-6个“#”，对应一到六级标题，例如：# 这是一级标题## 这是二级标题###### 这是六级标题        注意">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-22T16:09:20.426Z">
+<meta property="og:updated_time" content="2018-11-22T16:34:17.602Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markddown基础语法">
+<meta name="twitter:description" content="Markdown基础语法价绍标题Markdown支持两种标题的语法，类Setext和类Atx形式。         类Setext形式是用“=”等号和 “-”减号来表示(一个及以上），例如：这是一级标题========这是二级标题————–        类Atx形式是在行首插入1-6个“#”，对应一到六级标题，例如：# 这是一级标题## 这是二级标题###### 这是六级标题        注意">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -83,11 +86,93 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="Markdown基础语法价绍"><a href="#Markdown基础语法价绍" class="headerlink" title="Markdown基础语法价绍"></a>Markdown基础语法价绍</h1><h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>Markdown支持两种标题的语法，类Setext和类Atx形式。       </p>
+<ol>
+<li>类Setext形式是用“=”等号和 “-”减号来表示(一个及以上），例如：<br>这是一级标题<br>========<br>这是二级标题<br>————–       </li>
+<li>类Atx形式是在行首插入1-6个“#”，对应一到六级标题，例如：<br><br># 这是一级标题<br><br>## 这是二级标题<br><br>###### 这是六级标题      </li>
+</ol>
+<p>注意：“#”后有一个空格！！！</p>
+<h2 id="段落和换行"><a href="#段落和换行" class="headerlink" title="段落和换行"></a>段落和换行</h2><ol>
+<li><p>一个Markdown段落由一到多个连续的文本行组成，段落前后要有一个以上的空行（若某一行只包含空格和制表符也被视为空行）。</p>
+</li>
+<li><p>换行：在一个文本行末键入两个及以上的空格或制表符（Tab键）后回车（Enter键）即可换行。另外，由于Markdown兼容部分HTML语法，我习惯用\<br>来换行。</p>
+<h2 id="文本样式"><a href="#文本样式" class="headerlink" title="文本样式"></a>文本样式</h2></li>
+<li><p>加粗：在需要加粗的文字前后各加两个“<em>”星号或者“_”底线符号，前后符号要匹配且符号和字之间不能有空格。例如：<br><br>**hello world\</em>* 效果是 <strong>hello world</strong></p>
+</li>
+<li><p>斜体：在需要倾斜的文字前后各加一个“<em>”星号或者“_”底线符号。例如：<br><br>\</em>Markdown* 效果是 <em>Markdown</em></p>
+</li>
+<li><p>倾斜加粗：前后各加三个“<em>”星号或者“_”底线符号。例如：<br><br>**</em>kawhi*** 效果是 <strong><em>kawhi</em></strong></p>
+</li>
+<li><p>高亮：前后各加一个及以上的“`”反引号（Esc键下方）。例如：<br>`#include&lt;stdio.h&gt;` 效果是 <code>#include&lt;stdio.h&gt;</code></p>
+</li>
+<li><p>删除线：前后各加两个“~”波浪号（Esc键下方）。例如：<br><br>~~github~~ 效果是 <del>github</del></p>
+</li>
+<li><p>分割线：在单独的一个文本行内用三个及以上的“<em>”星号、“_”底线符号来建立分割线（符号间可以有空格）。例如：<br><br>\</em> <em> </em><br><br>_ _ _<br>效果都是</p>
+</li>
+</ol>
+<hr>
+<p>注意：一行内不得出现其他文字和符号！ </p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><ol>
+<li>无序列表：每个文本行前使用“*”星号、“+”加号、“-”减号来标记。例如：<br>+ red（不加制表符）<br> + blue（标记符号前加一个制表符）  <pre><code>\+ yellow（标记符号前加两个制表符）      
+效果是
+</code></pre></li>
+</ol>
+<ul>
+<li>red<ul>
+<li>blue<ul>
+<li>yellow        </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>注意：“+”加号后有一个空格！！！       </p>
+<ol start="2">
+<li>有序列表：使用阿拉伯数字接着一个英文句点。例如<br>1. red<br>2. blue<br>3. yellow<br>效果是     <ol>
+<li>red      </li>
+<li>blue     </li>
+<li>yellow       </li>
+</ol>
+</li>
+</ol>
+<p>注意：英文句点后有一个空格！！！ </p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><ol>
+<li>每个表头或表格单元之间用“|”来隔开。表头下要有<code>-|-|-</code>，有几个表头就有几个“-”减号。</li>
+<li>左对齐：默认左对齐，或在“-”左侧加“:”表示左对齐。例如：<br>-|-|-</li>
+<li>右对齐：在“-”右侧加“:”表示右对齐。例如：<br>-:|-:|-:</li>
+<li>居中对齐：在“-”两侧都加“:”表示居中对齐。例如：<br>\:-:|:-:|:-:|</li>
+</ol>
+<p>姓名|班级|学号<br>-|-|-<br>张三|1|10001<br>李四|2|10002<br>王五|3|10003      </p>
+<p>效果是<br>姓名|班级|学号<br>-|-|-<br>张三|1|10001<br>李四|2|10002<br>王五|3|10003</p>
+<h2 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h2><ol>
+<li><p>基本使用：在需要引用的文本前加上“&gt;”大于号，若要跳出引用空行即可。例如：<br>>Markdown是一种可以使用普通文本编辑器编写的标记语言。<br>效果是：</p>
+<blockquote>
+<p>Markdown是一种可以使用普通文本编辑器编写的标记语言。     </p>
+</blockquote>
+</li>
+<li><p>嵌套使用：根据引用文本的层次加上不同数量的“&gt;”。例如：<br>>引用一<br>>&gt;引用二<br>>&gt;&gt;引用三<br>效果是：</p>
+<blockquote>
+<p>引用一</p>
+<blockquote>
+<p>引用二</p>
+<blockquote>
+<p>引用三</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ol>
+<p>补充：引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等。</p>
+<h2 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h2><ol>
+<li>每行代码前缩进四个空格或一个制表符即可建立代码区块。</li>
+<li>在需要插入的代码区块的前一行及后一行各使用三个“`”反引号。例如：<br>\<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;       </span><br><span class="line">void main()     </span><br><span class="line">&#123;       </span><br><span class="line">    printf(&quot;hello world&quot;);      </span><br><span class="line">&#125;       </span><br><span class="line">\```      </span><br><span class="line">效果是：</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>#include&lt;stdio.h&gt;<br>void main()<br>{<br>    printf(“hello world”);<br>}<br><code>`</code><br>注意：一个代码区块会一直持续到没有缩进的那一行（或是文件结尾）。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/Markddown基础语法/" data-id="cjostfh6w0000j0w3owwef282" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/Markddown基础语法/" data-id="cjosthfoo0000ukw3ez94u7zy" class="article-share-link">Share</a>
       
       
     </footer>
