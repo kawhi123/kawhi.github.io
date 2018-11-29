@@ -108,21 +108,21 @@
 
 
 
-  <meta name="description" content="1、密码学1.1 密码学概论 待加密的消息称为明文（plaintext），它经过一个以密钥（key）为参数的函数变换，这个过程的结果就是所谓的密文（ciphertext）。    破解密码的技术就是所谓的密码分析学（cryptanalysis），而他和设计密码的密码编码学（cryptography）合起来统称为密码学（cryptology）。 用密钥K加密明文P得到密文C：解密密文C得到明文P：">
+  <meta name="description" content="1、密码学1.1 密码学概论 待加密的消息称为明文（plaintext），它经过一个以密钥（key）为参数的函数变换，这个过程的结果就是所谓的密文（ciphertext）。    破解密码的技术就是所谓的密码分析学（cryptanalysis），而他和设计密码的密码编码学（cryptography）合起来统称为密码学（cryptology）。 用密钥K加密明文P得到密文C：解密密文C得到明文P：由">
 <meta name="keywords" content="Information Security">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第八章-网络安全">
 <meta property="og:url" content="http://yoursite.com/2018/11/29/第八章-网络安全/index.html">
 <meta property="og:site_name" content="kawhi">
-<meta property="og:description" content="1、密码学1.1 密码学概论 待加密的消息称为明文（plaintext），它经过一个以密钥（key）为参数的函数变换，这个过程的结果就是所谓的密文（ciphertext）。    破解密码的技术就是所谓的密码分析学（cryptanalysis），而他和设计密码的密码编码学（cryptography）合起来统称为密码学（cryptology）。 用密钥K加密明文P得到密文C：解密密文C得到明文P：">
+<meta property="og:description" content="1、密码学1.1 密码学概论 待加密的消息称为明文（plaintext），它经过一个以密钥（key）为参数的函数变换，这个过程的结果就是所谓的密文（ciphertext）。    破解密码的技术就是所谓的密码分析学（cryptanalysis），而他和设计密码的密码编码学（cryptography）合起来统称为密码学（cryptology）。 用密钥K加密明文P得到密文C：解密密文C得到明文P：由">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://latex.codecogs.com/svg.latex?C=E_{K}(P)">
 <meta property="og:image" content="https://latex.codecogs.com/svg.latex?P=D_{K}(C)">
-<meta property="og:image" content="https://latex.codecogs.com/png.latex?P=D_{K}(C)">
-<meta property="og:updated_time" content="2018-11-29T14:08:08.071Z">
+<meta property="og:image" content="https://latex.codecogs.com/png.latex?D_{K}(E_{K}(P))=P">
+<meta property="og:updated_time" content="2018-11-29T14:15:52.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第八章-网络安全">
-<meta name="twitter:description" content="1、密码学1.1 密码学概论 待加密的消息称为明文（plaintext），它经过一个以密钥（key）为参数的函数变换，这个过程的结果就是所谓的密文（ciphertext）。    破解密码的技术就是所谓的密码分析学（cryptanalysis），而他和设计密码的密码编码学（cryptography）合起来统称为密码学（cryptology）。 用密钥K加密明文P得到密文C：解密密文C得到明文P：">
+<meta name="twitter:description" content="1、密码学1.1 密码学概论 待加密的消息称为明文（plaintext），它经过一个以密钥（key）为参数的函数变换，这个过程的结果就是所谓的密文（ciphertext）。    破解密码的技术就是所谓的密码分析学（cryptanalysis），而他和设计密码的密码编码学（cryptography）合起来统称为密码学（cryptology）。 用密钥K加密明文P得到密文C：解密密文C得到明文P：由">
 <meta name="twitter:image" content="https://latex.codecogs.com/svg.latex?C=E_{K}(P)">
 
 
@@ -431,7 +431,7 @@
                 
               
 
-              <time title="创建时间：2018-11-29 19:27:01 / 修改时间：22:08:08" itemprop="dateCreated datePublished" datetime="2018-11-29T19:27:01+08:00">2018-11-29</time>
+              <time title="创建时间：2018-11-29 19:27:01 / 修改时间：22:15:52" itemprop="dateCreated datePublished" datetime="2018-11-29T19:27:01+08:00">2018-11-29</time>
             
 
             
@@ -497,7 +497,7 @@
         <h2 id="1、密码学"><a href="#1、密码学" class="headerlink" title="1、密码学"></a>1、密码学</h2><h3 id="1-1-密码学概论"><a href="#1-1-密码学概论" class="headerlink" title="1.1 密码学概论"></a>1.1 密码学概论</h3><ul>
 <li>待加密的消息称为<strong>明文</strong>（plaintext），它经过一个以<strong>密钥</strong>（key）为参数的函数变换，这个过程的结果就是所谓的<strong>密文</strong>（ciphertext）。   </li>
 <li>破解密码的技术就是所谓的<strong>密码分析学</strong>（cryptanalysis），而他和设计密码的<strong>密码编码学</strong>（cryptography）合起来统称为<strong>密码学</strong>（cryptology）。</li>
-<li>用密钥K加密明文P得到密文C：<img src="https://latex.codecogs.com/svg.latex?C=E_{K}(P)" title="C=E_{K}(P)"><br>解密密文C得到明文P：<img src="https://latex.codecogs.com/svg.latex?P=D_{K}(C)" title="P=D_{K}(C)"><br><img src="https://latex.codecogs.com/png.latex?P=D_{K}(C)" title="P=D_{K}(C)"> </li>
+<li>用密钥K加密明文P得到密文C：<img src="https://latex.codecogs.com/svg.latex?C=E_{K}(P)" title="C=E_{K}(P)"><br>解密密文C得到明文P：<img src="https://latex.codecogs.com/svg.latex?P=D_{K}(C)" title="P=D_{K}(C)"><br>由此可以得到：<img src="https://latex.codecogs.com/png.latex?D_{K}(E_{K}(P))=P" title="D_{K}(E_{K}(P))=P"></li>
 </ul>
 
       
