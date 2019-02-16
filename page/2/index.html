@@ -254,7 +254,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">13</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">16</span></a>
 
   </li>
         
@@ -366,6 +366,571 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/25/域名解析/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/25/域名解析/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">域名解析</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-25 16:22:03 / 修改时间：18:57:34" itemprop="dateCreated datePublished" datetime="2019-01-25T16:22:03+08:00">2019-01-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="ctf"><a href="#ctf" class="headerlink" title="ctf"></a>ctf</h3><p>听说把 flag.baidu.com 解析到123.206.87.240 就能拿到flag</p>
+<h3 id="thinking"><a href="#thinking" class="headerlink" title="thinking"></a>thinking</h3><p>CTF题目可以说是非常关键了，开门见山告诉我们此题要将域名解析到指定IP，google一下（搜索引擎的使用很重要）。大浪淘沙找到了一篇有用的文章：<a href="https://www.cnblogs.com/cl-blogs/p/4160483.html" target="_blank" rel="noopener">https://www.cnblogs.com/cl-blogs/p/4160483.html</a> （p.s.：博客的动态背景挺好看的）。提取有用信息：<strong>修改hosts文件</strong>!</p>
+<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><ol>
+<li><p>找到hosts文件的位置：<code>C:\Windows\System32\drivers\etc\hosts</code>   </p>
+</li>
+<li><ul>
+<li><p>用记事本打开添加单独一行（注意IP地址前不要有空格，IP地址和域名之间至少一个空格！）<br><code>123.206.87.240   flag.baidu.com</code>   </p>
+</li>
+<li><p>系统提示我没有管理员权限不能修改此文件，因此要获取管理员权限。网上说<code>win+R</code>唤出运行窗口，输入<code>gpedit.msc</code>打开了组策略编辑器，然后biabiabia一顿操作。（反正我没成功，所以懒得写）如果成功了就可以修改hosts文件。    </p>
+</li>
+</ul>
+</li>
+<li><p>（2行不通的话）</p>
+<ul>
+<li><p>管理员身份运行cmd（我用的是替代工具cmder）：找到cmd.exe文件右键以管理员身份运行。（百度上方法挺多的，用的也比较多）   </p>
+</li>
+<li><p><code>cd</code>切换到hosts文件的路径，<code>ls</code>查看目录下文件，<code>vi hosts</code>进入编辑模式即可修改。（这里需要学习cmd的一些常用命令，vi/vim命令非常重要）    </p>
+</li>
+</ul>
+</li>
+<li><p>网页输入<code>flag.baidu.com</code>即可拿到flag。    </p>
+<ul>
+<li><p>或者命令行输入<code>curl flag.baidu.com</code>直接查看网页内容。   </p>
+</li>
+<li><p><code>cat hosts</code>可以查看文件内容。  </p>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://kawhi123.github.io/images/BugkuCTF.7.png" alt=""></p>
+<h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><ol>
+<li><p>hosts是一个没有扩展名的系统文件，可以用记事本等工具打开，其作用就是将一些常用的网址域名与其对应的IP地址建立一个关联“数据库”，当用户在浏览器中输入一个需要登录的网址时，系统会首先自动从Hosts文件中寻找对应的IP地址，一旦找到，系统会立即打开对应网页，如果没有找到，则系统会再将网址提交DNS域名解析服务器进行IP地址的解析。<br>需要注意的是，Hosts文件配置的映射是静态的，如果网络上的计算机更改了请及时更新IP地址，否则将不能访问。    </p>
+</li>
+<li><p>curl命令详解：<a href="https://www.jianshu.com/p/07c4dddae43a" target="_blank" rel="noopener">https://www.jianshu.com/p/07c4dddae43a</a>    </p>
+</li>
+<li><p>cat命令：<a href="https://www.cnblogs.com/mengchunchen/p/8066306.html" target="_blank" rel="noopener">https://www.cnblogs.com/mengchunchen/p/8066306.html</a></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/05/HTML基础/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/05/HTML基础/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">HTML基础</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-05 15:00:05 / 修改时间：15:02:02" itemprop="dateCreated datePublished" datetime="2018-12-05T15:00:05+08:00">2018-12-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/HTML语法/" itemprop="url" rel="index"><span itemprop="name">HTML语法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/29/第八章-网络安全/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/11/29/第八章-网络安全/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">第八章-网络安全</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-29 19:27:01" itemprop="dateCreated datePublished" datetime="2018-11-29T19:27:01+08:00">2018-11-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-04 19:32:35" itemprop="dateModified" datetime="2018-12-04T19:32:35+08:00">2018-12-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/笔记/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/笔记/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h2><h3 id="密码学概论"><a href="#密码学概论" class="headerlink" title="密码学概论"></a>密码学概论</h3><ul>
+<li>待加密的消息称为<strong>明文</strong>（plaintext），它经过一个以<strong>密钥</strong>（key）为参数的函数变换，这个过程的结果就是所谓的<strong>密文</strong>（ciphertext）。   </li>
+<li>破解密码的技术就是所谓的<strong>密码分析学</strong>（cryptanalysis），而他和设计密码的<strong>密码编码学</strong>（cryptography）合起来统称为<strong>密码学</strong>（cryptology）。    </li>
+<li>用密钥K加密明文P得到密文C：<img src="https://latex.codecogs.com/svg.latex?C=E_{K}(P)" title="C=E_{K}(P)"><br>解密密文C得到明文P：<img src="https://latex.codecogs.com/svg.latex?P=D_{K}(C)" title="P=D_{K}(C)"><br>由此可以得到：<img src="https://latex.codecogs.com/png.latex?D_{K}(E_{K}(P))=P" title="D_{K}(E_{K}(P))=P">   </li>
+<li>“让密码分析者知道加解密算法，并且把所有的秘密信息全部放在密钥中”这种思想称为<strong>Kerckhoff原理</strong>。   </li>
+</ul>
+<h3 id="置换密码"><a href="#置换密码" class="headerlink" title="置换密码"></a>置换密码</h3><ul>
+<li><strong> 凯撒密码</strong>：明文按照字母顺序移动k个字母。    </li>
+<li>采用“符号对符号”置换策略的通用系统称为<strong>单字母置换</strong>密码。    </li>
+</ul>
+<h3 id="替代密码"><a href="#替代密码" class="headerlink" title="替代密码"></a>替代密码</h3><ul>
+<li><strong> 替代密码</strong>重新对字母表排序，但是并不伪装明文。    </li>
+</ul>
+<h3 id="一次性交易"><a href="#一次性交易" class="headerlink" title="一次性交易"></a>一次性交易</h3><ul>
+<li><strong> 一次性密钥</strong>：首先选择一个随机位串作为密钥，然后将明文转变成一个位串。最后，逐位计算这两个串的异或值，这样得到的密文是不可能被破解的。<br>缺点：一次性密钥无法记忆，所以发送方和接收方必须随时携带书面的密钥副本。    </li>
+<li><strong> 量子密码学</strong></li>
+</ul>
+<h3 id="两个基本的密码学原则"><a href="#两个基本的密码学原则" class="headerlink" title="两个基本的密码学原则"></a>两个基本的密码学原则</h3><ul>
+<li><strong>冗余度</strong><br>所有被加密的消息必须包含一定的冗余信息，也就是说，这些信息对于理解这些信息来说是不必要的。   </li>
+<li><strong>新鲜度</strong><br>必须采取某些措施确保每条接受到的消息可被验证是新鲜的，也就是说，它是最近发送出来的。    </li>
+<li>密码学原则1：消息必须包含一定的冗余度。<br>措施：CRC多项式编码</li>
+<li>密码学原则2：需要采用某种方法来对抗重放攻击。<br>措施：在每条消息中包含一个仅在一段时间内有效的时间戳。   </li>
+</ul>
+<h2 id="对称密钥算法"><a href="#对称密钥算法" class="headerlink" title="对称密钥算法"></a>对称密钥算法</h2><p>###</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1104,7 +1669,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
