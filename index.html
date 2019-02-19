@@ -254,7 +254,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">16</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">18</span></a>
 
   </li>
         
@@ -273,7 +273,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-分类"></i> <br>分类<span class="badge">9</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-分类"></i> <br>分类<span class="badge">10</span></a>
 
   </li>
         
@@ -382,6 +382,458 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/Crypto/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/19/Crypto/" class="post-title-link" itemprop="http://yoursite.com/index.html">Crypto</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-19 15:24:20 / 修改时间：22:48:47" itemprop="dateCreated datePublished" datetime="2019-02-19T15:24:20+08:00">2019-02-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>推荐一个ctf在线工具的网站：<a href="http://ctf.ssleye.com/" target="_blank" rel="noopener">http://ctf.ssleye.com/</a></p>
+<h2 id="滴答-滴"><a href="#滴答-滴" class="headerlink" title="滴答~滴"></a>滴答~滴</h2><ol>
+<li><p>题目<br>-… -.- -.-. - ..-. – .. … -.-.   </p>
+</li>
+<li><p>解析<br>知识点是摩斯密码(Morse Code)，它由两种基本信号和不同的间隔时间组成：短促的点信号“·”，读“滴”（Di）；保持一定时间的长信号“-”，读“嗒”（Da）。间隔时间：滴，1t；嗒，3t；滴嗒间，1t；字符间，3t；字间，7t。<br><br><br>根据时间间隔将该电码分成<code>-...</code>，<code>-.-</code>，<code>-.-.</code>，<code>-</code>，<code>..-.</code>，<code>--</code>，<code>..</code>，<code>...</code>，<code>-.-.</code>九部分，分别是九个字母，对照摩斯密码表可以翻译得 BKCTFMISC ，所以该题答案为<strong>KEY{BKCTFMISC}</strong> 。也可以根据在线的摩斯密码翻译器进行翻译：<a href="https://www.mathsking.net/morse.htm" target="_blank" rel="noopener">https://www.mathsking.net/morse.htm</a>   </p>
+</li>
+</ol>
+<h2 id="聪明的小羊"><a href="#聪明的小羊" class="headerlink" title="聪明的小羊"></a>聪明的小羊</h2><ol>
+<li><p>题目<br>一只小羊翻过了2个栅栏<br>KYsd3js2E{a2jda}    </p>
+</li>
+<li><p>解析<br>知识点是栅栏密码(Rail-fence Cipher)，就是把要加密的明文分成N个一组，然后把每组的第1个字连起来，形成一段无规律的话。 不过栅栏密码本身有一个潜规则，就是组成栅栏的字母一般不会太多。（一般不超过30个，也就是一、两句话）</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">一般比较常见的是2栏栅栏密码，比如明文：WE YOUNG FOREVER</span><br><span class="line"></span><br><span class="line">#加密</span><br><span class="line">去掉空格：WEYOUNGFOREVER</span><br><span class="line">两个一组得到：WE YO UN GF OR EV ER</span><br><span class="line">先取出每组的第一个字母：WYUGOEE</span><br><span class="line">再取出每组的第二个字母：EONFRVR</span><br><span class="line">连在一起得到密文：WYUGOEEEONFRVR</span><br><span class="line"></span><br><span class="line">#解密</span><br><span class="line">将密文分成两组，变成两行：</span><br><span class="line">W Y U G O E E</span><br><span class="line">E O N F R V R</span><br><span class="line">再将两行的对应字母组合起来：</span><br><span class="line">WEYOUNGFOREVER</span><br><span class="line">分出空格得到明文：</span><br><span class="line">WE YOUNG FOREVER</span><br><span class="line"></span><br><span class="line">N栏栅栏密码就是在分组是分成N组，方法一样。</span><br></pre></td></tr></table></figure>
+<p>根据题目信息该题是一个2栏栅栏密码，用上例方法得到<strong>KEY{sad23jjdsa2}</strong> 。也可以用在线的栅栏密码加解密工具：<a href="https://www.qqxiuzi.cn/bianma/zhalanmima.php" target="_blank" rel="noopener">https://www.qqxiuzi.cn/bianma/zhalanmima.php</a></p>
+<h2 id="ok"><a href="#ok" class="headerlink" title="ok"></a>ok</h2><ol>
+<li><p>题目<br><a href="https://ctf.bugku.com/challenges#ok" target="_blank" rel="noopener">https://ctf.bugku.com/challenges#ok</a>   </p>
+</li>
+<li><p>解析<br>打开链接是一堆Ook.Ook!Ook?的东西，这是Brainfuck编码的衍生物，具体可见维基百科：<a href="https://en.wikipedia.org/wiki/Brainfuck" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Brainfuck</a><br><br><br>使用在线的Brainfuck/Ook!解码工具：<a href="https://www.splitbrain.org/services/ook" target="_blank" rel="noopener">https://www.splitbrain.org/services/ook</a><br>解码得到：<strong>flag{ok-ctf-1234-admin}</strong> 。    </p>
+</li>
+</ol>
+<h2 id="这不是摩斯密码"><a href="#这不是摩斯密码" class="headerlink" title="这不是摩斯密码"></a>这不是摩斯密码</h2><ol>
+<li>题目</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+++++ +++++ [-&gt;++ +++++ +++&lt;] &gt;++.+ +++++ .&lt;+++ [-&gt;-- -&lt;]&gt;- -.+++ +++.&lt;</span><br><span class="line">++++[ -&gt;+++ +&lt;]&gt;+ +++.&lt; +++[- &gt;---&lt; ]&gt;--- .---- .&lt;+++ ++++[ -&gt;--- ----&lt;</span><br><span class="line">]&gt;--- ----- ----- .&lt;+++ ++++[ -&gt;+++ ++++&lt; ]&gt;+++ ++.&lt;+ +++++ +[-&gt;- -----</span><br><span class="line">-&lt;]&gt;. &lt;++++ ++++[ -&gt;+++ +++++ &lt;]&gt;++ .&lt;+++ [-&gt;-- -&lt;]&gt;- ----. &lt;++++ +++[-</span><br><span class="line">&gt;---- ---&lt;] &gt;---- ----. +++++ +..++ +++.+ .&lt;+++ [-&gt;-- -&lt;]&gt;- --.&lt;+ +++++</span><br><span class="line">+[-&gt;+ +++++ +&lt;]&gt;+ ++.++ +.+++ +++++ +.--- -.+++ ++.&lt;+ ++[-&gt; +++&lt;] &gt;++++</span><br><span class="line">++.&lt;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>解析<br>该题知识点是Brainfuck编码，这是一种极小化的计算机语言，该语言由八种状态构成。   </li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">含义        </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">></td>
+<td style="text-align:center">指针加一     </td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">指针减一  </td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">指针指向的字节的值加一</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">指针指向的字节的值减一</td>
+</tr>
+<tr>
+<td style="text-align:center">.</td>
+<td style="text-align:center">输出指针指向的单元内容（ASCII码）</td>
+</tr>
+<tr>
+<td style="text-align:center">,</td>
+<td style="text-align:center">输入内容到指针指向的单元（ASCⅡ码）</td>
+</tr>
+<tr>
+<td style="text-align:center">[</td>
+<td style="text-align:center">如果指针指向的单元值为零，向后跳转到对应的 <code>]</code> 指令的次一指令处</td>
+</tr>
+<tr>
+<td style="text-align:center">]</td>
+<td style="text-align:center">如果指针指向的单元值不为零，向前跳转到对应的 <code>[</code> 指令的次一指令处</td>
+</tr>
+</tbody>
+</table>
+<p>使用在线的Brainfuck/Ook！工具解码得到<strong>flag{ok-c2tf-3389-admin}</strong> 。   </p>
+<h2 id="easy-crypto"><a href="#easy-crypto" class="headerlink" title="easy_crypto"></a>easy_crypto</h2><ol>
+<li>题目</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0010 0100 01 110 1111011 11 11111 010 000 0 001101 1010 111</span><br><span class="line">100 0 001101 01111 000 001101 00 10 1 0 010 0 000 1 01111 10</span><br><span class="line">11110 101011 1111101</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>解析<br>开始觉得是二进制-ASCII码转换，尝试后发现不对。后来明白这是莫尔斯电码-ASCII码转换，可以自己写一个python脚本。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">string=input()</span><br><span class="line">key=string.split(&quot; &quot;)</span><br><span class="line">dictionary= &#123;&apos;01&apos;: &apos;A&apos;,</span><br><span class="line">        &apos;1000&apos;: &apos;B&apos;,</span><br><span class="line">        &apos;1010&apos;: &apos;C&apos;,</span><br><span class="line">        &apos;100&apos;:&apos;D&apos;,</span><br><span class="line">        &apos;0&apos;:&apos;E&apos;,</span><br><span class="line">        &apos;0010&apos;:&apos;F&apos;,</span><br><span class="line">        &apos;110&apos;: &apos;G&apos;,</span><br><span class="line">        &apos;0000&apos;: &apos;H&apos;,</span><br><span class="line">        &apos;00&apos;: &apos;I&apos;,</span><br><span class="line">        &apos;0111&apos;:&apos;J&apos;,</span><br><span class="line">        &apos;101&apos;: &apos;K&apos;,</span><br><span class="line">        &apos;0100&apos;: &apos;L&apos;,</span><br><span class="line">        &apos;11&apos;: &apos;M&apos;,</span><br><span class="line">        &apos;10&apos;: &apos;N&apos;,</span><br><span class="line">        &apos;111&apos;: &apos;O&apos;,</span><br><span class="line">        &apos;0110&apos;: &apos;P&apos;,</span><br><span class="line">        &apos;1101&apos;: &apos;Q&apos;,</span><br><span class="line">        &apos;010&apos;: &apos;R&apos;,</span><br><span class="line">        &apos;000&apos;: &apos;S&apos;,</span><br><span class="line">        &apos;1&apos;: &apos;T&apos;,</span><br><span class="line">        &apos;001&apos;: &apos;U&apos;,</span><br><span class="line">        &apos;0001&apos;: &apos;V&apos;,</span><br><span class="line">        &apos;011&apos;: &apos;W&apos;,</span><br><span class="line">        &apos;1001&apos;: &apos;X&apos;,</span><br><span class="line">        &apos;1011&apos;: &apos;Y&apos;,</span><br><span class="line">        &apos;1100&apos;: &apos;Z&apos;,</span><br><span class="line">        &apos;01111&apos;: &apos;1&apos;,</span><br><span class="line">        &apos;00111&apos;: &apos;2&apos;,</span><br><span class="line">        &apos;00011&apos;: &apos;3&apos;,</span><br><span class="line">        &apos;00001&apos;: &apos;4&apos;,</span><br><span class="line">        &apos;00000&apos;: &apos;5&apos;,</span><br><span class="line">        &apos;10000&apos;: &apos;6&apos;,</span><br><span class="line">        &apos;11000&apos;: &apos;7&apos;,</span><br><span class="line">        &apos;11100&apos;: &apos;8&apos;,</span><br><span class="line">        &apos;11110&apos;: &apos;9&apos;,</span><br><span class="line">        &apos;11111&apos;: &apos;0&apos;,</span><br><span class="line">        &apos;001100&apos;: &apos;?&apos;,</span><br><span class="line">        &apos;10010&apos;: &apos;/&apos;,</span><br><span class="line">        &apos;101101&apos;: &apos;()&apos;,</span><br><span class="line">        &apos;100001&apos;: &apos;-&apos;,</span><br><span class="line">        &apos;010101&apos;: &apos;.&apos;,</span><br><span class="line">        &apos;110011&apos;:&apos;,&apos;,</span><br><span class="line">        &apos;011010&apos;:&apos;@&apos;,</span><br><span class="line">        &apos;111000&apos;:&apos;:&apos;,</span><br><span class="line">        &apos;101010&apos;:&apos;:&apos;,</span><br><span class="line">        &apos;10001&apos;:&apos;=&apos;,</span><br><span class="line">        &apos;011110&apos;:&quot;&apos;&quot;,</span><br><span class="line">        &apos;101011&apos;:&apos;!&apos;,</span><br><span class="line">        &apos;001101&apos;:&apos;_&apos;,</span><br><span class="line">        &apos;010010&apos;:&apos;&quot;&apos;,</span><br><span class="line">        &apos;10110&apos;:&apos;(&apos;,</span><br><span class="line">        &apos;1111011&apos;:&apos;&#123;&apos;,</span><br><span class="line">        &apos;1111101&apos;:&apos;&#125;&apos;</span><br><span class="line">        &#125;;</span><br><span class="line">for item in key:</span><br><span class="line">    print(dictionary[item],end=&apos;&apos;)</span><br></pre></td></tr></table></figure>
+<p>解密得到 FLAG{M0RSE_CODE_1S_INTEREST1N9!} ，提交后发现不对，应该是要小写，再写一个python脚本转换成小写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str = input()</span><br><span class="line">print(str.lower())</span><br></pre></td></tr></table></figure>
+<p>得到<strong>flag{m0rse_code_1s_interest1n9!}</strong> 。</p>
+<h2 id="简单加密"><a href="#简单加密" class="headerlink" title="简单加密"></a>简单加密</h2><ol>
+<li><p>题目<br>e6Z9i~]8R~U~QHE{RnY{QXg~QnQ{^XVlRXlp^XI5Q6Q6SKY8jUAA    </p>
+</li>
+<li><p>解析<br>这题涉及到移位加密算法和base64加密。<br>因为密文结尾是AA，可以联想到base64加密的==，关于base64加密的介绍笔者推荐这篇一篇博客：<br><a href="https://blog.csdn.net/qq_20545367/article/details/79538530" target="_blank" rel="noopener">https://blog.csdn.net/qq_20545367/article/details/79538530</a><br><br><br>此密文是通过移位加密后再base64加密，因此先要移位解密。根据ASCII码对照表可知，A和=对应的十进制数分别是65和61，因此将密文前移4位得到base64密文<br><strong>a2V5ezY4NzQzMDAwNjUwMTczMjMwZTRhNThlZTE1M2M2OGU4fQ==</strong><br><br><br>再通过base64在线工具解密得到<br><strong>key{68743000650173230e4a58ee153c68e8}</strong><br><br><br>另外也可以通过自己写一些脚本进行解密，比如python脚本，网上的教程也很多。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/18/Redis未授权访问漏洞/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/18/Redis未授权访问漏洞/" class="post-title-link" itemprop="http://yoursite.com/index.html">Redis未授权访问漏洞</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-18 14:37:50" itemprop="dateCreated datePublished" datetime="2019-02-18T14:37:50+08:00">2019-02-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-19 15:35:01" itemprop="dateModified" datetime="2019-02-19T15:35:01+08:00">2019-02-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/漏洞/" itemprop="url" rel="index"><span itemprop="name">漏洞</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="漏洞的重现与利用"><a href="#漏洞的重现与利用" class="headerlink" title="漏洞的重现与利用"></a>漏洞的重现与利用</h2><h3 id="安装并配置redis"><a href="#安装并配置redis" class="headerlink" title="安装并配置redis"></a>安装并配置redis</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#从官网下载源码的压缩包</span><br><span class="line">wget http://download.redis.io/releases/redis-3.2.11.tar.gz</span><br><span class="line"></span><br><span class="line">#解压压缩包</span><br><span class="line">tar xzf redis-3.2.11.tar.gz</span><br><span class="line">cd redis-3.2.11</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">#进入src目录，将redis-server和redis-cli拷贝到/usr/bin目录下（这样可以在终端直接输入redis-server或redis-cli启动服务，不必每次都进入安装目录）</span><br><span class="line">cd src</span><br><span class="line">cp redis-server /usr/bin</span><br><span class="line">cp redis-cli /usr/bin</span><br><span class="line"></span><br><span class="line">#进入redis-3.2.11目录，将redis.conf拷贝到/etc/目录下</span><br><span class="line">cd ..</span><br><span class="line">cp redis.conf /etc/</span><br><span class="line"></span><br><span class="line">#编辑/etc/redis.conf</span><br><span class="line">vi /etc/redis.conf</span><br><span class="line">bind 127.0.0.1             在这一行前面加上#         </span><br><span class="line">protected-mode yes         这一行将yes改为no</span><br><span class="line"></span><br><span class="line">#启动redis服务</span><br><span class="line">redis-server /etc/redis.conf &amp;</span><br><span class="line"></span><br><span class="line">#安装ssh服务</span><br><span class="line">systemctl start sshd</span><br></pre></td></tr></table></figure>
+<h3 id="漏洞重现"><a href="#漏洞重现" class="headerlink" title="漏洞重现"></a>漏洞重现</h3><ol>
+<li><p>首先打开两个虚拟机（都要配置reids），笔者设定了攻击端虚拟机为kawhi，被攻击端虚拟机为bob。<strong>网络都设置为 桥接网卡，界面名称为 Realtek PCIe GBE Family Controller，混杂模式为 全部允许</strong>。（重要）    </p>
+</li>
+<li><p>然后使用<code>ifconfig</code>命令查看两台虚拟机的ip，发现ip均为    <strong>192.168.137.101</strong>    </p>
+</li>
+<li><p>修改攻击端（kawhi）ip为 <strong>192.168.137.102</strong><br><code>ifconfig enp0s3 192.168.137.102 up</code>    </p>
+</li>
+<li><p>在bob中开启redis服务<br><code>redis-server /etc/redis.conf &amp;</code>    </p>
+</li>
+<li><p>在kawhi中生成ssh公钥和私钥，密码设置为空<br><img src="https://kawhi123.github.io/images/ssh.png" alt="">    </p>
+</li>
+<li><p>进入.ssh目录，将公钥保存到1.txt<br><img src="https://kawhi123.github.io/images/1.txt.png" alt="">    </p>
+</li>
+</ol>
+<p>7.</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="ping目标主机（bob）ip出现错误：connect-Network-is-unreachable"><a href="#ping目标主机（bob）ip出现错误：connect-Network-is-unreachable" class="headerlink" title="ping目标主机（bob）ip出现错误：connect: Network is unreachable"></a>ping目标主机（bob）ip出现错误：connect: Network is unreachable</h3><ol>
+<li>查看宿主机的网卡信息<br>依次进入<strong>控制面板&gt;网络和Internet&gt;网络和共享中心&gt;以太网&gt;详细信息</strong>，即可查看。<br>146</li>
+<li>配置虚拟机的网卡信息    </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#修改网卡配置内容（bob）</span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-enp0s3</span><br><span class="line"></span><br><span class="line">#添加文件内容</span><br><span class="line">IPADDR=169.254.199.101        //虚拟机的ip地址应设置成和宿主机在同一网段</span><br><span class="line">NETMASK=255.255.0.0</span><br><span class="line">GATEWAY=169.254.199.44          //虚拟机上的网关就是宿主机上的ip地址</span><br><span class="line"></span><br><span class="line">#同理修改kawhi网卡配置</span><br><span class="line">IPADDR=169.254.199.102         //ip地址和bob不同</span><br><span class="line">NETMASK=255.255.0.0</span><br><span class="line">GATEWAY=169.254.199.44</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>网络重连<br>service network restart</li>
+</ol>
+<h3 id="VB设置桥接网卡无法联网"><a href="#VB设置桥接网卡无法联网" class="headerlink" title="VB设置桥接网卡无法联网"></a>VB设置桥接网卡无法联网</h3><ol>
+<li>安装虚拟网卡<br><a href="https://blog.csdn.net/eddjh_31/article/details/82694205" target="_blank" rel="noopener">https://blog.csdn.net/eddjh_31/article/details/82694205</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/16/头等舱/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -427,16 +879,53 @@
                 
               
 
-              <time title="创建时间：2019-02-16 22:29:57 / 修改时间：22:57:12" itemprop="dateCreated datePublished" datetime="2019-02-16T22:29:57+08:00">2019-02-16</time>
+              <time title="创建时间：2019-02-16 22:29:57" itemprop="dateCreated datePublished" datetime="2019-02-16T22:29:57+08:00">2019-02-16</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-19 15:29:18" itemprop="dateModified" datetime="2019-02-19T15:29:18+08:00">2019-02-19</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1793,375 +2282,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/26/web基础$_POST/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kawhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/kawhi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kawhi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/26/web基础$_POST/" class="post-title-link" itemprop="http://yoursite.com/index.html">web基础$_POST</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-26 11:59:08" itemprop="dateCreated datePublished" datetime="2019-01-26T11:59:08+08:00">2019-01-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-28 11:35:29" itemprop="dateModified" datetime="2019-01-28T11:35:29+08:00">2019-01-28</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="ctf"><a href="#ctf" class="headerlink" title="ctf"></a>ctf</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$what=$_POST[&apos;what&apos;];   </span><br><span class="line">echo $what;   </span><br><span class="line">if($what==&apos;flag&apos;)   </span><br><span class="line">echo &apos;flag&#123;****&#125;&apos;;</span><br></pre></td></tr></table></figure>
-<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><p>终端进入python环境，依次输入下列命令即可拿到flag。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import requests    </span><br><span class="line">h = requests.post(url=&apos;http://123.206.87.240:8002/post/&apos;,data=&#123;&apos;what&apos;:&apos;flag&apos;&#125;)    </span><br><span class="line">print(h.content)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/25/linux安装及配置/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kawhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/kawhi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kawhi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/25/linux安装及配置/" class="post-title-link" itemprop="http://yoursite.com/index.html">linux安装及配置</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-25 21:55:07" itemprop="dateCreated datePublished" datetime="2019-01-25T21:55:07+08:00">2019-01-25</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-26 18:25:24" itemprop="dateModified" datetime="2019-01-26T18:25:24+08:00">2019-01-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>kali-linux-2016.2-amd64<br>Debian 8.x 64位</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><a href="https://blog.csdn.net/u012318074/article/details/71601382/" target="_blank" rel="noopener">https://blog.csdn.net/u012318074/article/details/71601382/</a><br>可以说是非常详细了。    </p>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ol>
-<li><p>VMware Tools安装及共享文件夹的设置<br><a href="https://www.cnblogs.com/huangjianxin/p/6343881.html" target="_blank" rel="noopener">https://www.cnblogs.com/huangjianxin/p/6343881.html</a>       </p>
-<pre><code>在虚拟机ubuntu中访问主机共享文件夹的方法:
-在终端命令行输入  cd /mnt/ + 按下两次Tab键 ，
-回车即可进入主机中的共享文件夹。
-</code></pre></li>
-<li><p>更换源<br><a href="https://baijiahao.baidu.com/s?id=1594743811772806499&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1594743811772806499&amp;wfr=spider&amp;for=pc</a>    </p>
-</li>
-<li><p>安装中文输入法<br>下载搜狗输入法linux版：<a href="http://pinyin.sogou.com/linux/?r=pinyin" target="_blank" rel="noopener">http://pinyin.sogou.com/linux/?r=pinyin</a><br>选择 64 位版本<br>注意：完成后使用<code>Ctrl+Space</code>或<code>Shift</code>切换中英文输入法。       </p>
-<pre><code>输入法需要用到 fcitx，所以需要先安装   
-apt-get install fcitx fcitx-config-gtk2   
-进入到“下载”目录中（可以使用复制粘贴），执行   
-dpkg -i sogoupinyin_2.2.0.0108_amd64.deb    
-</code></pre></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2211,7 +2331,7 @@ dpkg -i sogoupinyin_2.2.0.0108_amd64.deb
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2242,7 +2362,9 @@ dpkg -i sogoupinyin_2.2.0.0108_amd64.deb
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
