@@ -108,28 +108,29 @@
 
 
 
-  <meta name="description" content="经朋友推荐，最近在玩这个脑洞闯关游戏，还挺刺激的，有些题和ctf也有些联系，我把个人感觉有难度的题写了下来。    Lv14thinking这关卡了好久，题目就一张图片肯定是图片隐写没错了，于是我在Linux系统上用binwalk工具没弄出来，后来又想到用foremost工具也没成功。最后发现它就是个图种，这下就好办了。 tip 在Google上利用开发者工具（F12）可以看到有一张apple.j">
+  <meta name="description" content="ctfhttp://123.206.31.85:1003/flag格式flag{}     thinking打开链接看到一个管理员系统的提交界面，管理员的Username一般是admin。查看源代码会发现有一段注释掉了的base64密文：dGVzdDEyMw==（隐藏很深，要一直往下翻），解密得到 text123，这应该就是Password。提交发现：最后一句话提示需要使用本地ip进行提交，因此想">
 <meta name="keywords" content="Information Security">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nazo.io攻略">
-<meta property="og:url" content="http://yoursite.com/2019/01/26/nazo-io攻略/index.html">
+<meta property="og:title" content="管理员系统">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/管理员系统/index.html">
 <meta property="og:site_name" content="kawhi">
-<meta property="og:description" content="经朋友推荐，最近在玩这个脑洞闯关游戏，还挺刺激的，有些题和ctf也有些联系，我把个人感觉有难度的题写了下来。    Lv14thinking这关卡了好久，题目就一张图片肯定是图片隐写没错了，于是我在Linux系统上用binwalk工具没弄出来，后来又想到用foremost工具也没成功。最后发现它就是个图种，这下就好办了。 tip 在Google上利用开发者工具（F12）可以看到有一张apple.j">
+<meta property="og:description" content="ctfhttp://123.206.31.85:1003/flag格式flag{}     thinking打开链接看到一个管理员系统的提交界面，管理员的Username一般是admin。查看源代码会发现有一段注释掉了的base64密文：dGVzdDEyMw==（隐藏很深，要一直往下翻），解密得到 text123，这应该就是Password。提交发现：最后一句话提示需要使用本地ip进行提交，因此想">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://kawhi123.github.io/images/Lv14.png">
-<meta property="og:image" content="https://kawhi123.github.io/images/Lv15.png">
-<meta property="og:updated_time" content="2019-01-27T13:50:04.929Z">
+<meta property="og:image" content="https://kawhi123.github.io/images/管理员系统/01.png">
+<meta property="og:image" content="https://kawhi123.github.io/images/管理员系统/02.png">
+<meta property="og:image" content="https://kawhi123.github.io/images/管理员系统/03.png">
+<meta property="og:updated_time" content="2019-02-20T12:43:29.851Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nazo.io攻略">
-<meta name="twitter:description" content="经朋友推荐，最近在玩这个脑洞闯关游戏，还挺刺激的，有些题和ctf也有些联系，我把个人感觉有难度的题写了下来。    Lv14thinking这关卡了好久，题目就一张图片肯定是图片隐写没错了，于是我在Linux系统上用binwalk工具没弄出来，后来又想到用foremost工具也没成功。最后发现它就是个图种，这下就好办了。 tip 在Google上利用开发者工具（F12）可以看到有一张apple.j">
-<meta name="twitter:image" content="https://kawhi123.github.io/images/Lv14.png">
+<meta name="twitter:title" content="管理员系统">
+<meta name="twitter:description" content="ctfhttp://123.206.31.85:1003/flag格式flag{}     thinking打开链接看到一个管理员系统的提交界面，管理员的Username一般是admin。查看源代码会发现有一段注释掉了的base64密文：dGVzdDEyMw==（隐藏很深，要一直往下翻），解密得到 text123，这应该就是Password。提交发现：最后一句话提示需要使用本地ip进行提交，因此想">
+<meta name="twitter:image" content="https://kawhi123.github.io/images/管理员系统/01.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/26/nazo-io攻略/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/20/管理员系统/">
 
 
 
@@ -139,7 +140,7 @@
   };
 </script>
 
-  <title>nazo.io攻略 | kawhi</title>
+  <title>管理员系统 | kawhi</title>
   
 
 
@@ -388,7 +389,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/26/nazo-io攻略/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/管理员系统/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kawhi">
@@ -405,7 +406,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nazo.io攻略
+          <h1 class="post-title" itemprop="name headline">管理员系统
               
             
           </h1>
@@ -430,24 +431,12 @@
                 
               
 
-              <time title="创建时间：2019-01-26 21:18:40" itemprop="dateCreated datePublished" datetime="2019-01-26T21:18:40+08:00">2019-01-26</time>
+              <time title="创建时间：2019-02-20 20:13:31 / 修改时间：20:43:29" itemprop="dateCreated datePublished" datetime="2019-02-20T20:13:31+08:00">2019-02-20</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-27 21:50:04" itemprop="dateModified" datetime="2019-01-27T21:50:04+08:00">2019-01-27</time>
               
             
           </span>
@@ -464,7 +453,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/杂文小记/" itemprop="url" rel="index"><span itemprop="name">杂文小记</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
 
                 
                 
@@ -498,28 +494,12 @@
       
 
       
-        <p>经朋友推荐，最近在玩这个脑洞闯关游戏，还挺刺激的，有些题和ctf也有些联系，我把个人感觉有难度的题写了下来。   </p>
-<h2 id="Lv14"><a href="#Lv14" class="headerlink" title="Lv14"></a>Lv14</h2><h3 id="thinking"><a href="#thinking" class="headerlink" title="thinking"></a>thinking</h3><p>这关卡了好久，题目就一张图片肯定是<strong>图片隐写</strong>没错了，于是我在Linux系统上用<strong>binwalk</strong>工具没弄出来，后来又想到用<strong>foremost</strong>工具也没成功。最后发现它就是个<strong>图种</strong>，这下就好办了。</p>
-<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><ol>
-<li><p>在Google上利用开发者工具（F12）可以看到有一张<code>apple.jpg</code>的图片，先下载到桌面。    </p>
-</li>
-<li><p>利用压缩工具（我的是Bandizip）创建压缩文件apple.zip。   </p>
-</li>
-<li><p>进入压缩文件后右键<strong>用Bandizip打开</strong>，可以看到apple.torrent文件。    </p>
-</li>
-<li><p>双击下载文件后打开如图，so这一关的key就是<strong>greendam</strong>!（另外还有一个奇怪的文件，出题人有点东西。）   </p>
-</li>
-</ol>
-<p><img src="https://kawhi123.github.io/images/Lv14.png" alt="">       </p>
-<h2 id="Lv15"><a href="#Lv15" class="headerlink" title="Lv15"></a>Lv15</h2><h3 id="thinking-1"><a href="#thinking-1" class="headerlink" title="thinking"></a>thinking</h3><p>题目是声音的轨迹，一段9秒钟的音频文件，听起来很诡异也没什么信息。猜测应该是<strong>音频隐写</strong>。   </p>
-<h3 id="tip-1"><a href="#tip-1" class="headerlink" title="tip"></a>tip</h3><ol>
-<li><p>右键将音频另存到本地，用音频处理软件打开。（我用的是Audacity，还有Adobe Auditon等）   </p>
-</li>
-<li><p>点击<code>tune</code>切换到频谱图去观察，可以看到下图样例。<br><img src="https://kawhi123.github.io/images/Lv15.png" alt="">   </p>
-</li>
-<li><p>截图后用Photoshop打开，水平翻转后再适当拉长可以得到key：<strong>koenokiseki</strong>。</p>
-</li>
-</ol>
+        <h3 id="ctf"><a href="#ctf" class="headerlink" title="ctf"></a>ctf</h3><p><a href="http://123.206.31.85:1003/" target="_blank" rel="noopener">http://123.206.31.85:1003/</a><br>flag格式flag{}    </p>
+<h3 id="thinking"><a href="#thinking" class="headerlink" title="thinking"></a>thinking</h3><p>打开链接看到一个管理员系统的提交界面，管理员的Username一般是admin。<br>查看源代码会发现有一段注释掉了的base64密文：<strong>dGVzdDEyMw==</strong>（隐藏很深，要一直往下翻），解密得到 <strong>text123</strong>，这应该就是Password。<br>提交发现：<br><img src="https://kawhi123.github.io/images/管理员系统/01.png" alt=""><br>最后一句话提示需要使用本地ip进行提交，因此想到了X-Forwarded-For（XFF）。    </p>
+<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><p>打开burp suite进行抓包，在原始请求头里添加一行键值对：<strong>X-Forwarded-For: 127.0.0.1</strong>。（127.0.0.1是本地ip）<br><img src="https://kawhi123.github.io/images/管理员系统/02.png" alt="">   </p>
+<p>右键发送到Repeater，点击Go，右边会出现Response响应包。<br><img src="https://kawhi123.github.io/images/管理员系统/03.png" alt="">   </p>
+<p>得到 <strong>flag{85ff2ee4171396724bae20c0bd851f6b}</strong>。    </p>
+<h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><p>X-Forwarded-For（XFF）是用来识别通过HTTP代理或负载均衡方式连接到Web服务器的客户端最原始的IP地址的HTTP请求头字段。如果没有XFF或者另外一种相似的技术，所有通过代理服务器的连接只会显示代理服务器的IP地址，而非连接发起的原始IP地址，这样的代理服务器实际上充当了匿名服务提供者的角色，如果连接的原始IP地址不可得，恶意访问的检测与预防的难度将大大增加。XFF的有效性依赖于代理服务器提供的连接原始IP地址的真实性，因此，XFF的有效使用应该保证代理服务器是可信的，比如可以通过创建可信服务器白名单的方式。</p>
 
       
     </div>
@@ -550,8 +530,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/26/web基础$_POST/" rel="next" title="web基础$_POST">
-                <i class="fa fa-chevron-left"></i> web基础$_POST
+              <a href="/2019/02/20/网站被黑/" rel="next" title="网站被黑">
+                <i class="fa fa-chevron-left"></i> 网站被黑
               </a>
             
           </div>
@@ -560,8 +540,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/28/web3/" rel="prev" title="web3">
-                web3 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/20/extract变量覆盖/" rel="prev" title="extract变量覆盖">
+                extract变量覆盖 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -704,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lv14"><span class="nav-number">1.</span> <span class="nav-text">Lv14</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#thinking"><span class="nav-number">1.1.</span> <span class="nav-text">thinking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tip"><span class="nav-number">1.2.</span> <span class="nav-text">tip</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lv15"><span class="nav-number">2.</span> <span class="nav-text">Lv15</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#thinking-1"><span class="nav-number">2.1.</span> <span class="nav-text">thinking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tip-1"><span class="nav-number">2.2.</span> <span class="nav-text">tip</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ctf"><span class="nav-number">1.</span> <span class="nav-text">ctf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thinking"><span class="nav-number">2.</span> <span class="nav-text">thinking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tip"><span class="nav-number">3.</span> <span class="nav-text">tip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get"><span class="nav-number">4.</span> <span class="nav-text">get</span></a></li></ol></div>
             
 
           </div>
