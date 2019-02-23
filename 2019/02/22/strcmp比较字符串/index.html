@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="kawhi">
 <meta property="og:description" content="ctf123456789101112http://123.206.87.240:9009/6.php&amp;lt;?php$flag = &amp;quot;flag&amp;#123;xxxxx&amp;#125;&amp;quot;;if (isset($_GET[&amp;apos;a&amp;apos;])) &amp;#123;if (strcmp($_GET[&amp;apos;a&amp;apos;], $flag) == 0) //如果 str1 小于 st">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-22T12:50:10.655Z">
+<meta property="og:updated_time" content="2019-02-23T07:07:06.731Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="strcmp比较字符串">
 <meta name="twitter:description" content="ctf123456789101112http://123.206.87.240:9009/6.php&amp;lt;?php$flag = &amp;quot;flag&amp;#123;xxxxx&amp;#125;&amp;quot;;if (isset($_GET[&amp;apos;a&amp;apos;])) &amp;#123;if (strcmp($_GET[&amp;apos;a&amp;apos;], $flag) == 0) //如果 str1 小于 st">
@@ -257,7 +257,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">22</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">25</span></a>
 
   </li>
         
@@ -427,12 +427,24 @@
                 
               
 
-              <time title="创建时间：2019-02-22 16:24:42 / 修改时间：20:50:10" itemprop="dateCreated datePublished" datetime="2019-02-22T16:24:42+08:00">2019-02-22</time>
+              <time title="创建时间：2019-02-22 16:24:42" itemprop="dateCreated datePublished" datetime="2019-02-22T16:24:42+08:00">2019-02-22</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-23 15:07:06" itemprop="dateModified" datetime="2019-02-23T15:07:06+08:00">2019-02-23</time>
               
             
           </span>
@@ -492,7 +504,7 @@
       
         <h3 id="ctf"><a href="#ctf" class="headerlink" title="ctf"></a>ctf</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">http://123.206.87.240:9009/6.php</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">$flag = &quot;flag&#123;xxxxx&#125;&quot;;</span><br><span class="line">if (isset($_GET[&apos;a&apos;])) &#123;</span><br><span class="line">if (strcmp($_GET[&apos;a&apos;], $flag) == 0) //如果 str1 小于 str2 返回 &lt; 0； 如果 str1大于 str2返回 &gt; 0；如果两者相等，返回 0。</span><br><span class="line">//比较两个字符串（区分大小写）</span><br><span class="line">die(&apos;Flag: &apos;.$flag);</span><br><span class="line">else</span><br><span class="line">print &apos;No&apos;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="thinking"><a href="#thinking" class="headerlink" title="thinking"></a>thinking</h3><p>die()函数：输出消息并终止当前脚本，相当于exit()   </p>
-<p>这题的关键是理解strcmp()字符串比较函数，和C语言中类似。strcmp()函数在进行字符串比较时，若str1和str2类型不同时会进行类型转换，比如’123’ == 123，’1’ != 0。但这里有一个php版本漏洞，当待比较的数据是数组或对象时会出现错误。    </p>
+<p>这题的关键是理解strcmp()字符串比较函数，和C语言中类似。strcmp()函数在进行字符串比较时，若str1和str2类型不同时会进行隐式转换，比如’123’ == 123，’1’ != 0。但这里有一个php版本漏洞，当待比较的数据是数组或对象时会出现错误。    </p>
 <p>官方文档说明</p>
 <blockquote>
 <p>Note a difference between 5.2 and 5.3 versions<br>echo (int)strcmp(‘pending’,array());<br>will output -1 in PHP 5.2.16 (probably in all versions prior 5.3)<br>but will output 0 in PHP 5.3.3<br>Of course, you never need to use array as a parameter in string comparisions.</p>
@@ -500,7 +512,7 @@
 <p>也就是说，在5.3之后的版本里，当我们传入的待比较的数据是数组或对象时，这个函数将发生错误，显示报错的警告信息后将return 0！！！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#自己写php脚本在本地验证</span><br><span class="line">&lt;?php</span><br><span class="line">$a = &apos;afdg&apos;;</span><br><span class="line">$b = array(&apos;mary&apos; =&gt;34);</span><br><span class="line">if (strcmp($a,$b) == 0)</span><br><span class="line">	echo &apos;true&apos;;</span><br><span class="line">else</span><br><span class="line">	echo &apos;false&apos;;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">#结果</span><br><span class="line">Warning: strcmp() expects parameter 2 to be string, array given in E:\phpstudy\WWW\test\test.php on line 4</span><br><span class="line">true</span><br></pre></td></tr></table></figure></p>
 <h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><p>而$_GET只能传递字符串和数组类型的变量，因此构造一个数组类型的变量，利用这个漏洞就可以得到flag。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#这些都是可以的</span><br><span class="line">?a[]</span><br><span class="line">?a[0]</span><br><span class="line">?a[0]=</span><br><span class="line">?a[0]=1</span><br></pre></td></tr></table></figure></p>
 <p><strong>flag{bugku_dmsj_912k}</strong></p>
-<p>参考<br><a href="https://www.jianshu.com/p/d91c3357b4d3" target="_blank" rel="noopener">https://www.jianshu.com/p/d91c3357b4d3</a><br><a href="https://blog.csdn.net/cherrie007/article/details/77473817" target="_blank" rel="noopener">https://blog.csdn.net/cherrie007/article/details/77473817</a></p>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3><p><a href="https://www.jianshu.com/p/d91c3357b4d3" target="_blank" rel="noopener">https://www.jianshu.com/p/d91c3357b4d3</a><br><a href="https://blog.csdn.net/cherrie007/article/details/77473817" target="_blank" rel="noopener">https://blog.csdn.net/cherrie007/article/details/77473817</a></p>
 
       
     </div>
@@ -540,6 +552,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/22/urldecode二次编码绕过/" rel="prev" title="urldecode二次编码绕过">
+                urldecode二次编码绕过 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -611,7 +627,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -681,7 +697,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ctf"><span class="nav-number">1.</span> <span class="nav-text">ctf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thinking"><span class="nav-number">2.</span> <span class="nav-text">thinking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tip"><span class="nav-number">3.</span> <span class="nav-text">tip</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ctf"><span class="nav-number">1.</span> <span class="nav-text">ctf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thinking"><span class="nav-number">2.</span> <span class="nav-text">thinking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tip"><span class="nav-number">3.</span> <span class="nav-text">tip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ref"><span class="nav-number">4.</span> <span class="nav-text">ref</span></a></li></ol></div>
             
 
           </div>
