@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Linux简介 Linux是众多操作系统之一，操作系统（Operating System，简称OS）是软件的一部分，它是计算机硬件基础上的第一层软件，是硬件和其他软件沟通的桥梁（接口）。  Linux只是一个内核，内核指的是一个提供设备驱动、文件系统、进程管理、网络通信等功能的系统软件，内核并不是一套完整的操作系统，它只是操作系统的核心。一些组织或厂商将Linux内核与各种软件和文档包装起来，并提">
+<meta name="keywords" content="Information Security">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux入门">
+<meta property="og:url" content="http://yoursite.com/2019/03/16/Linux入门/index.html">
+<meta property="og:site_name" content="kawhi">
+<meta property="og:description" content="Linux简介 Linux是众多操作系统之一，操作系统（Operating System，简称OS）是软件的一部分，它是计算机硬件基础上的第一层软件，是硬件和其他软件沟通的桥梁（接口）。  Linux只是一个内核，内核指的是一个提供设备驱动、文件系统、进程管理、网络通信等功能的系统软件，内核并不是一套完整的操作系统，它只是操作系统的核心。一些组织或厂商将Linux内核与各种软件和文档包装起来，并提">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-16T12:32:35.271Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux入门">
+<meta name="twitter:description" content="Linux简介 Linux是众多操作系统之一，操作系统（Operating System，简称OS）是软件的一部分，它是计算机硬件基础上的第一层软件，是硬件和其他软件沟通的桥梁（接口）。  Linux只是一个内核，内核指的是一个提供设备驱动、文件系统、进程管理、网络通信等功能的系统软件，内核并不是一套完整的操作系统，它只是操作系统的核心。一些组织或厂商将Linux内核与各种软件和文档包装起来，并提">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/16/Linux入门/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Linux入门 | kawhi</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kawhi</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Life is brief,and then you die,you know?</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-首页"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">32</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-分类"></i> <br>分类<span class="badge">13</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-标签"></i> <br>标签<span class="badge">0</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-关于"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-search">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/search/" rel="section"><i class="menu-item-icon fa fa-fw fa-搜索"></i> <br>搜索</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/Linux入门/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-16 14:04:56 / 修改时间：20:32:35" itemprop="dateCreated datePublished" datetime="2019-03-16T14:04:56+08:00">2019-03-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Linux简介"><a href="#Linux简介" class="headerlink" title="Linux简介"></a>Linux简介</h2><ul>
+<li><p>Linux是众多操作系统之一，操作系统（Operating System，简称OS）是软件的一部分，它是计算机硬件基础上的第一层软件，是硬件和其他软件沟通的桥梁（接口）。</p>
+</li>
+<li><p>Linux只是一个内核，内核指的是一个提供设备驱动、文件系统、进程管理、网络通信等功能的系统软件，内核并不是一套完整的操作系统，它只是操作系统的核心。一些组织或厂商将Linux内核与各种软件和文档包装起来，并提供系统安装界面和系统配置、设定与管理工具，就构成了Linux的发行版本。因此把Red Hat、Ubuntu、CentOS等直接说成Linux是不确切的，它们是Linux的发行版本，更确切地说是“以Linux为核心的操作系统软件包”。</p>
+</li>
+</ul>
+<h2 id="VMware虚拟机安装Linux系统"><a href="#VMware虚拟机安装Linux系统" class="headerlink" title="VMware虚拟机安装Linux系统"></a>VMware虚拟机安装Linux系统</h2><p>VMware是一个虚拟机软件，它可以让你在一台计算机同时运行多个操作系统。在虚拟机系统中，每一台虚拟产生的计算机都被称为”虚拟机”，而用来存储所有虚拟机的计算机则被称为“宿主机”。    </p>
+<ol>
+<li><p>使用虚拟机安装Linux系统的好处：</p>
+<ul>
+<li>减少在宿主机安装Linux系统而导致的数据丢失</li>
+<li>可以方便地体验各种操作系统进行学习和测试    </li>
+</ul>
+</li>
+<li><p>安装环境   </p>
+<ul>
+<li>Windows10</li>
+<li>VMware Workstation 14 pro(版本：14.1.1 build-7528167)    </li>
+<li>CentOS 7.6.1810   </li>
+</ul>
+</li>
+</ol>
+<h2 id="Linux命令基本格式"><a href="#Linux命令基本格式" class="headerlink" title="Linux命令基本格式"></a>Linux命令基本格式</h2><ol>
+<li><p>命令提示符<br><code>[kawhi@localhost ~]$</code>    </p>
+<ul>
+<li>[]：这是提示符的分隔符号，没有特殊含义。   </li>
+<li>kawhi/root：显示的是当前的登录用户。    </li>
+<li>@：分隔符号，没有特殊含义。    </li>
+<li>localhost：当前系统的简写主机名（完整主机名是 localhost.localdomain）。   </li>
+<li>~：代表用户当前所在的目录，此例中用户当前所在的目录是家目录。   </li>
+<li>$：命令提示符，Linux 用这个符号标识登录的用户权限等级。如果是超级用户，提示符就是 #；如果是普通用户，提示符就是 $。   </li>
+</ul>
+<p>如果切换用户所在目录，那么命令提示符中的会变成用户当前所在目录的最后一个目录（不显示完整的所在目录 /usr/ local/，只显示最后一个目录 local)。<br><code>[root@localhost kawhi]# cd /usr/local</code><br><code>[root@localhost local]#</code>    </p>
+</li>
+<li><p>命令基本格式<br><code>命令[选项][参数]</code>    </p>
+<ul>
+<li><p>选项的作用是调整命令功能。如果没有选项，那么命令只能执行最基本的功能；而一旦有选项，则可以显示更加丰富的数据。<br>Linux 的选项又分为短格式选项（-）和长格式选项（–）。短格式选项是英文的简写，用一个减号调用，而长格式选项是英文完整单词，一般用两个减号调用。</p>
+</li>
+<li><p>参数是命令的操作对象，一般文件、目录、用户和进程等可以作为参数被命令操作。命令一般都需要加入参数，用于指定命令操作的对象是谁。如果可以省略参数，则一般都有默认参数。    </p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h2><ol>
+<li><p>man：Linux最主要的帮助命令(format and display)<br>ls –help</p>
+</li>
+<li><p>ls：查看目录下的内容(list)<br>选项：-l;-a;-d;</p>
+</li>
+<li><p>cd: 切换所在目录(change directory)   </p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">特殊字符</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">~</td>
+<td>切换到用户的家目录</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td>切换到上次所在的目录</td>
+</tr>
+<tr>
+<td style="text-align:center">.</td>
+<td>当前目录</td>
+</tr>
+<tr>
+<td style="text-align:center">..</td>
+<td>切换到上一级目录</td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li><p>mkdir：创建一个空目录(make directory)    </p>
+</li>
+<li><p>rmdir：删除空目录(remove directory)   </p>
+</li>
+<li><p>rm：(remove)<br>选项：-f;-i;-r;</p>
+</li>
+<li><p>mv：(move)<br>选项：-f;-i;-n;-v;</p>
+</li>
+<li><p>cat：(concatenate)</p>
+</li>
+</ol>
+<h2 id="Linux文件权限"><a href="#Linux文件权限" class="headerlink" title="Linux文件权限"></a>Linux文件权限</h2><ol>
+<li><p>文件的所有者、所属组和其他人    </p>
+<ul>
+<li>用户组就是一组用户的集合</li>
+<li>文件的所有者就是这个文件的建立者，而系统中绝大多数系统文件都是由 root 建立的，所以大多数系统文件的所有者都是 root。</li>
+</ul>
+</li>
+<li><p>Linux权限位<br><code>drwxr-xr-x</code>    </p>
+<p>第1位代表文件类型，Linux 不像 Windows 使用扩展名表示文件类型，而是使用权限位的第 1 位表示文件类型。   </p>
+<ul>
+<li>“-“：普通文件。</li>
+<li>“b”：块设备文件。这是一种特殊设备文件，存储设备都是这种文件，如分区文件 /dev/sda1 就是这种文件。</li>
+<li>“c”：字符设备文件。这也是特殊设备文件，输入设备一般都是这种文件，如鼠标、键盘等。</li>
+<li>“d”：目录文件。Linux 中一切皆文件，所以目录也是文件的一种。</li>
+<li>“l”：软链接文件。</li>
+<li>“p”：管道符文件。这是一种非常少见的特殊设备文件。</li>
+<li>“s”：套接字文件。这也是一种特殊设备文件，一些服务支持 Socket 访问，就会产生这样的文件。   </li>
+</ul>
+<p>2~4位代表文件所有者的权限。   </p>
+<ul>
+<li>r：代表 read，是读取权限。</li>
+<li>w：代表 write，是写权限。</li>
+<li>x：代表 execute，是执行权限。   </li>
+</ul>
+<p>如果有字母，则代表拥有对应的权限；如果是”-“，则代表没有对应的权限。   </p>
+<p>第 5~7 位代表文件所属组的权限，同样拥有”rwx”权限。    </p>
+<p>第 8~10 位代表其他人的权限，同样拥有”rwx”权限。   </p>
+</li>
+</ol>
+<h2 id="绝对路径和相对路径"><a href="#绝对路径和相对路径" class="headerlink" title="绝对路径和相对路径"></a>绝对路径和相对路径</h2><ol>
+<li><p>绝对路径：Linux 的最高目录是根目录。如果路径是从根目录开始，一级一级指定的，那使用的就是绝对路径。   </p>
+</li>
+<li><p>所谓相对路径，就是只从当前所在目录开始，切换目录。</p>
+</li>
+</ol>
+<h2 id="Linux中一切皆文件"><a href="#Linux中一切皆文件" class="headerlink" title="Linux中一切皆文件"></a>Linux中一切皆文件</h2><p>“一切皆文件”，指的是，对所有文件（目录、字符设备、块设备、套接字、打印机等）操作，读写都可用fopen()/fclose()/fwrite()/fread()等函数进行处理。屏蔽了硬件的区别，所有设备都抽象成文件，提供统一的接口给用户。虽然类型各不相同，但是对其提供的却是同一套操作界面。更进一步，对文件的操作也可以跨文件系统执行。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/14/PHP正则表达式/" rel="next" title="PHP正则表达式">
+                <i class="fa fa-chevron-left"></i> PHP正则表达式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/16/php反序列化入门/" rel="prev" title="php反序列化入门">
+                php反序列化入门 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/kawhi.jpg" alt="kawhi">
+            
+              <p class="site-author-name" itemprop="name">kawhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux简介"><span class="nav-number">1.</span> <span class="nav-text">Linux简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VMware虚拟机安装Linux系统"><span class="nav-number">2.</span> <span class="nav-text">VMware虚拟机安装Linux系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux命令基本格式"><span class="nav-number">3.</span> <span class="nav-text">Linux命令基本格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux常用命令"><span class="nav-number">4.</span> <span class="nav-text">Linux常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux文件权限"><span class="nav-number">5.</span> <span class="nav-text">Linux文件权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绝对路径和相对路径"><span class="nav-number">6.</span> <span class="nav-text">绝对路径和相对路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux中一切皆文件"><span class="nav-number">7.</span> <span class="nav-text">Linux中一切皆文件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kawhi</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

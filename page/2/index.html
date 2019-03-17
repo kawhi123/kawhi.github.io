@@ -254,7 +254,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">28</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-归档"></i> <br>归档<span class="badge">32</span></a>
 
   </li>
         
@@ -273,7 +273,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-分类"></i> <br>分类<span class="badge">11</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-分类"></i> <br>分类<span class="badge">13</span></a>
 
   </li>
         
@@ -366,6 +366,772 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/22/urldecode二次编码绕过/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/22/urldecode二次编码绕过/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">urldecode二次编码绕过</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-22 20:55:56" itemprop="dateCreated datePublished" datetime="2019-02-22T20:55:56+08:00">2019-02-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-01 19:17:11" itemprop="dateModified" datetime="2019-03-01T19:17:11+08:00">2019-03-01</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="ctf"><a href="#ctf" class="headerlink" title="ctf"></a>ctf</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">http://123.206.87.240:9009/10.php</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">if(eregi(&quot;hackerDJ&quot;,$_GET[id])) &#123;</span><br><span class="line">echo(&quot;</span><br><span class="line"></span><br><span class="line">not allowed!</span><br><span class="line"></span><br><span class="line">&quot;);</span><br><span class="line">exit();</span><br><span class="line">&#125;</span><br><span class="line">$_GET[id] = urldecode($_GET[id]);</span><br><span class="line">if($_GET[id] == &quot;hackerDJ&quot;)</span><br><span class="line">&#123;</span><br><span class="line">echo &quot;</span><br><span class="line">Access granted!</span><br><span class="line"></span><br><span class="line">&quot;;</span><br><span class="line">echo &quot;</span><br><span class="line">flag</span><br><span class="line"></span><br><span class="line">&quot;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="thinking"><a href="#thinking" class="headerlink" title="thinking"></a>thinking</h3><ol>
+<li><p>eregi()函数：不区分大小写的正则表达式匹配。ereg()函数则是区分大小写的正则表达式匹配。    </p>
+</li>
+<li><p>urldecode()函数：解码URL编码的字符串。<br>Warning：superglobals $_GET和$_REQUEST已经被解码。在$_GET和$_REQUEST的元素上使用urldecode()可能会产生危险性！    </p>
+</li>
+<li><p>代码解读：通过$_GET传递的id不能有”hackerDJ”字段，而解码后的id又要 == “hackerDJ”。另外$_GET默认会对URL中的字符进行解码，但URL中的数字和字母默认是不解码的，但有其对应的URL编码。    </p>
+</li>
+</ol>
+<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><p>这题很容易想到对”hackerDJ”进行两次编码，然后通过$_GET传递给id，这样会默认进行一次解码，显然不会有”hackerDJ”字段。再经过urldecode()函数二次解码得到”hackerDJ”，从而得到flag。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#hackerDJ一次编码</span><br><span class="line">%68%61%63%6B%65%72%44%4A</span><br><span class="line"></span><br><span class="line">#hackerDJ二次编码</span><br><span class="line">%2568%2561%2563%256B%2565%2572%2544%254A</span><br><span class="line"></span><br><span class="line">#$\_GET传参给id</span><br><span class="line">?id=%2568%2561%2563%256B%2565%2572%2544%254A</span><br><span class="line"></span><br><span class="line">#得到flag</span><br><span class="line">flag&#123;bugku__daimasj-1t2&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><ol>
+<li>了解URL编码和解码。   </li>
+<li>urldecode()函数具有危险性。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/22/strcmp比较字符串/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/22/strcmp比较字符串/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">strcmp比较字符串</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-22 16:24:42" itemprop="dateCreated datePublished" datetime="2019-02-22T16:24:42+08:00">2019-02-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-01 19:16:58" itemprop="dateModified" datetime="2019-03-01T19:16:58+08:00">2019-03-01</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="ctf"><a href="#ctf" class="headerlink" title="ctf"></a>ctf</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">http://123.206.87.240:9009/6.php</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">$flag = &quot;flag&#123;xxxxx&#125;&quot;;</span><br><span class="line">if (isset($_GET[&apos;a&apos;])) &#123;</span><br><span class="line">if (strcmp($_GET[&apos;a&apos;], $flag) == 0) //如果 str1 小于 str2 返回 &lt; 0； 如果 str1大于 str2返回 &gt; 0；如果两者相等，返回 0。</span><br><span class="line">//比较两个字符串（区分大小写）</span><br><span class="line">die(&apos;Flag: &apos;.$flag);</span><br><span class="line">else</span><br><span class="line">print &apos;No&apos;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="thinking"><a href="#thinking" class="headerlink" title="thinking"></a>thinking</h3><p>die()函数：输出消息并终止当前脚本，相当于exit()   </p>
+<p>这题的关键是理解strcmp()字符串比较函数，和C语言中类似。strcmp()函数在进行字符串比较时，若str1和str2类型不同时会进行隐式转换，比如’123’ == 123，’1’ != 0。但这里有一个php版本漏洞，当待比较的数据是数组或对象时会出现错误。    </p>
+<p>官方文档说明</p>
+<blockquote>
+<p>Note a difference between 5.2 and 5.3 versions<br>echo (int)strcmp(‘pending’,array());<br>will output -1 in PHP 5.2.16 (probably in all versions prior 5.3)<br>but will output 0 in PHP 5.3.3<br>Of course, you never need to use array as a parameter in string comparisions.</p>
+</blockquote>
+<p>也就是说，在5.3之后的版本里，当我们传入的待比较的数据是数组或对象时，这个函数将发生错误，显示报错的警告信息后将return 0！！！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#自己写php脚本在本地验证</span><br><span class="line">&lt;?php</span><br><span class="line">$a = &apos;afdg&apos;;</span><br><span class="line">$b = array(&apos;mary&apos; =&gt;34);</span><br><span class="line">if (strcmp($a,$b) == 0)</span><br><span class="line">	echo &apos;true&apos;;</span><br><span class="line">else</span><br><span class="line">	echo &apos;false&apos;;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">#结果</span><br><span class="line">Warning: strcmp() expects parameter 2 to be string, array given in E:\phpstudy\WWW\test\test.php on line 4</span><br><span class="line">true</span><br></pre></td></tr></table></figure></p>
+<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><p>而$_GET只能传递字符串和数组类型的变量，因此构造一个数组类型的变量，利用这个漏洞就可以得到flag。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#这些都是可以的</span><br><span class="line">?a[]</span><br><span class="line">?a[0]</span><br><span class="line">?a[0]=</span><br><span class="line">?a[0]=1</span><br></pre></td></tr></table></figure></p>
+<p><strong>flag{bugku_dmsj_912k}</strong></p>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3><p><a href="https://www.jianshu.com/p/d91c3357b4d3" target="_blank" rel="noopener">https://www.jianshu.com/p/d91c3357b4d3</a><br><a href="https://blog.csdn.net/cherrie007/article/details/77473817" target="_blank" rel="noopener">https://blog.csdn.net/cherrie007/article/details/77473817</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/extract变量覆盖/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/20/extract变量覆盖/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">extract变量覆盖</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-20 20:50:06" itemprop="dateCreated datePublished" datetime="2019-02-20T20:50:06+08:00">2019-02-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-01 19:13:08" itemprop="dateModified" datetime="2019-03-01T19:13:08+08:00">2019-03-01</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>代码审计的题都是php代码，每道题都涉及到一些函数，大多是函数的危险性引起的漏洞。这里有一个php官方文档，可以查阅很多函数的语法和功能。<br><a href="http://php.net/manual/en/function.file-get-contents.php" target="_blank" rel="noopener">http://php.net/manual/en/function.file-get-contents.php</a>   </p>
+<h3 id="ctf"><a href="#ctf" class="headerlink" title="ctf"></a>ctf</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">http://123.206.87.240:9009/1.php</span><br><span class="line">&lt;?php</span><br><span class="line">$flag=&apos;xxx&apos;;</span><br><span class="line">extract($_GET);</span><br><span class="line">if(isset($shiyan))</span><br><span class="line">&#123;</span><br><span class="line">$content=trim(file_get_contents($flag));</span><br><span class="line">if($shiyan==$content)</span><br><span class="line">&#123;</span><br><span class="line">echo&apos;flag&#123;xxx&#125;&apos;;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">echo&apos;Oh.no&apos;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>flag{bugku-dmsj-p2sm3N}</strong></p>
+<h3 id="thinking"><a href="#thinking" class="headerlink" title="thinking"></a>thinking</h3><ol>
+<li><p>extract()函数从数组中将变量导入当前的符号表。该函数使用数组键名作为变量名，使用数组键值作为变量值。针对数组中的每个元素，将在当前符号表中创建对应的一个变量。该函数返回成功设置的变量数目。         </p>
+</li>
+<li><p>trim()函数移除字符串两侧的空白字符或其他预定义字符。            </p>
+</li>
+<li><p>file_get_contents()函数把整个文件读入一个字符串中。      </p>
+</li>
+</ol>
+<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><p>file_get_contents()函数作用的对象是一个文件，成功时返回文件中的字符串，失败则返回false。而该题作用的对象是一个变量$flag，因而返回bool型false。因此<code>$content == false</code>。因此只要构造<code>$shiyan == $content</code>就可以得到flag。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#URL利用$_GET变量传参</span><br><span class="line">?shiyan=    </span><br><span class="line">#或者不加=</span><br><span class="line">?shiyan</span><br><span class="line"></span><br><span class="line">#遇到的几种错误情况</span><br><span class="line">?shiyan=&apos;&apos;          //$_GET变量是一个数组，用于收集来自URL传递的变量名和值，他默认将传递的值读取为字符串。利用var_dump函数查看变量的类型和值string(2) &quot;&apos;&apos;&quot;，他将&apos;&apos;也当作内容读取，而不是我们所认为的空字符串。</span><br><span class="line"></span><br><span class="line">?shiyan=false       //string(5)&quot;false&quot;，字符串和bool值弱比较时，非空字符串会转换为true，空字符串会转换为false。</span><br><span class="line"></span><br><span class="line">?shiyan=0           //string(1)&quot;0&quot;，同样在弱比较时shiyan隐式转换为true。</span><br></pre></td></tr></table></figure>
+<h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><ol>
+<li><p>extract()函数会覆盖已有的同名变量，具有危险性，慎用！    </p>
+</li>
+<li><p>$_GET变量传递的参数值都被封装到字符串中。还可以传递数组，具体见<a href="https://kawhi123.github.io/2019/02/22/strcmp比较字符串/" target="_blank" rel="noopener">下一篇文章</a>。     </p>
+</li>
+<li><p>==弱类型比较时会发生隐式转换，若比较的值中有bool值时，另一个值就会转换为bool值。</p>
+</li>
+<li><p>在做代码审计题时，经常需要自己写php代码去理解和验证某个函数的功能，这是非常必要的。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/管理员系统/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kawhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/kawhi.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kawhi">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/20/管理员系统/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">管理员系统</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-20 20:13:31" itemprop="dateCreated datePublished" datetime="2019-02-20T20:13:31+08:00">2019-02-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-01 19:19:31" itemprop="dateModified" datetime="2019-03-01T19:19:31+08:00">2019-03-01</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="ctf"><a href="#ctf" class="headerlink" title="ctf"></a>ctf</h3><p><a href="http://123.206.31.85:1003/" target="_blank" rel="noopener">http://123.206.31.85:1003/</a><br>flag格式flag{}    </p>
+<h3 id="thinking"><a href="#thinking" class="headerlink" title="thinking"></a>thinking</h3><p>打开链接看到一个管理员系统的提交界面，管理员的Username一般是admin。<br>查看源代码会发现有一段注释掉了的base64密文：<strong>dGVzdDEyMw==</strong>（隐藏很深，要一直往下翻），解密得到 <strong>text123</strong>，这应该就是Password。<br>提交发现：<br><img src="https://kawhi123.github.io/images/管理员系统/01.png" alt=""><br>最后一句话提示需要使用本地ip进行提交，因此想到了X-Forwarded-For（XFF）。    </p>
+<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><p>打开burp suite进行抓包，在原始请求头里添加一行键值对：<strong>X-Forwarded-For: 127.0.0.1</strong>。（127.0.0.1是本地ip）<br><img src="https://kawhi123.github.io/images/管理员系统/02.png" alt="">   </p>
+<p>右键发送到Repeater，点击Go，右边会出现Response响应包。<br><img src="https://kawhi123.github.io/images/管理员系统/03.png" alt="">   </p>
+<p>得到 <strong>flag{85ff2ee4171396724bae20c0bd851f6b}</strong>。    </p>
+<h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><p>X-Forwarded-For（XFF）是用来识别通过HTTP代理或负载均衡方式连接到Web服务器的客户端最原始的IP地址的HTTP请求头字段。如果没有XFF或者另外一种相似的技术，所有通过代理服务器的连接只会显示代理服务器的IP地址，而非连接发起的原始IP地址，这样的代理服务器实际上充当了匿名服务提供者的角色，如果连接的原始IP地址不可得，恶意访问的检测与预防的难度将大大增加。XFF的有效性依赖于代理服务器提供的连接原始IP地址的真实性，因此，XFF的有效使用应该保证代理服务器是可信的，比如可以通过创建可信服务器白名单的方式。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1602,810 +2368,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/01/点击一百万次/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kawhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/kawhi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kawhi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/01/点击一百万次/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">点击一百万次</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-02-01 19:59:28" itemprop="dateCreated datePublished" datetime="2019-02-01T19:59:28+08:00">2019-02-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-01 19:19:14" itemprop="dateModified" datetime="2019-03-01T19:19:14+08:00">2019-03-01</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="thinking"><a href="#thinking" class="headerlink" title="thinking"></a>thinking</h3><p>打开题目链接 <a href="http://123.206.87.240:9001/test/" target="_blank" rel="noopener">http://123.206.87.240:9001/test/</a> ，点击图片一次Goal会增加一次，按理来说点击一百万次就能得到flag，但显然不是这么做。<br>查看源代码可以发现有一个if条件语句：   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if(clicks &gt;= 1000000)&#123;</span><br><span class="line">          	var form = $(&apos;&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;&apos; +</span><br><span class="line">						&apos;&lt;input type=&quot;text&quot; name=&quot;clicks&quot; value=&quot;&apos; + clicks + &apos;&quot; hidden/&gt;&apos; +</span><br><span class="line">						&apos;&lt;/form&gt;&apos;);</span><br><span class="line">						$(&apos;body&apos;).append(form);</span><br><span class="line">						form.submit();</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
-<p>当clicks&gt;=1000000时，条件执行，发送post请求。所以用hackbar来发一下包。    </p>
-<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><p>环境：Firefox浏览器，hackbar插件。   </p>
-<ol>
-<li><p>如果没有hackbar的话先安装插件。这是Firefox的插件中心。<br><a href="https://addons.mozilla.org/zh-CN/firefox/" target="_blank" rel="noopener">https://addons.mozilla.org/zh-CN/firefox/</a>   </p>
-</li>
-<li><p>打开题目链接后<code>F12</code>进入开发者工作台，切换到hackbar，点击<strong>load URL</strong>然后勾选<strong>Post data</strong>，输入<strong>clicks=1000000</strong>，最后点击<strong>Execute</strong>即可得到flag：<code>flag{Not_C00kI3Cl1ck3r}</code>。</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/28/你必须让他停下/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kawhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/kawhi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kawhi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/28/你必须让他停下/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">你必须让他停下</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-28 17:52:05" itemprop="dateCreated datePublished" datetime="2019-01-28T17:52:05+08:00">2019-01-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-01 19:18:04" itemprop="dateModified" datetime="2019-03-01T19:18:04+08:00">2019-03-01</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="ctf"><a href="#ctf" class="headerlink" title="ctf"></a>ctf</h3><p>地址：<a href="http://123.206.87.240:8002/web12/" target="_blank" rel="noopener">http://123.206.87.240:8002/web12/</a></p>
-<h3 id="thinking"><a href="#thinking" class="headerlink" title="thinking"></a>thinking</h3><p>打开链接发现页面不停地刷新，查看源代码可以发现内嵌了一个<code>&lt;script&gt;</code>标签。   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=&quot;JavaScript&quot;&gt;</span><br><span class="line">function myrefresh()&#123;</span><br><span class="line">window.location.reload();</span><br><span class="line">&#125;</span><br><span class="line">setTimeout(&apos;myrefresh()&apos;,500);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>setTimeout()用于设置一个定时器，reload()方法用于刷新当前页面。因此通过浏览器禁用JavaScript可以得到flag。   </p>
-<p>源代码最后有一句flag is here，通过抓包应该也能找到flag。</p>
-<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><h4 id="方法一：禁用JavaScript"><a href="#方法一：禁用JavaScript" class="headerlink" title="方法一：禁用JavaScript"></a>方法一：禁用JavaScript</h4><ol>
-<li><p>打开Google首页，点击右上角的<code>自定义及控制Google Chrome</code>按钮，进入<code>设置&gt;高级&gt;内容设置&gt;Javascript</code>，将其屏蔽。   </p>
-</li>
-<li><p>刷新题目的网页，当图片加载出来后<strong>查看网页源代码</strong>（Ctrl+U）,就可以拿到flag：<code>flag{dummy_game_1s_s0_popular}</code>。    </p>
-</li>
-</ol>
-<h4 id="方法二：Burp-Suite抓包"><a href="#方法二：Burp-Suite抓包" class="headerlink" title="方法二：Burp Suite抓包"></a>方法二：Burp Suite抓包</h4><ol>
-<li><p>安装JDK并配置java环境   </p>
-<p>网上教程很多，但是大多需要手动配置环境变量，我找到了一个比较简单的方法可以跳过这一步骤。    </p>
-<ul>
-<li><p><a href="https://www.java.com/en/download/win10.jsp" target="_blank" rel="noopener">https://www.java.com/en/download/win10.jsp</a><br>进入链接点击<code>Agree and Start Free Download</code>下载应用程序JavaSetup8u201。    </p>
-</li>
-<li><p>点击该应用程序按照提示进行安装（可以更改安装路径），安装结束后就OK了，不需要再配置环境变量。</p>
-</li>
-<li><p>进入cmd窗口输入指令<code>java -version</code>或者可验证是否安装成功。    </p>
-</li>
-</ul>
-</li>
-<li><p>下载Burp Suite 1.7.31破解版并安装    </p>
-<p>官网有付费正版，土豪随意。下面是破解版的安装步骤。</p>
-<ul>
-<li><p><a href="https://www.52pojie.cn/thread-691448-1-1.html" target="_blank" rel="noopener">https://www.52pojie.cn/thread-691448-1-1.html</a><br>这个帖子简直太赞了，附有百度云盘下载链接和提取码，而且有多个版本的burp。    </p>
-</li>
-<li><p>安装有些复杂。双击burp-loader-keygen文件会弹出一个破解界面，将<strong>License Text</strong>改为<code>www.52pojie.cn</code>,复制下面的<strong>License</strong>。   </p>
-</li>
-<li><p>点击<strong>Run</strong>，这时会弹出一个 Enter license key 的安装界面，粘贴刚复制的License。   </p>
-</li>
-<li><p>点击<code>Next&gt;Manual activation&gt;Copy request</code>。粘贴到破解界面中的<strong>Activation Request</strong>，这时会得到<strong>Activation Response</strong>，将其粘贴到安装界面中的<code>Paste response</code>，最后点击Next就破解并安装完成了。   </p>
-</li>
-</ul>
-</li>
-<li><p>使用burp进行抓包   </p>
-<p><a href="https://blog.csdn.net/gitchat/article/details/79168613" target="_blank" rel="noopener">https://blog.csdn.net/gitchat/article/details/79168613</a>    </p>
-<p><a href="https://www.cnblogs.com/nieliangcai/p/6689915.html" target="_blank" rel="noopener">https://www.cnblogs.com/nieliangcai/p/6689915.html</a>    </p>
-</li>
-</ol>
-<h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><ol>
-<li><p>setTimeout()方法： <a href="https://www.w3cschool.cn/fetch_api/fetch_api-t2ix2n7j.html" target="_blank" rel="noopener">https://www.w3cschool.cn/fetch_api/fetch_api-t2ix2n7j.html</a>   </p>
-</li>
-<li><p>reload()方法：<a href="https://www.w3cschool.cn/jsref/met-loc-reload.html" target="_blank" rel="noopener">https://www.w3cschool.cn/jsref/met-loc-reload.html</a>    </p>
-</li>
-<li><p>Burp Suite：<a href="https://resources.infosecinstitute.com/burp-suite-walkthrough/" target="_blank" rel="noopener">https://resources.infosecinstitute.com/burp-suite-walkthrough/</a>    </p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/28/web3/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kawhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/kawhi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kawhi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/28/web3/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">web3</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-28 09:19:52" itemprop="dateCreated datePublished" datetime="2019-01-28T09:19:52+08:00">2019-01-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-01 19:17:20" itemprop="dateModified" datetime="2019-03-01T19:17:20+08:00">2019-03-01</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CTF/BugkuCTF/" itemprop="url" rel="index"><span itemprop="name">BugkuCTF</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="ctf"><a href="#ctf" class="headerlink" title="ctf"></a>ctf</h3><blockquote>
-<p>flag就在这里快来找找吧<br><a href="http://123.206.87.240:8002/web3/" target="_blank" rel="noopener">http://123.206.87.240:8002/web3/</a>    </p>
-</blockquote>
-<h3 id="thinking"><a href="#thinking" class="headerlink" title="thinking"></a>thinking</h3><p>打开网页发现有弹窗：flag就在这里，来找找吧。<br>F12后可以看到一个index文件，打开后是一堆alert()语句，文件最后有一行注释，这应该是解题的关键，猜测应该是某种网页编码。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--&amp;#75;&amp;#69;&amp;#89;&amp;#123;&amp;#74;&amp;#50;&amp;#115;&amp;#97;</span><br><span class="line">&amp;#52;&amp;#50;&amp;#97;&amp;#104;&amp;#74;&amp;#75;&amp;#45;&amp;#72;&amp;#83;</span><br><span class="line">&amp;#49;&amp;#49;&amp;#73;&amp;#73;&amp;#73;&amp;#125;--&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><ol>
-<li>用sublime（一个不错的编辑器）写一个后缀为<code>.html</code>的网页文件，添加上文注释的内容看看。    </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;title&gt;web3&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&amp;#75;&amp;#69;&amp;#89;&amp;#123;&amp;#74;&amp;#50;&amp;#115;&amp;#97;</span><br><span class="line">&amp;#52;&amp;#50;&amp;#97;&amp;#104;&amp;#74;&amp;#75;&amp;#45;&amp;#72;&amp;#83;</span><br><span class="line">&amp;#49;&amp;#49;&amp;#73;&amp;#73;&amp;#73;&amp;#125;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>Google打开后就可以拿到flag：<code>KEY{J2sa42ahJK-HS11III}</code>。      </li>
-</ol>
-<h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><p>经过查阅，注释里的内容是<strong>Unicode</strong>编码，将其转换为ASCII码后就是flag。<br>Unicode编码在线转换工具： <a href="http://tool.chinaz.com/Tools/Unicode.aspx" target="_blank" rel="noopener">http://tool.chinaz.com/Tools/Unicode.aspx</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/26/nazo-io攻略/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kawhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/kawhi.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kawhi">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/26/nazo-io攻略/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">nazo.io攻略</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-26 21:18:40" itemprop="dateCreated datePublished" datetime="2019-01-26T21:18:40+08:00">2019-01-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-01 19:16:41" itemprop="dateModified" datetime="2019-03-01T19:16:41+08:00">2019-03-01</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/MISC/" itemprop="url" rel="index"><span itemprop="name">MISC</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>经朋友推荐，最近在玩这个脑洞闯关游戏，还挺刺激的，有些题和ctf也有些联系，我把个人感觉有难度的题写了下来。   </p>
-<h2 id="Lv14"><a href="#Lv14" class="headerlink" title="Lv14"></a>Lv14</h2><h3 id="thinking"><a href="#thinking" class="headerlink" title="thinking"></a>thinking</h3><p>这关卡了好久，题目就一张图片肯定是<strong>图片隐写</strong>没错了，于是我在Linux系统上用<strong>binwalk</strong>工具没弄出来，后来又想到用<strong>foremost</strong>工具也没成功。最后发现它就是个<strong>图种</strong>，这下就好办了。</p>
-<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><ol>
-<li><p>在Google上利用开发者工具（F12）可以看到有一张<code>apple.jpg</code>的图片，先下载到桌面。    </p>
-</li>
-<li><p>利用压缩工具（我的是Bandizip）创建压缩文件apple.zip。   </p>
-</li>
-<li><p>进入压缩文件后右键<strong>用Bandizip打开</strong>，可以看到apple.torrent文件。    </p>
-</li>
-<li><p>双击下载文件后打开如图，so这一关的key就是<strong>greendam</strong>!（另外还有一个奇怪的文件，出题人有点东西。）   </p>
-</li>
-</ol>
-<p><img src="https://kawhi123.github.io/images/Lv14.png" alt="">       </p>
-<h2 id="Lv15"><a href="#Lv15" class="headerlink" title="Lv15"></a>Lv15</h2><h3 id="thinking-1"><a href="#thinking-1" class="headerlink" title="thinking"></a>thinking</h3><p>题目是声音的轨迹，一段9秒钟的音频文件，听起来很诡异也没什么信息。猜测应该是<strong>音频隐写</strong>。   </p>
-<h3 id="tip-1"><a href="#tip-1" class="headerlink" title="tip"></a>tip</h3><ol>
-<li><p>右键将音频另存到本地，用音频处理软件打开。（我用的是Audacity，还有Adobe Auditon等）   </p>
-</li>
-<li><p>点击<code>tune</code>切换到频谱图去观察，可以看到下图样例。<br><img src="https://kawhi123.github.io/images/Lv15.png" alt="">   </p>
-</li>
-<li><p>截图后用Photoshop打开，水平翻转后再适当拉长可以得到key：<strong>koenokiseki</strong>。</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2450,7 +2417,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2485,7 +2452,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
